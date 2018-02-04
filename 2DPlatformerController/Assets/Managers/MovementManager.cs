@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
+using Assets.Managers;
 
-public class MovementManager
+public class MovementManager:IMovementManager
 {
     /// <summary>
     /// 
@@ -33,7 +34,20 @@ public class MovementManager
     public Vector2 ExecuteHorizontalMovement()
     {
         Vector2 move = Vector2.zero;
-        move.x = Input.GetAxis("Horizontal");
+        int i = 0;
+        if (Input.GetKey(KeyCode.A))
+        {
+            i = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            i = 1;
+        }
+        else
+        {
+            i = 0;
+        }
+        move.x =i ;
 
         return move;
     }

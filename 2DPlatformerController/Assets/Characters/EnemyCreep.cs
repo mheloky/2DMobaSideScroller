@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Attributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,18 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
 {
     #region Properties
     public DamagableAttributes damagableAttributes = new DamagableAttributes();
+    public VitalityAttributes vitalityAttributes = new VitalityAttributes();
     DamageManager dmgManager = new DamageManager();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    
     #endregion
 
     // Use this for initialization
     private void Start()
     {
         TheCollisionDetector.CollisionDetectedEvent += TheCollisionDetector_CollisionDetectedEvent;
-
+       
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         
@@ -28,11 +31,11 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
     {
         var move = Vector2.right;
 
-        if(damagableAttributes.Team == TAGS.Team2)
+        if(vitalityAttributes.Team == TAGS.Team2)
             move = Vector2.left;
 
 
-         bool flipSprite = (spriteRenderer.flipX ? (damagableAttributes.Team == TAGS.Team2) : (damagableAttributes.Team == TAGS.Team1));
+         bool flipSprite = (spriteRenderer.flipX ? (vitalityAttributes.Team == TAGS.Team2) : (vitalityAttributes.Team == TAGS.Team1));
          if (!flipSprite)
          {
              spriteRenderer.flipX = !spriteRenderer.flipX;
@@ -46,22 +49,15 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
 
     private void TheCollisionDetector_CollisionDetectedEvent(RaycastHit2D secondaryCollider, Rigidbody2D primaryCollider)
     {
-        Attack(secondaryCollider, primaryCollider);
-    }
-
-    private void Attack(RaycastHit2D secondaryCollider, Rigidbody2D primaryCollider)
-    {
-        animator.SetBool("basicAttack", true);
-        secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>().TakeDamage(this.damagableAttributes.AttackDamage);
-    }
-
-    public void TakeDamage(int damage)
-    {
-        var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(damagableAttributes, damage);
-
-        if (shouldBeDestroyed)
+        // Attack(secondaryCollider, primaryCollider);
+        var possibleTarget = secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>();
+        if (targets.Count < GetDamagableAttributes().Cleave  && !targets.Contains(possibleTarget))
         {
-            Destroy(this.gameObject);
+            targets.Add(possibleTarget);
+        }
+        foreach (var item in targets)
+        {
+            Attack(item, primaryCollider);
         }
     }
 
@@ -69,4 +65,32 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
     {
         return damagableAttributes;
     }
+
+    public VitalityAttributes GetVitalityAttributes()
+    {
+        return vitalityAttributes;
+    }
+
+    private void Update()
+    {
+        
+    }
+    private void Attack(IDamagable trgt, Rigidbody2D primaryCollider)
+    {
+        dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, this.damagableAttributes.AttackDamage);
+        //trgt.GetVitalityAttributes(), damagableAttributes( this.damagableAttributes.AttackDamage);
+        animator.SetBool("basicAttack", true);
+      //  secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>().TakeDamage(this.damagableAttributes.AttackDamage);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(vitalityAttributes, damagableAttributes, damage);
+
+        if (shouldBeDestroyed)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

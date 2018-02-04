@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using Assets.Abilities;
+using Assets.Attributes;
+using Assets.Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Hero : PhysicsObjectBasic, IDamagable
 {
     DamageManager damageManager;
-    MovementManager movementManger = new MovementManager();
+    IMovementManager movementManger = new MovementManager();
     AnimatorManager animatorManager = new AnimatorManager();
-    public DamagableAttributes damagableAttributes = new DamagableAttributes();
+    public IAttack basicAttack;
+    public VitalityAttributes vitalityAttributes = new VitalityAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
     // Use this for initialization
     void Awake()
     {
@@ -22,7 +25,13 @@ public class Hero : PhysicsObjectBasic, IDamagable
         Physics2D.IgnoreLayerCollision(14, 14);
         ShellRadius = .3f;
     }
-
+    //is your phone charged?
+    //also i was thinking, imo the TakeDamage() should be handled as deal dmg instead of takeDmg for 2 main reasons . will call you in 2 miunutes
+    //sure lemme think about what i was wanting to say xD So, if for example you as the creep go close to all the creeps of the enemy team, you would
+    //kill all of them because you deal cleave damage. If the attack damage was handled in the creep you wouldn't because you could limit the ammount of cleave
+    //by saying how many objects to damage at once. Hope you understand what am trying to say
+    //starting up my oither computer with skype - one moment -kk
+       
     protected override void ComputeVelocity()
     {
         var move=movementManger.ExecuteHorizontalMovement();
@@ -36,7 +45,11 @@ public class Hero : PhysicsObjectBasic, IDamagable
 
     public void TakeDamage(int damage)
     {
-        damageManager.DistributeDamageWithInvincible(damagableAttributes, damage);
+     var isitDead = damageManager.DistributeDamageWithInvincible(vitalityAttributes,  damagableAttributes, damage);
+        if (isitDead)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 
     public DamagableAttributes GetDamagableAttributes()
@@ -44,3 +57,4 @@ public class Hero : PhysicsObjectBasic, IDamagable
         return damagableAttributes;
     }
 }
+

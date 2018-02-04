@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Attributes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,8 @@ using UnityEngine;
 public class Tower : PhysicsObjectBasic,IDamagable {
 
     #region properties
-    public DamagableAttributes gameObjectAttributes=new DamagableAttributes();
+    public DamagableAttributes damagableAttributes = new DamagableAttributes();
+    public VitalityAttributes vitalityAttributes = new VitalityAttributes();
     #endregion
     // Use this for initialization
     void Start () {
@@ -25,7 +27,7 @@ public class Tower : PhysicsObjectBasic,IDamagable {
     public void TakeDamage(int damage)
     {
         DamageManager dmgManager = new DamageManager();
-        var shouldBeDestroyed=dmgManager.DistributeDamageWithInvincible(gameObjectAttributes, damage);
+        var shouldBeDestroyed=dmgManager.DistributeDamageWithInvincible(vitalityAttributes, damagableAttributes, damage);
 
         if (shouldBeDestroyed)
             Destroy(this);
@@ -33,7 +35,7 @@ public class Tower : PhysicsObjectBasic,IDamagable {
 
     public DamagableAttributes GetDamagableAttributes()
     {
-        return gameObjectAttributes;
+        return damagableAttributes;
     }
 }
 

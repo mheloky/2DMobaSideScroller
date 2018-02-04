@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System;
+using Assets.Attributes;
 
 public class DamageManager
 {
@@ -10,14 +11,14 @@ public class DamageManager
     /// <param name="damagableAttributes"></param>
     /// <param name="hpDelta"></param>
     /// <returns>Returns if the object should be destoryed or no</returns>
-    public bool DistributeDamageWithInvincible(DamagableAttributes damagableAttributes, int hpDelta)
+    public bool DistributeDamageWithInvincible(VitalityAttributes vitalityAttributes, DamagableAttributes damagableAttributes, int Damage)
     {
-        if((DateTime.Now - damagableAttributes.LastAttackTime).TotalSeconds>=damagableAttributes.AttackDelaySeconds)
-        if (!damagableAttributes.IsInvincible)
+        if ((DateTime.Now - damagableAttributes.LastAttackTime).TotalSeconds >= damagableAttributes.AttackDelaySeconds &&
+        !vitalityAttributes.IsInvincible)
         {
             damagableAttributes.LastAttackTime = DateTime.Now;
-            damagableAttributes.HP -= hpDelta;
-            if (damagableAttributes.HP <= 0)
+            vitalityAttributes.HP -= Damage;
+            if (vitalityAttributes.HP <= 0)
                 return true;
         }
 
