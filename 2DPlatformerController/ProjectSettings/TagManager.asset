@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Team=Team1
+  - Team=Team2
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Level
+  - Enemy
+  - Usable
+  - Pickup
+  - IgnorePlayer
+  - Player
+  - Team1
+  - Team2
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - PlayerDrop
+  - PlateformThrought
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Front
+    uniqueID: 3405993979
+    locked: 0
+  - name: Team1Layer
+    uniqueID: 434718819
+    locked: 0
+  - name: Team2Layer
+    uniqueID: 3679420413
+    locked: 0
