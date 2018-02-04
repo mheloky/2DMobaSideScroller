@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : PhysicsObjectBasic,IDamagable {
 
@@ -45,6 +46,11 @@ public class Tower : PhysicsObjectBasic,IDamagable {
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    public Slider GetHealthSlider()
+    {
+        throw new NotImplementedException();
     }
 }
 

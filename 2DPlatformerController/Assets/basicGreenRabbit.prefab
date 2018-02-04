@@ -124,6 +124,11 @@ MonoBehaviour:
     AttackDamage: 10
     AttackDelaySeconds: 0.5
     Cleave: 1
+    SliderToLoad: {fileID: 114732496606847216, guid: 3eff70e8afa055040b9aacea3fdc1407,
+      type: 2}
+    height: 1
+    HealthSlider: {fileID: 0}
+    canvas: {fileID: 0}
 --- !u!212 &212149179919304610
 SpriteRenderer:
   m_ObjectHideFlags: 1

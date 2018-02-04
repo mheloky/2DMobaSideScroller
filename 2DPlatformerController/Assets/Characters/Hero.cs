@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Hero : PhysicsObjectBasic, IDamagable
 {
@@ -66,6 +67,11 @@ public class Hero : PhysicsObjectBasic, IDamagable
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    public Slider GetHealthSlider()
+    {
+        throw new NotImplementedException();
     }
 }
 

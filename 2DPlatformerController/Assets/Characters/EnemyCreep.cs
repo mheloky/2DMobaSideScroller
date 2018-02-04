@@ -4,8 +4,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-    public class EnemyCreep : PhysicsObjectBasic, IDamagable
+public class EnemyCreep : PhysicsObjectBasic, IDamagable
     {
         #region Properties
         public DamagableAttributes damagableAttributes = new DamagableAttributes();
@@ -23,7 +24,9 @@ using UnityEngine;
             battacks = new BasicAttack();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            vitalityAttributes.HP = 100; 
+            vitalityAttributes.HP = 100;
+            damagableAttributes.canvas = FindObjectOfType<Canvas>();
+            damagableAttributes.HealthSlider = Instantiate(damagableAttributes.SliderToLoad,damagableAttributes.canvas.gameObject.transform);
             Physics2D.IgnoreLayerCollision(14, 14);
             Physics2D.IgnoreLayerCollision(15, 15);
         }
@@ -41,11 +44,33 @@ using UnityEngine;
             {
                 spriteRenderer.flipX = !spriteRenderer.flipX;
             }
-
-            //animator.SetBool("grounded", TheCollisionDetector.IsGrounded);
-            // animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
-            //print(":::::::" + Mathf.Abs(velocity.x) / maxSpeed);
-            TargetVelocity = move * movementAttributes.MaxSpeed;
+        damagableAttributes.HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + damagableAttributes.height, gameObject.transform.position.z);
+        damagableAttributes.HealthSlider.value = vitalityAttributes.HP;
+        ColorBlock cb = damagableAttributes.HealthSlider.colors;
+        if (vitalityAttributes.HP > 70)
+        {
+            cb.normalColor = Color.green;
+            damagableAttributes.HealthSlider.colors = cb;
+        }
+        else if (vitalityAttributes.HP > 30)
+        {
+            cb.normalColor = Color.yellow;
+            damagableAttributes.HealthSlider.colors = cb;
+        }
+        else if (vitalityAttributes.HP <30)
+        {
+            cb.normalColor = Color.red;
+            damagableAttributes.HealthSlider.colors = cb;
+        }
+        else if (vitalityAttributes.HP < 1)
+        {
+            cb.normalColor = Color.black;
+            damagableAttributes.HealthSlider.colors = cb;
+        }
+        //animator.SetBool("grounded", TheCollisionDetector.IsGrounded);
+        // animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
+        //print(":::::::" + Mathf.Abs(velocity.x) / maxSpeed);
+        TargetVelocity = move * movementAttributes.MaxSpeed;
         }
 
     private void TheCollisionDetector_CollisionDetectedEvent(RaycastHit2D secondaryCollider, Rigidbody2D primaryCollider)
@@ -92,8 +117,9 @@ using UnityEngine;
             dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, this.damagableAttributes.AttackDamage);
         if (trgt.GetVitalityAttributes().HP <= 0)
         {
-            trgt.GetGameObject().GetComponent<SpriteRenderer>().color = Color.red;
-            //Destroy(trgt.GetGameObject());
+            //trgt.GetGameObject().GetComponent<SpriteRenderer>().color = Color.red;
+            Destroy(trgt.GetHealthSlider().gameObject);
+            Destroy(trgt.GetGameObject());
         }
             //trgt.GetVitalityAttributes(), damagableAttributes( this.damagableAttributes.AttackDamage);
             animator.SetBool("basicAttack", true);
@@ -113,5 +139,10 @@ using UnityEngine;
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    public Slider GetHealthSlider()
+    {
+        return damagableAttributes.HealthSlider;
     }
 }

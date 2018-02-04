@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Assets.Attributes;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour, IDamagable
 {
@@ -61,5 +62,10 @@ public class Spawner : MonoBehaviour, IDamagable
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    public Slider GetHealthSlider()
+    {
+        throw new NotImplementedException();
     }
 }
