@@ -67,6 +67,12 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
             cb.normalColor = Color.black;
             damagableAttributes.HealthSlider.colors = cb;
         }
+        if (vitalityAttributes.HP <= 0)
+        {
+            //trgt.GetGameObject().GetComponent<SpriteRenderer>().color = Color.red;
+            Destroy(damagableAttributes.HealthSlider.gameObject);
+            Destroy(gameObject);
+        }
         //animator.SetBool("grounded", TheCollisionDetector.IsGrounded);
         // animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         //print(":::::::" + Mathf.Abs(velocity.x) / maxSpeed);
@@ -115,12 +121,7 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
         private void Attack(IDamagable trgt, Rigidbody2D primaryCollider)
         {
             dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, this.damagableAttributes.AttackDamage);
-        if (trgt.GetVitalityAttributes().HP <= 0)
-        {
-            //trgt.GetGameObject().GetComponent<SpriteRenderer>().color = Color.red;
-            Destroy(trgt.GetHealthSlider().gameObject);
-            Destroy(trgt.GetGameObject());
-        }
+        
             //trgt.GetVitalityAttributes(), damagableAttributes( this.damagableAttributes.AttackDamage);
             animator.SetBool("basicAttack", true);
             //  secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>().TakeDamage(this.damagableAttributes.AttackDamage);
