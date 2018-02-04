@@ -5,10 +5,11 @@ using System;
 [Serializable]
 public class DamagableAttributes
 {
-    public string Team;
-    public int HP;
-    public bool IsInvincible;
     public int AttackDamage;
     public int AttackDelaySeconds;
     public DateTime LastAttackTime;
+    public decimal Radius;
+    public int Cleave;//1 target only 
+    //phone died - let it charge for a second
+    //so, i was thinking 
 }
