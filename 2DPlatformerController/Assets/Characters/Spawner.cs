@@ -2,11 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Assets.Attributes;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour, IDamagable
 {
     public SpawnerAttributes spawnerAttributes = new SpawnerAttributes();
+    public VitalityAttributes vitalityAttributes=new VitalityAttributes();
     // Use this for initialization
     void Start () {
 
@@ -36,7 +38,7 @@ public class Spawner : MonoBehaviour, IDamagable
 
         var enemyCreepRawObj = Instantiate(spawnerAttributes.SpawnUnit1);
         var enemyCreep = enemyCreepRawObj.GetComponent<EnemyCreep>();
-        enemyCreep.damagableAttributes.Team = spawnerAttributes.Team;
+        enemyCreep.vitalityAttributes.Team = spawnerAttributes.Team;
         spawnerAttributes.SpawnUnit1.transform.position = new Vector3(this.transform.position.x + positionDelta , 4f);
 
         spawnerAttributes.spawnCount++;
@@ -50,5 +52,14 @@ public class Spawner : MonoBehaviour, IDamagable
     public DamagableAttributes GetDamagableAttributes()
     {
         return null;
+    }
+
+    public VitalityAttributes GetVitalityAttributes()
+    {
+        return vitalityAttributes;
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }

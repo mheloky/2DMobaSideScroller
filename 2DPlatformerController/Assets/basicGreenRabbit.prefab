@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1770928996094532}
   m_LocalRotation: {x: -0, y: -0.0024656584, z: 0, w: 0.99999696}
-  m_LocalPosition: {x: -2.6540537, y: 4, z: 0}
+  m_LocalPosition: {x: -2.6453495, y: 4, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,14 +118,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementAttributes:
-    MaxSpeed: 5
+    MaxSpeed: 1
     JumpTakeOffSpeed: 0
   damagableAttributes:
-    Team: Team1
-    HP: 100
-    IsInvincible: 0
     AttackDamage: 10
-    AttackDelaySeconds: 0
+    AttackDelaySeconds: 0.5
+    Cleave: 1
 --- !u!212 &212149179919304610
 SpriteRenderer:
   m_ObjectHideFlags: 1

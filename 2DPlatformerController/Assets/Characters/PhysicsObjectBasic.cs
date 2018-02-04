@@ -64,7 +64,7 @@ public class PhysicsObjectBasic : MonoBehaviour
     void Update()
     {
         TargetVelocity = Vector2.zero;
-        ComputeVelocity();
+      ComputeVelocity();
     }
     #endregion
 

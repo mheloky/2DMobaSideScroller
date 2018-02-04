@@ -7,7 +7,7 @@ namespace Assets.Abilities
 {
     public class BasicAttack : IAttack
     {
-        private List<IDamagable> targets = new List<IDamagable>();
+        public List<IDamagable> targets = new List<IDamagable>();
         private DamagableAttributes damagableAttributes;
         /*1+20smth what if we have tier system?
          * 2+20hp
@@ -19,9 +19,9 @@ namespace Assets.Abilities
             return damagableAttributes;
         }
 
-        public IDamagable[] GetTargets()
+        public List<IDamagable> GetTargets()
         {
-            return targets.ToArray();
+            return targets;
         }
     }
 }

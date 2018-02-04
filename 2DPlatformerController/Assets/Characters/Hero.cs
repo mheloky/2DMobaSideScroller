@@ -4,6 +4,7 @@ using Assets.Managers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Hero : PhysicsObjectBasic, IDamagable
 {
@@ -12,6 +13,7 @@ public class Hero : PhysicsObjectBasic, IDamagable
     AnimatorManager animatorManager = new AnimatorManager();
     public IAttack basicAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
+    public DamagableAttributes damagableAttributes = new DamagableAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     // Use this for initialization
@@ -55,6 +57,15 @@ public class Hero : PhysicsObjectBasic, IDamagable
     public DamagableAttributes GetDamagableAttributes()
     {
         return damagableAttributes;
+    }
+
+    public VitalityAttributes GetVitalityAttributes()
+    {
+        return vitalityAttributes;
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }
 

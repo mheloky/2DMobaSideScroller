@@ -7,4 +7,6 @@ public interface IDamagable
     void TakeDamage(int damage);
     DamagableAttributes GetDamagableAttributes();
     VitalityAttributes GetVitalityAttributes();
+
+    GameObject GetGameObject(); 
 }

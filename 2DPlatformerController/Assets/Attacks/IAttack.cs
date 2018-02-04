@@ -8,7 +8,7 @@ namespace Assets.Abilities
     public interface IAttack
     {
         DamagableAttributes GetDamagableAttributes();
-        IDamagable[] GetTargets();
+        List<IDamagable> GetTargets();
 
     }
 }

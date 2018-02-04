@@ -37,5 +37,14 @@ public class Tower : PhysicsObjectBasic,IDamagable {
     {
         return damagableAttributes;
     }
+
+    public VitalityAttributes GetVitalityAttributes()
+    {
+        return vitalityAttributes;
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }
 

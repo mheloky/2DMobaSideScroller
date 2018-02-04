@@ -6,7 +6,7 @@ using System;
 public class DamagableAttributes
 {
     public int AttackDamage;
-    public int AttackDelaySeconds;
+    public float AttackDelaySeconds;
     public DateTime LastAttackTime;
     public decimal Radius;
     public int Cleave;//1 target only 
