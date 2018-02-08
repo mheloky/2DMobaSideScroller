@@ -1113,6 +1113,12 @@ MonoBehaviour:
     AttackDamage: 0
     AttackDelaySeconds: 0
     Cleave: 0
+  vitalityAttributes:
+    isHero: 0
+    Team: 
+    MaxHP: 0
+    HP: 0
+    IsInvincible: 0
     SliderToLoad: {fileID: 0}
     height: 0
     HealthSlider: {fileID: 0}
@@ -1246,6 +1252,12 @@ MonoBehaviour:
     AttackDamage: 0
     AttackDelaySeconds: 0
     Cleave: 0
+  vitalityAttributes:
+    isHero: 0
+    Team: 
+    MaxHP: 0
+    HP: 0
+    IsInvincible: 0
     SliderToLoad: {fileID: 0}
     height: 0
     HealthSlider: {fileID: 0}
@@ -8403,15 +8415,21 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 7
     JumpTakeOffSpeed: 7
-  damagableAttributes:
-    AttackDamage: 30
-    AttackDelaySeconds: 1
-    Cleave: 1
+  vitalityAttributes:
+    isHero: 1
+    Team: Team1
+    MaxHP: 100
+    HP: 100
+    IsInvincible: 0
     SliderToLoad: {fileID: 114732496606847216, guid: 3eff70e8afa055040b9aacea3fdc1407,
       type: 2}
     height: 1
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
+  damagableAttributes:
+    AttackDamage: 30
+    AttackDelaySeconds: 1
+    Cleave: 1
 --- !u!50 &612917015
 Rigidbody2D:
   serializedVersion: 4
@@ -12730,6 +12748,16 @@ MonoBehaviour:
     produceSettingSeconds: 1
     CreepsPerSpawn: 1
     Team: Team1
+  vitalityAttributes:
+    isHero: 0
+    Team: 
+    MaxHP: 0
+    HP: 0
+    IsInvincible: 0
+    SliderToLoad: {fileID: 0}
+    height: 0
+    HealthSlider: {fileID: 0}
+    canvas: {fileID: 0}
 --- !u!61 &990249751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22501,7 +22529,7 @@ Prefab:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: orthographic size
-      value: 2.75
+      value: 4.3671875
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
@@ -22753,6 +22781,16 @@ MonoBehaviour:
     produceSettingSeconds: 1
     CreepsPerSpawn: 1
     Team: Team2
+  vitalityAttributes:
+    isHero: 0
+    Team: 
+    MaxHP: 0
+    HP: 0
+    IsInvincible: 0
+    SliderToLoad: {fileID: 0}
+    height: 0
+    HealthSlider: {fileID: 0}
+    canvas: {fileID: 0}
 --- !u!61 &1736615997
 BoxCollider2D:
   m_ObjectHideFlags: 0

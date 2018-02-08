@@ -26,9 +26,9 @@ public class Hero : PhysicsObjectBasic, IDamagable
         movementManger = new MovementManager();
         animatorManager = new AnimatorManager();
         animator = GetComponent<Animator>();
-        vitalityAttributes.HP = 100;
-        damagableAttributes.canvas = FindObjectOfType<Canvas>();
-        damagableAttributes.HealthSlider = Instantiate(damagableAttributes.SliderToLoad, damagableAttributes.canvas.gameObject.transform);
+
+        vitalityAttributes.canvas = FindObjectOfType<Canvas>();
+        vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
         Physics2D.IgnoreLayerCollision(14, 14);
         ShellRadius = .3f;
     }
@@ -46,35 +46,7 @@ public class Hero : PhysicsObjectBasic, IDamagable
         velocity = newVelocity;
         animatorManager.ExecuteFlipSprite(move.x,spriteRenderer);
         animatorManager.UpdateVelocityParametrer(animator, this);
-        damagableAttributes.HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + damagableAttributes.height, gameObject.transform.position.z);
-        damagableAttributes.HealthSlider.value = vitalityAttributes.HP;
-        ColorBlock cb = damagableAttributes.HealthSlider.colors;
-        if (vitalityAttributes.HP > 70)
-        {
-            cb.normalColor = Color.green;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        else if (vitalityAttributes.HP > 30)
-        {
-            cb.normalColor = Color.yellow;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        else if (vitalityAttributes.HP < 30)
-        {
-            cb.normalColor = Color.red;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        else if (vitalityAttributes.HP < 1)
-        {
-            cb.normalColor = Color.black;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        if (vitalityAttributes.HP <= 0)
-        {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-         //   Destroy(damagableAttributes.HealthSlider.gameObject);
-           // Destroy(gameObject);
-        }
+        vitalityAttributes.UpdateHealtheSlider(gameObject);
         TargetVelocity = move * movementAttributes.MaxSpeed;
     }
 
@@ -138,7 +110,7 @@ public class Hero : PhysicsObjectBasic, IDamagable
 
     public Slider GetHealthSlider()
     {
-        return damagableAttributes.HealthSlider;
+        return vitalityAttributes.HealthSlider;
     }
 
     public void TakeDamage(int damage)

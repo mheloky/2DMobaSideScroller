@@ -10,12 +10,6 @@ public class DamagableAttributes
     public DateTime LastAttackTime;
     public decimal Radius;
     public int Cleave;
-    public Slider SliderToLoad;
-    public float height;
-    [HideInInspector]
-    public Slider HealthSlider;
-    [HideInInspector]
-    public Canvas canvas;
         //1 target only 
     //phone died - let it charge for a second
     //so, i was thinking 

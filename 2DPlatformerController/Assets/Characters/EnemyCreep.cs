@@ -24,9 +24,8 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
             battacks = new BasicAttack();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            vitalityAttributes.HP = 100;
-            damagableAttributes.canvas = FindObjectOfType<Canvas>();
-            damagableAttributes.HealthSlider = Instantiate(damagableAttributes.SliderToLoad,damagableAttributes.canvas.gameObject.transform);
+            vitalityAttributes.canvas = FindObjectOfType<Canvas>();
+            vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
             Physics2D.IgnoreLayerCollision(14, 14);
             Physics2D.IgnoreLayerCollision(15, 15);
         }
@@ -44,35 +43,7 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
             {
                 spriteRenderer.flipX = !spriteRenderer.flipX;
             }
-        damagableAttributes.HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + damagableAttributes.height, gameObject.transform.position.z);
-        damagableAttributes.HealthSlider.value = vitalityAttributes.HP;
-        ColorBlock cb = damagableAttributes.HealthSlider.colors;
-        if (vitalityAttributes.HP > 70)
-        {
-            cb.normalColor = Color.green;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        else if (vitalityAttributes.HP > 30)
-        {
-            cb.normalColor = Color.yellow;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        else if (vitalityAttributes.HP <30)
-        {
-            cb.normalColor = Color.red;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        else if (vitalityAttributes.HP < 1)
-        {
-            cb.normalColor = Color.black;
-            damagableAttributes.HealthSlider.colors = cb;
-        }
-        if (vitalityAttributes.HP <= 0)
-        {
-            //trgt.GetGameObject().GetComponent<SpriteRenderer>().color = Color.red;
-            Destroy(damagableAttributes.HealthSlider.gameObject);
-            Destroy(gameObject);
-        }
+        vitalityAttributes.UpdateHealtheSlider(gameObject);
         //animator.SetBool("grounded", TheCollisionDetector.IsGrounded);
         // animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         //print(":::::::" + Mathf.Abs(velocity.x) / maxSpeed);
@@ -144,6 +115,6 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
 
     public Slider GetHealthSlider()
     {
-        return damagableAttributes.HealthSlider;
+        return vitalityAttributes.HealthSlider;
     }
 }

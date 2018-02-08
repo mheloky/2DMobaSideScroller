@@ -10,4 +10,5 @@ public interface IDamagable
 
     GameObject GetGameObject();
     Slider GetHealthSlider();
+
 }
