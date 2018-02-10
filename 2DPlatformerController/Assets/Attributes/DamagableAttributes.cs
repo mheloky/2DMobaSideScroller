@@ -10,7 +10,10 @@ public class DamagableAttributes
     public DateTime LastAttackTime;
     public decimal Radius;
     public int Cleave;
-        //1 target only 
-    //phone died - let it charge for a second
-    //so, i was thinking 
+    public RaycastHit[] Range(float range,GameObject gameObject)
+    {
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(gameObject.transform.position, gameObject.transform.forward, range);
+        return hits;
+    }
 }
