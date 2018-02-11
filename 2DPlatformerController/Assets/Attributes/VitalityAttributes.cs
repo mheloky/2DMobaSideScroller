@@ -19,7 +19,7 @@ namespace Assets.Attributes
         [HideInInspector]
         public Slider HealthSlider;
         [HideInInspector]
-        public Canvas canvas;
+        public GameObject canvas;
         public void UpdateHealtheSlider(GameObject gameObject)
         {
             HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + height, gameObject.transform.position.z);

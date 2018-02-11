@@ -20,11 +20,11 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
         // Use this for initialization
         private void Start()
         {
-            TheCollisionDetector.CollisionDetectedEvent += TheCollisionDetector_CollisionDetectedEvent;
+        //    TheCollisionDetector.CollisionDetectedEvent += TheCollisionDetector_CollisionDetectedEvent;
             battacks = new BasicAttack();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            vitalityAttributes.canvas = FindObjectOfType<Canvas>();
+            vitalityAttributes.canvas =GameObject.Find("CanvasWorld");
             vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
             Physics2D.IgnoreLayerCollision(14, 14);
             Physics2D.IgnoreLayerCollision(15, 15);
@@ -44,40 +44,21 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
                 spriteRenderer.flipX = !spriteRenderer.flipX;
             }
         vitalityAttributes.UpdateHealtheSlider(gameObject);
+        damagableAttributes.targets= damagableAttributes.Range(gameObject);
+        if (damagableAttributes.targets[0] != null)
+        {
+            foreach (GameObject vr in damagableAttributes.targets)
+            {
+                Attack(vr.GetComponent<IDamagable>(), gameObject.GetComponent<Rigidbody2D>(),1f);
+            }
+        }
         //animator.SetBool("grounded", TheCollisionDetector.IsGrounded);
         // animator.SetFloat("velocityX", Mathf.Abs(velocity.x) / maxSpeed);
         //print(":::::::" + Mathf.Abs(velocity.x) / maxSpeed);
         TargetVelocity = move * movementAttributes.MaxSpeed;
         }
 
-    private void TheCollisionDetector_CollisionDetectedEvent(RaycastHit2D secondaryCollider, Rigidbody2D primaryCollider)
-    {
-        // Attack(secondaryCollider, primaryCol lider);\   
-        // var possibleTarget = secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>();
-        IDamagable possibleTarget=null;
-        try
-        {
-            possibleTarget = secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>();
 
-        }
-        catch(Exception e)
-        {
-            int a = 100;
-
-        }
-            if (possibleTarget == null)
-                return;
-            //  secondaryCollider.rigidbody.gameObject. GetComponent<IDamagable>() null reference 
-            var targets = battacks.GetTargets();
-            if (targets.Count < GetDamagableAttributes().Cleave && !targets.Contains(possibleTarget))
-            {
-                targets.Add(possibleTarget);
-            }
-            foreach (var item in targets)
-            {
-                Attack(item, primaryCollider);
-            }
-        }
 
         public DamagableAttributes GetDamagableAttributes()
         {
@@ -89,9 +70,9 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
             return vitalityAttributes;
         }
 
-        private void Attack(IDamagable trgt, Rigidbody2D primaryCollider)
+        private void Attack(IDamagable trgt, Rigidbody2D primaryCollider,float cd)
         {
-            dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, this.damagableAttributes.AttackDamage);
+            dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, this.damagableAttributes.AttackDamage,cd);
         
             //trgt.GetVitalityAttributes(), damagableAttributes( this.damagableAttributes.AttackDamage);
             animator.SetBool("basicAttack", true);
@@ -100,7 +81,7 @@ public class EnemyCreep : PhysicsObjectBasic, IDamagable
 
         public void TakeDamage(int damage)
         {
-            var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(vitalityAttributes, damagableAttributes, damage);
+            var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(vitalityAttributes, damagableAttributes, damage,1);
 
             if (shouldBeDestroyed)
             {

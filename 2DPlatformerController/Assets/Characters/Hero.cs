@@ -27,7 +27,7 @@ public class Hero : PhysicsObjectBasic, IDamagable
         animatorManager = new AnimatorManager();
         animator = GetComponent<Animator>();
 
-        vitalityAttributes.canvas = FindObjectOfType<Canvas>();
+        vitalityAttributes.canvas = GameObject.Find("CanvasWorld");
         vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
         Physics2D.IgnoreLayerCollision(14, 14);
         ShellRadius = .3f;
@@ -46,39 +46,32 @@ public class Hero : PhysicsObjectBasic, IDamagable
         velocity = newVelocity;
         animatorManager.ExecuteFlipSprite(move.x,spriteRenderer);
         animatorManager.UpdateVelocityParametrer(animator, this);
+        
         vitalityAttributes.UpdateHealtheSlider(gameObject);
         TargetVelocity = move * movementAttributes.MaxSpeed;
+        damagableAttributes.targets = damagableAttributes.Range(gameObject);
     }
 
-    private void TheCollisionDetector_CollisionDetectedEvent(RaycastHit2D secondaryCollider, Rigidbody2D primaryCollider)
+    public void BasicAttack()
     {
-        // Attack(secondaryCollider, primaryCol lider);\   
-        // var possibleTarget = secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>();
-        IDamagable possibleTarget = null;
-        try
+        if (damagableAttributes.targets[0] != null)
         {
-            possibleTarget = secondaryCollider.rigidbody.gameObject.GetComponent<IDamagable>();
-
-        }
-        catch (Exception e)
-        {
-            int a = 100;
-
-        }
-        if (possibleTarget == null)
-            return;
-        //  secondaryCollider.rigidbody.gameObject. GetComponent<IDamagable>() null reference 
-        var targets = battacks.GetTargets();
-        if (targets.Count < GetDamagableAttributes().Cleave && !targets.Contains(possibleTarget))
-        {
-            targets.Add(possibleTarget);
-        }
-        foreach (var item in targets)
-        {
-            Attack(item, primaryCollider);
+            foreach (GameObject vr in damagableAttributes.targets)
+            {
+                Attack(vr.GetComponent<IDamagable>(), gameObject.GetComponent<Rigidbody2D>(), damagableAttributes.AttackDamage,1f);
+            }
         }
     }
-
+    public void BigAbility()
+    {
+        if (damagableAttributes.targets[0] != null)
+        {
+            foreach (GameObject vr in damagableAttributes.targets)
+            {
+                Attack(vr.GetComponent<IDamagable>(), gameObject.GetComponent<Rigidbody2D>(), damagableAttributes.AttackDamage*3,1/5f);
+            }
+        }
+    }
     public DamagableAttributes GetDamagableAttributes()
     {
         return damagableAttributes;
@@ -89,9 +82,10 @@ public class Hero : PhysicsObjectBasic, IDamagable
         return vitalityAttributes;
     }
 
-    private void Attack(IDamagable trgt, Rigidbody2D primaryCollider)
+
+    private void Attack(IDamagable trgt, Rigidbody2D primaryCollider,int dmg,float cd)
     {
-        dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, this.damagableAttributes.AttackDamage);
+        dmgManager.DistributeDamageWithInvincible(trgt.GetVitalityAttributes(), damagableAttributes, dmg,cd);
         if (trgt.GetVitalityAttributes().HP <= 0)
         {
             //trgt.GetGameObject().GetComponent<SpriteRenderer>().color = Color.red;

@@ -121,9 +121,16 @@ MonoBehaviour:
     MaxSpeed: 1
     JumpTakeOffSpeed: 0
   damagableAttributes:
-    AttackDamage: 10
-    AttackDelaySeconds: 0.5
+    AttackDamage: 1
+    AttackDelaySeconds: 0.1
+    Radius: 1
     Cleave: 1
+    targets: []
+    HowFatItIs: 1
+    ToAttack:
+      serializedVersion: 2
+      m_Bits: 4294934527
+    WhichSideIsRight: 1
   vitalityAttributes:
     isHero: 0
     Team: 100

@@ -11,9 +11,9 @@ public class DamageManager
     /// <param name="damagableAttributes"></param>
     /// <param name="hpDelta"></param>
     /// <returns>Returns if the object should be destoryed or no</returns>
-    public bool DistributeDamageWithInvincible(VitalityAttributes vitalityAttributes, DamagableAttributes damagableAttributes, int Damage)
+    public bool DistributeDamageWithInvincible(VitalityAttributes vitalityAttributes, DamagableAttributes damagableAttributes, int Damage,float coulDown)
     {
-        if ((DateTime.Now - damagableAttributes.LastAttackTime).TotalSeconds >= damagableAttributes.AttackDelaySeconds &&
+        if ((DateTime.Now - damagableAttributes.LastAttackTime).TotalSeconds*coulDown >= damagableAttributes.AttackDelaySeconds &&
         !vitalityAttributes.IsInvincible)
         {
             damagableAttributes.LastAttackTime = DateTime.Now;

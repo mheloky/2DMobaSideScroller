@@ -28,10 +28,10 @@ public class Tower : PhysicsObjectBasic,IDamagable {
     public void TakeDamage(int damage)
     {
         DamageManager dmgManager = new DamageManager();
-        var shouldBeDestroyed=dmgManager.DistributeDamageWithInvincible(vitalityAttributes, damagableAttributes, damage);
+    //    var shouldBeDestroyed=dmgManager.DistributeDamageWithInvincible(vitalityAttributes, damagableAttributes, damage);
 
-        if (shouldBeDestroyed)
-            Destroy(this);
+       // if (shouldBeDestroyed)
+            //Destroy(this);
     }
 
     public DamagableAttributes GetDamagableAttributes()
