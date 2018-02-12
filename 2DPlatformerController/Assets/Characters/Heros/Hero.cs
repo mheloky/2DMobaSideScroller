@@ -13,7 +13,9 @@ public class Hero : PhysicsObjectBasic, ICharacter
     IMovementManager movementManger = new MovementManager();
     AnimatorManagerHero animatorManager = new AnimatorManagerHero();
     IVitalityManager vitalityManager = new VitalityManager();
+    IHeroAttackManager heroAttackManager = new HeroAttackManager();
     public IAttack basicAttack;
+    public IAttack specialAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
@@ -22,7 +24,8 @@ public class Hero : PhysicsObjectBasic, ICharacter
     // Use this for initialization
     void Awake()
     {
-
+        basicAttack = heroAttackManager.GetBasicAttack_SwordHit();
+        specialAttack = heroAttackManager.GetSpecialAttack_LightningStrike();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dmgManager = new DamageManager();
         movementManger = new MovementManager();

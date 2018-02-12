@@ -327,6 +327,8 @@
     <Compile Include="Assets\Characters\Spawners\Spawner.cs" />
     <Compile Include="Assets\Characters\Towers\Tower.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\AnimatorManagerCreep.cs" />
+    <Compile Include="Assets\Managers\AttackManagers\HeroAttackManager.cs" />
+    <Compile Include="Assets\Managers\AttackManagers\IHeroAttackManager.cs" />
     <Compile Include="Assets\Managers\DeltaManagers\IDeltaManager.cs" />
     <Compile Include="Assets\Managers\DamageManagers\IDamageManager.cs" />
     <Compile Include="Assets\Managers\CollisionManagers\ICollisionDetectionManager.cs" />
