@@ -7,8 +7,8 @@ namespace Assets.Abilities
 {
     public interface IAttack
     {
-        DamagableAttributes GetDamagableAttributes();
+        DamagerAttributes GetDamageAttributes();
         List<IDamagable> GetTargets();
-
+        void SetTargets(List<IDamagable> theTargets);
     }
 }

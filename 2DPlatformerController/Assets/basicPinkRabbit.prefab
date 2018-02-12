@@ -122,18 +122,15 @@ MonoBehaviour:
     JumpTakeOffSpeed: 0
   damagableAttributes:
     AttackDamage: 1
-    AttackDelaySeconds: 0.1
+    AttackCooldownInSeconds: 0
     Radius: 1
     Cleave: 1
-    targets: []
     HowFatItIs: 1
     ToAttack:
       serializedVersion: 2
       m_Bits: 4294934527
-    WhichSideIsRight: 1
   vitalityAttributes:
     isHero: 0
-    Team: 100
     MaxHP: 100
     HP: 100
     IsInvincible: 0
@@ -142,6 +139,8 @@ MonoBehaviour:
     height: 1
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
+  teamAttributes:
+    Team: Team2
 --- !u!212 &212709869078060768
 SpriteRenderer:
   m_ObjectHideFlags: 1

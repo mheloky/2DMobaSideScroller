@@ -10,7 +10,6 @@ namespace Assets.Attributes
     public class VitalityAttributes
     {
         public bool isHero;
-        public string Team;
         public float MaxHP;
         public float HP;
         public bool IsInvincible;
