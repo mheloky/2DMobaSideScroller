@@ -8,7 +8,7 @@ namespace Assets.Abilities
     public class BasicAttack : IAttack
     {
         public List<IDamagable> targets = new List<IDamagable>();
-        private DamagerAttributes damagableAttributes;
+        private DamagerAttributes damagableAttributes=new DamagerAttributes();
         /*1+20smth what if we have tier system?
          * 2+20hp
          * 3+20dmg
