@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class EnemyCreep : PhysicsObjectBasic, ICharacter
 {
         #region Properties
-        public DamagerAttributes damagableAttributes = new DamagerAttributes();
         public VitalityAttributes vitalityAttributes = new VitalityAttributes();
         public TeamAttributes teamAttributes = new TeamAttributes();
         public TeamManager teamManager = new TeamManager();
@@ -19,6 +18,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         private Animator animator;
         IAnimatorManager animatorManager = new AnimatorManagerCreep();
         IMovementManager movementManager = new MovementManager();
+        CreepAttackManager attackManager = new CreepAttackManager();
         public IAttack basicAttack;
         public IVitalityManager vitalityManager = new VitalityManager();
         #endregion
@@ -26,7 +26,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         // Use this for initialization
         private void Start()
         {
-            basicAttack = new BasicAttack();
+            basicAttack = attackManager.GetBasicAttack_SwordHit();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             vitalityAttributes.canvas =GameObject.Find("CanvasWorld");
@@ -56,7 +56,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 
         public DamagerAttributes GetDamagerAttributes()
         {
-            return damagableAttributes;
+            return basicAttack.GetDamageAttributes();
         }
 
         public VitalityAttributes GetVitalityAttributes()

@@ -2,7 +2,7 @@
 using UnityEditor;
 using Assets.Abilities;
 
-public class HeroAttackManager : IHeroAttackManager
+public class CreepAttackManager : IHeroAttackManager
 {
     public IAttack GetBasicAttack_SwordHit()
     {
