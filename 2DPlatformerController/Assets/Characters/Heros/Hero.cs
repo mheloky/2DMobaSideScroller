@@ -18,15 +18,14 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public IAttack specialAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
     public TeamAttributes teamAttributes = new TeamAttributes();
-    public DamagerAttributes damagerAttributes=new DamagerAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
     // Use this for initialization
     void Awake()
     {
-        basicAttack = heroAttackManager.GetBasicAttack_SwordHit();
-        specialAttack = heroAttackManager.GetSpecialAttack_LightningStrike();
+        basicAttack = heroAttackManager.GetBasicAttack_SwordHit(teamAttributes.OpossiteTeamLayer);
+        specialAttack = heroAttackManager.GetSpecialAttack_LightningStrike(teamAttributes.OpossiteTeamLayer);
         spriteRenderer = GetComponent<SpriteRenderer>();
         dmgManager = new DamageManager();
         movementManger = new MovementManager();
@@ -124,7 +123,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
 
     public DamagerAttributes GetDamagerAttributes()
     {
-        return damagerAttributes;
+        return basicAttack.GetDamageAttributes();
     }
 
     public VitalityAttributes GetVitalityAttributes()

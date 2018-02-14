@@ -4,7 +4,7 @@ using Assets.Abilities;
 
 public class HeroAttackManager : IHeroAttackManager
 {
-    public IAttack GetBasicAttack_SwordHit()
+    public IAttack GetBasicAttack_SwordHit(int team)
     {
         IAttack attack = new BasicAttack();
         attack.GetDamageAttributes().AttackDamage = 10;
@@ -12,11 +12,11 @@ public class HeroAttackManager : IHeroAttackManager
         attack.GetDamageAttributes().HowFatItIs = 2;
         attack.GetDamageAttributes().Radius = 2;
         attack.GetDamageAttributes().AttackDamage = 10;
-        attack.GetDamageAttributes().AttackCooldownInSeconds = 1;
+        attack.GetDamageAttributes().AttackCooldownInSeconds = 10;
         return attack;
     }
 
-    public IAttack GetSpecialAttack_LightningStrike()
+    public IAttack GetSpecialAttack_LightningStrike(int team)
     {
         IAttack attack = new BasicAttack();
         attack.GetDamageAttributes().AttackDamage = 30;
@@ -24,7 +24,7 @@ public class HeroAttackManager : IHeroAttackManager
         attack.GetDamageAttributes().HowFatItIs = 2;
         attack.GetDamageAttributes().Radius = 2;
         attack.GetDamageAttributes().AttackDamage = 10;
-        attack.GetDamageAttributes().AttackCooldownInSeconds = 1;
+        attack.GetDamageAttributes().AttackCooldownInSeconds = 10;
         return attack;
     }
 }

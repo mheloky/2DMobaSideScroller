@@ -11,9 +11,9 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 {
         #region Properties
         public VitalityAttributes vitalityAttributes = new VitalityAttributes();
+        [Header("Put 9 if it's team 2 and put 8 if it's team 1")]
         public TeamAttributes teamAttributes = new TeamAttributes();
         public TeamManager teamManager = new TeamManager();
-    public DamagerAttributes damagerAttributes=new DamagerAttributes();
         DamageManager dmgManager = new DamageManager();
         private SpriteRenderer spriteRenderer;
         private Animator animator;
@@ -27,7 +27,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         // Use this for initialization
         private void Start()
         {
-            basicAttack = attackManager.GetBasicAttack_SwordHit();
+            basicAttack = attackManager.GetBasicAttack_SwordHit(teamAttributes.OpossiteTeamLayer);
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             vitalityAttributes.canvas =GameObject.Find("CanvasWorld");
@@ -57,7 +57,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 
         public DamagerAttributes GetDamagerAttributes()
         {
-            return damagerAttributes;
+        return basicAttack.GetDamageAttributes();
         }
 
         public VitalityAttributes GetVitalityAttributes()

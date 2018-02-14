@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tower : PhysicsObjectBasic,IDamager {
+public class Tower : PhysicsObjectBasic {
 
     #region properties
     public DamagerAttributes damagableAttributes = new DamagerAttributes();
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
+    public TeamAttributes teamAttributes = new TeamAttributes();
+    //private IAttac
     #endregion
     // Use this for initialization
     void Start () {

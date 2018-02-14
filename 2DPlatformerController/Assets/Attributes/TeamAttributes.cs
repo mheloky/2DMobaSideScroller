@@ -6,4 +6,5 @@ using System;
 public class TeamAttributes
 { 
     public string Team;
+    public int OpossiteTeamLayer;
 }
