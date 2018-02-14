@@ -18,6 +18,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public IAttack specialAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
     public TeamAttributes teamAttributes = new TeamAttributes();
+    public DamagerAttributes damagerAttributes=new DamagerAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
@@ -52,10 +53,10 @@ public class Hero : PhysicsObjectBasic, ICharacter
 
     public void BasicAttack()
     {
-        var basicAttackTargets = basicAttack.GetTargets();
-        for (int i=0;i< basicAttackTargets.Count;i++)
+        List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
+        for (int i = 0; i < basicAttackTargets.Count; i++)
         {
-            var target = basicAttackTargets[i];
+            IDamagable target = basicAttackTargets[i];
             Attack(target, gameObject.GetComponent<Rigidbody2D>(),basicAttack);
         }
     }
@@ -70,10 +71,10 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public void BigAbility()
     {
         var basicAttackDamagerAttributes = basicAttack.GetDamageAttributes();
-        var targets = basicAttack.GetTargets();
-        for(int i=0; targets!=null && i<targets.Count;i++)
+        List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
+        for (int i = 0; i < basicAttackTargets.Count; i++)
         {
-            var target = targets[i];
+            IDamagable target = basicAttackTargets[i];
             //basicAttackDamagerAttributes.AttackDamage * 3, 1 / 5f
             //make a new attack based on IAttack with the damage you want and use it here..something of that nature
             Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
@@ -123,7 +124,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
 
     public DamagerAttributes GetDamagerAttributes()
     {
-        return basicAttack.GetDamageAttributes();
+        return damagerAttributes;
     }
 
     public VitalityAttributes GetVitalityAttributes()

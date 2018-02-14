@@ -1111,18 +1111,15 @@ MonoBehaviour:
     JumpTakeOffSpeed: 0
   damagableAttributes:
     AttackDamage: 0
-    AttackDelaySeconds: 0
+    AttackCooldownInSeconds: 0
     Radius: 0
     Cleave: 0
-    targets: []
     HowFatItIs: 0
     ToAttack:
       serializedVersion: 2
       m_Bits: 0
-    WhichSideIsRight: 0
   vitalityAttributes:
     isHero: 0
-    Team: 
     MaxHP: 0
     HP: 0
     IsInvincible: 0
@@ -1257,18 +1254,15 @@ MonoBehaviour:
     JumpTakeOffSpeed: 0
   damagableAttributes:
     AttackDamage: 0
-    AttackDelaySeconds: 0
+    AttackCooldownInSeconds: 0
     Radius: 0
     Cleave: 0
-    targets: []
     HowFatItIs: 0
     ToAttack:
       serializedVersion: 2
       m_Bits: 0
-    WhichSideIsRight: 0
   vitalityAttributes:
     isHero: 0
-    Team: 
     MaxHP: 0
     HP: 0
     IsInvincible: 0
@@ -8749,7 +8743,6 @@ MonoBehaviour:
     JumpTakeOffSpeed: 7
   vitalityAttributes:
     isHero: 1
-    Team: Team1
     MaxHP: 100
     HP: 100
     IsInvincible: 0
@@ -8758,17 +8751,17 @@ MonoBehaviour:
     height: 1
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
-  damagableAttributes:
-    AttackDamage: 30
-    AttackDelaySeconds: 1
-    Radius: 2
+  teamAttributes:
+    Team: Team1
+  damagerAttributes:
+    AttackDamage: 1
+    AttackCooldownInSeconds: 5
+    Radius: 1
     Cleave: 1
-    targets: []
-    HowFatItIs: 1
+    HowFatItIs: 2
     ToAttack:
       serializedVersion: 2
       m_Bits: 4294950911
-    WhichSideIsRight: -1
 --- !u!50 &612917015
 Rigidbody2D:
   serializedVersion: 4
@@ -13089,7 +13082,6 @@ MonoBehaviour:
     Team: Team1
   vitalityAttributes:
     isHero: 0
-    Team: 
     MaxHP: 0
     HP: 0
     IsInvincible: 0
@@ -22963,7 +22955,7 @@ Prefab:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: orthographic size
-      value: 2.8203125
+      value: 3.1484375
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
@@ -23217,7 +23209,6 @@ MonoBehaviour:
     Team: Team2
   vitalityAttributes:
     isHero: 0
-    Team: 
     MaxHP: 0
     HP: 0
     IsInvincible: 0

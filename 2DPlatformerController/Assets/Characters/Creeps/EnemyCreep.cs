@@ -13,6 +13,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         public VitalityAttributes vitalityAttributes = new VitalityAttributes();
         public TeamAttributes teamAttributes = new TeamAttributes();
         public TeamManager teamManager = new TeamManager();
+    public DamagerAttributes damagerAttributes=new DamagerAttributes();
         DamageManager dmgManager = new DamageManager();
         private SpriteRenderer spriteRenderer;
         private Animator animator;
@@ -43,10 +44,10 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
             basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
 
             var basicAttackDamagerAttributes = basicAttack.GetDamageAttributes();
-            var targets = basicAttack.GetTargets();
-            for (int i = 0; targets != null && i < targets.Count; i++)
+            List<IDamagable> targets = basicAttack.GetTargets();
+            for (int i = 0;i < targets.Count; i++)
             {
-                var target = targets[i];
+                IDamagable target = targets[i];
                 //basicAttackDamagerAttributes.AttackDamage * 3, 1 / 5f
                 //make a new attack based on IAttack with the damage you want and use it here..something of that nature
                 Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
@@ -56,7 +57,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 
         public DamagerAttributes GetDamagerAttributes()
         {
-            return basicAttack.GetDamageAttributes();
+            return damagerAttributes;
         }
 
         public VitalityAttributes GetVitalityAttributes()

@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814372210835400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5487547, y: 4, z: 0}
+  m_LocalPosition: {x: 1.5477037, y: 4, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,15 +120,6 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 1
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 1
-    AttackCooldownInSeconds: 0
-    Radius: 1
-    Cleave: 1
-    HowFatItIs: 1
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 4294934527
   vitalityAttributes:
     isHero: 0
     MaxHP: 100
@@ -141,6 +132,15 @@ MonoBehaviour:
     canvas: {fileID: 0}
   teamAttributes:
     Team: Team2
+  damagerAttributes:
+    AttackDamage: 1
+    AttackCooldownInSeconds: 10
+    Radius: 1
+    Cleave: 1
+    HowFatItIs: 1
+    ToAttack:
+      serializedVersion: 2
+      m_Bits: 4294934527
 --- !u!212 &212709869078060768
 SpriteRenderer:
   m_ObjectHideFlags: 1
