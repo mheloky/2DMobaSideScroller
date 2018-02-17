@@ -8,7 +8,7 @@ using System.Collections.Generic;
 [Serializable]
 public class DamagerAttributes
 {
-    public int AttackDamage;
+    public float AttackDamage;
     public float AttackCooldownInSeconds;
     public DateTime LastAttackTime;
     public float Radius;
