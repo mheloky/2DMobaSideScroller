@@ -84,6 +84,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     }
     IEnumerator Attacking()
     {
+        this.GetComponent<ICharacter>().GetAnimator().Play("Attack");
         this.GetComponent<ICharacter>().GetAnimator().SetBool("basicAttack", true);
         yield return new WaitForSeconds(0.5f);
         this.GetComponent<ICharacter>().GetAnimator().SetBool("basicAttack", false);

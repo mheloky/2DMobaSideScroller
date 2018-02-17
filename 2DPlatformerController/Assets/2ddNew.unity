@@ -8726,13 +8726,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 612917010}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -3.71, y: 5.01, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &612917014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8760,10 +8760,6 @@ MonoBehaviour:
   teamAttributes:
     Team: Team1
     OpossiteTeamLayer: 8
-  experienceAttribute:
-    experience: 0
-    expToLevelUp: 0
-    level: 1
 --- !u!50 &612917015
 Rigidbody2D:
   serializedVersion: 4
@@ -23154,11 +23150,7 @@ Prefab:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: orthographic size
-<<<<<<< HEAD
       value: 3.1484375
-=======
-      value: 3.296875
->>>>>>> 3af50b504b8cda69c5ffd8a703863e9e2b336ee0
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}

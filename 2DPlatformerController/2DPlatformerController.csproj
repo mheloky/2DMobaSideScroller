@@ -302,6 +302,7 @@
     <Compile Include="Assets\Attacks\BasicAttack.cs" />
     <Compile Include="Assets\Attacks\IAttack.cs" />
     <Compile Include="Assets\Attributes\DamagerAttributes.cs" />
+    <Compile Include="Assets\Attributes\ExperienceAttributes.cs" />
     <Compile Include="Assets\Attributes\MovementAttributes.cs" />
     <Compile Include="Assets\Attributes\SpawnerAttributes .cs" />
     <Compile Include="Assets\Attributes\Tags.cs" />
@@ -331,6 +332,8 @@
     <Compile Include="Assets\Managers\DamageManagers\IDamageManager.cs" />
     <Compile Include="Assets\Managers\DeltaManagers\DeltaManager.cs" />
     <Compile Include="Assets\Managers\DeltaManagers\IDeltaManager.cs" />
+    <Compile Include="Assets\Managers\ExperienceManager\ExperienceManager.cs" />
+    <Compile Include="Assets\Managers\ExperienceManager\IExperienceManager.cs" />
     <Compile Include="Assets\Managers\MovementManagers\IMovementManager.cs" />
     <Compile Include="Assets\Managers\MovementManagers\MovementManager.cs" />
     <Compile Include="Assets\Managers\TeamManagers\ITeamManager.cs" />
