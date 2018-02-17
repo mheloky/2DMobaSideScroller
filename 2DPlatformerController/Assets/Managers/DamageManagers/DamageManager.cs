@@ -14,7 +14,8 @@ public class DamageManager:IDamageManager
         var vitalityAttributes = character.GetVitalityAttributes();
         var timeElapsedSinceLastAttack=(DateTime.Now - damagableAttributes.LastAttackTime);
         var damageAttributes = attack.GetDamageAttributes();
-
+      
+        
         if (timeElapsedSinceLastAttack.TotalSeconds* 
             damageAttributes.AttackDamage >= damagableAttributes.AttackCooldownInSeconds 
             && !vitalityAttributes.IsInvincible)
@@ -27,7 +28,6 @@ public class DamageManager:IDamageManager
 
         return false; 
     }
-
     public List<IDamagable> GetTargetsInRange(ICharacter character)
     {
         var gameObject = character.GetGameObject();

@@ -47,6 +47,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
             List<IDamagable> targets = basicAttack.GetTargets();
             for (int i = 0;i < targets.Count; i++)
             {
+
                 IDamagable target = targets[i];
                 //basicAttackDamagerAttributes.AttackDamage * 3, 1 / 5f
                 //make a new attack based on IAttack with the damage you want and use it here..something of that nature
@@ -55,7 +56,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
             movementManager.UpdateTargetVelocity(move, this);
         }
 
-        public DamagerAttributes GetDamagerAttributes()
+    public DamagerAttributes GetDamagerAttributes()
         {
         return basicAttack.GetDamageAttributes();
         }
@@ -67,8 +68,9 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 
         private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
         {
-            dmgManager.DistributeDamageWithInvincible(this, attack);
-            animatorManager.ExecuteAttackAnimation(this);
+            dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
+        StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
+        animatorManager.ExecuteAttackAnimation(this);
         }
 
         public void TakeDamage(int damage)
@@ -76,7 +78,12 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
             var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(this,basicAttack);
             vitalityManager.DestroyIfHPIsZero(this, shouldBeDestroyed);
         }
-
+    IEnumerator GettingAttacked(SpriteRenderer spriteRend)
+    {
+        spriteRend.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRend.color = Color.white;
+    }
     #region Required Character Methods
     public GameObject GetGameObject()
         {
@@ -112,5 +119,10 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         {
             return this.movementAttributes;
         }
+
+    GameObject IDamagable.gameObject()
+    {
+        return this.gameObject;
+    }
     #endregion
 }

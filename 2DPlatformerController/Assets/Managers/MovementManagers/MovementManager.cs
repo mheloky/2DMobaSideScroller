@@ -13,12 +13,12 @@ public class MovementManager:IMovementManager
     /// <returns>The Jump Vector's Y</returns>
     public Vector2 GetJumpManagementVector(PhysicsObjectBasic physicsObjectBasic, string jumpButtonKeyName="Jump")
     {
-        Input.GetAxis("Horizontal");
+
         var velocity = physicsObjectBasic.GetVelocity();
 
-        if (Input.GetButtonDown(jumpButtonKeyName) && physicsObjectBasic.TheCollisionDetector.IsGrounded)
+        if (physicsObjectBasic.TheCollisionDetector.IsGrounded)
         {
-            velocity.y= physicsObjectBasic.movementAttributes.JumpTakeOffSpeed;
+            velocity.y= physicsObjectBasic.movementAttributes.JumpTakeOffSpeed*Input.GetAxis("Vertical");
         }
         else if (Input.GetButtonUp(jumpButtonKeyName))
         {
@@ -34,21 +34,8 @@ public class MovementManager:IMovementManager
     public Vector2 GetHorizontalMovementVector()
     {
         Vector2 move = Vector2.zero;
-        int i = 0;
-        if (Input.GetKey(KeyCode.A))
-        {
-            i = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            i = 1;
-        }
-        else
-        {
-            i = 0;
-        }
-        move.x =i ;
-
+        move.x = Input.GetAxis("Horizontal"); 
+        
         return move;
     }
 

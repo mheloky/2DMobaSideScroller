@@ -20,7 +20,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
     // Use this for initialization
     void Awake()
     {
@@ -44,29 +43,52 @@ public class Hero : PhysicsObjectBasic, ICharacter
         velocity = movementManger.GetJumpManagementVector(this);
         animatorManager.ExecuteFlipSprite(move.x,this);
         animatorManager.UpdateVelocityParametrer(this);
-        
+        basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
         vitalityAttributes.UpdateHealtheSlider(gameObject);
         movementManger.UpdateTargetVelocity(move, this);
-        basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
-    }
-
-    public void BasicAttack()
-    {
-        List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
-        for (int i = 0; i < basicAttackTargets.Count; i++)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            IDamagable target = basicAttackTargets[i];
-            Attack(target, gameObject.GetComponent<Rigidbody2D>(),basicAttack);
+            List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
+            if (basicAttackTargets[0] != null)
+            {
+
+                for (int i = 0; i < basicAttackTargets.Count; i++)
+                {
+                    if (basicAttackTargets[i] != null)
+                    {
+                        Debug.Log(basicAttackTargets[i].gameObject().name);
+                        IDamagable target = basicAttackTargets[i];
+                        Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
+                    }
+                   
+                }
+            }
         }
     }
 
-    private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
-    {
-        dmgManager.DistributeDamageWithInvincible(this, attack);
-        vitalityManager.DestroyIfHPIsZero(this);
-        animatorManager.ExecuteAttackAnimation(this);
-    }
 
+  private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
+    {
+        dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
+        StartCoroutine(Attacking());
+        StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
+
+        vitalityManager.DestroyIfHPIsZero(this);
+    //    animatorManager.ExecuteAttackAnimation(this);
+    }
+    IEnumerator GettingAttacked(SpriteRenderer spriteRend)
+    {
+        spriteRend.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRend.color = Color.white;
+    }
+    IEnumerator Attacking()
+    {
+        this.GetComponent<ICharacter>().GetAnimator().SetBool("basicAttack", true);
+        yield return new WaitForSeconds(0.5f);
+        this.GetComponent<ICharacter>().GetAnimator().SetBool("basicAttack", false);
+    }
+    /*
     public void BigAbility()
     {
         var basicAttackDamagerAttributes = basicAttack.GetDamageAttributes();
@@ -78,7 +100,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
             //make a new attack based on IAttack with the damage you want and use it here..something of that nature
             Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
         }
-    }
+    }*/
 
     #region Required Character Methods
     public GameObject GetGameObject()
@@ -129,6 +151,10 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public VitalityAttributes GetVitalityAttributes()
     {
         return vitalityAttributes;
+    }
+    GameObject IDamagable.gameObject()
+    {
+        return this.gameObject;
     }
     #endregion
 }

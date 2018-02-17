@@ -10,7 +10,7 @@ public class AnimatorManagerHero: IAnimatorManager
         bool flipSprite = false;
         if (moveX != 0)
         {
-            flipSprite=(moveX > 0.0f);
+            flipSprite=(moveX < 0.0f);
         }
 
         character.GetSpriteRenderer().flipX= flipSprite;

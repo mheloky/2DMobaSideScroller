@@ -7,4 +7,5 @@ public interface IDamagable
 {
     VitalityAttributes GetVitalityAttributes();
     Slider GetHealthSlider();
+    GameObject gameObject();
 }
