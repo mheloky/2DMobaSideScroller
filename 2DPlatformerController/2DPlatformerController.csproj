@@ -301,19 +301,19 @@
     <Compile Include="Assets\Attributes\DamagerAttributes.cs" />
     <Compile Include="Assets\Attributes\ExperienceAttributes.cs" />
     <Compile Include="Assets\Attributes\MovementAttributes.cs" />
+    <Compile Include="Assets\Attributes\SkillAttributes.cs" />
     <Compile Include="Assets\Attributes\SpawnerAttributes .cs" />
     <Compile Include="Assets\Attributes\Tags.cs" />
     <Compile Include="Assets\Attributes\TeamAttributes.cs" />
     <Compile Include="Assets\Attributes\VitalityAttributes.cs" />
     <Compile Include="Assets\Characters\Creeps\EnemyCreep.cs" />
     <Compile Include="Assets\Characters\Heros\Hero.cs" />
-    <Compile Include="Assets\Characters\Heros\PlayerHUD\PlayerHUD.cs" />
-    <Compile Include="Assets\Characters\IAnimatable.cs" />
-    <Compile Include="Assets\Characters\ICharacter.cs" />
-    <Compile Include="Assets\Characters\IDamagable.cs" />
-    <Compile Include="Assets\Characters\IDamager.cs" />
-    <Compile Include="Assets\Characters\IMoveable.cs" />
-    <Compile Include="Assets\Characters\ITeamMember.cs" />
+    <Compile Include="Assets\Characters\Interfaces\IAnimatable.cs" />
+    <Compile Include="Assets\Characters\Interfaces\ICharacter.cs" />
+    <Compile Include="Assets\Characters\Interfaces\IDamagable.cs" />
+    <Compile Include="Assets\Characters\Interfaces\IDamager.cs" />
+    <Compile Include="Assets\Characters\Interfaces\IMoveable.cs" />
+    <Compile Include="Assets\Characters\Interfaces\ITeamMember.cs" />
     <Compile Include="Assets\Characters\Physics\PhysicsObjectBasic.cs" />
     <Compile Include="Assets\Characters\Spawners\Spawner.cs" />
     <Compile Include="Assets\Characters\Towers\Tower.cs" />
@@ -334,10 +334,13 @@
     <Compile Include="Assets\Managers\ExperienceManager\IExperienceManager.cs" />
     <Compile Include="Assets\Managers\MovementManagers\IMovementManager.cs" />
     <Compile Include="Assets\Managers\MovementManagers\MovementManager.cs" />
+    <Compile Include="Assets\Managers\SkillManager\ISkillManager.cs" />
+    <Compile Include="Assets\Managers\SkillManager\SkillManager.cs" />
     <Compile Include="Assets\Managers\TeamManagers\ITeamManager.cs" />
     <Compile Include="Assets\Managers\TeamManagers\TeamManager.cs" />
     <Compile Include="Assets\Managers\VitalityManagers\IVitalityManager.cs" />
     <Compile Include="Assets\Managers\VitalityManagers\VitalityManagerManager.cs" />
+    <Compile Include="Assets\PlayerHUD\PlayerHUD.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2DPlatformer\Sprites\Genetica Texture Pack 10 - Mystery Forest\READ ME.txt" />
