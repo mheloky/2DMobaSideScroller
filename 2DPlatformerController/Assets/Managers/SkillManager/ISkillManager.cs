@@ -5,6 +5,8 @@ using Assets.Attributes;
 
 public interface ISkillManager
 {
-    void UpgradeSkillAttributesValue(ref float attributeToChange, float valueToAdd);
+    void UpdateStrengthAttributeValue(SkillAttributes skillAttributes, float skillValue);
+    void UpdateAgilityAttributeValue(SkillAttributes skillAttributes, float skillValue);
+    void UpdateVitalityAttributeValue(SkillAttributes skillAttributes, float skillValue);
 }
 

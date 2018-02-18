@@ -4,9 +4,17 @@ using UnityEngine;
 using Assets.Attributes;
 public class SkillManager : ISkillManager {
 
-	public void UpgradeSkillAttributesValue(ref float attributeToChange, float valueToAdd)
+    public void UpdateStrengthAttributeValue(SkillAttributes skillAttributes, float skillValue)
     {
-        attributeToChange += valueToAdd;
+        skillAttributes.Strength = skillValue;
+    }
+    public void UpdateAgilityAttributeValue(SkillAttributes skillAttributes, float skillValue)
+    {
+        skillAttributes.Agility = skillValue;
+    }
+    public void UpdateVitalityAttributeValue(SkillAttributes skillAttributes, float skillValue)
+    {
+        skillAttributes.Vitality = skillValue;
     }
 }
 

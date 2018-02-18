@@ -26,19 +26,19 @@ public class PlayerHUD : MonoBehaviour {
     }
     public void OnUpgradeStrengthClicked()
     {
-        skillManager.UpgradeSkillAttributesValue(ref skillAttributes.Strength, 10);
+        skillManager.UpdateStrengthAttributeValue(skillAttributes, skillAttributes.Strength+10);
         UpdateUI();
     }
 
     public void OnUpgradeAgilityClicked()
     {
-        skillManager.UpgradeSkillAttributesValue(ref skillAttributes.Agility, 10);
+        skillManager.UpdateAgilityAttributeValue(skillAttributes, skillAttributes.Agility  + 10);
         UpdateUI();
     }
 
     public void OnUpgradeVitalityClicked()
     {
-        skillManager.UpgradeSkillAttributesValue(ref skillAttributes.Vitality, 10);
+        skillManager.UpdateVitalityAttributeValue(skillAttributes, skillAttributes.Vitality + 10);
         UpdateUI();
     }
 
