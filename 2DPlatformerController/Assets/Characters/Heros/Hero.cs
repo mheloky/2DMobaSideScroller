@@ -10,7 +10,8 @@ using UnityEngine.UI;
 public class Hero : PhysicsObjectBasic, ICharacter
 {
     DamageManager dmgManager;
-    IMovementManager movementManger = new MovementManager();
+    SkillAttributes skillAttributes = new SkillAttributes();
+    IMovementManager movementManager = new MovementManager();
     AnimatorManagerHero animatorManager = new AnimatorManagerHero();
     IVitalityManager vitalityManager = new VitalityManager();
     IHeroAttackManager heroAttackManager = new HeroAttackManager();
@@ -23,11 +24,13 @@ public class Hero : PhysicsObjectBasic, ICharacter
     // Use this for initialization
     void Awake()
     {
+
+
         basicAttack = heroAttackManager.GetBasicAttack_SwordHit(teamAttributes.OpossiteTeamLayer);
         specialAttack = heroAttackManager.GetSpecialAttack_LightningStrike(teamAttributes.OpossiteTeamLayer);
         spriteRenderer = GetComponent<SpriteRenderer>();
         dmgManager = new DamageManager();
-        movementManger = new MovementManager();
+        movementManager = new MovementManager();
         animatorManager = new AnimatorManagerHero();
         animator = GetComponent<Animator>();
 
@@ -35,17 +38,18 @@ public class Hero : PhysicsObjectBasic, ICharacter
         vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
         Physics2D.IgnoreLayerCollision(14, 14);
         ShellRadius = .3f;
+
     }
        
     protected override void ComputeVelocity()
     {
-        var move=movementManger.GetHorizontalMovementVector();
-        velocity = movementManger.GetJumpManagementVector(this);
+        var move=movementManager.GetHorizontalMovementVector();
+        velocity = movementManager.GetJumpManagementVector(this);
         animatorManager.ExecuteFlipSprite(move.x,this);
         animatorManager.UpdateVelocityParametrer(this);
         basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
         vitalityAttributes.UpdateHealtheSlider(gameObject);
-        movementManger.UpdateTargetVelocity(move, this);
+        movementManager.UpdateTargetVelocity(move, this);
         if (Input.GetKeyDown(KeyCode.Space))
         {
             List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
@@ -122,6 +126,12 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public TeamAttributes GetTeamAttributes()
     {
         return teamAttributes;
+    }
+
+    public SkillAttributes GetSkillAttributes()
+    {
+        print(skillAttributes.Strength + " " + skillAttributes.Agility + " " + skillAttributes.Vitality);
+        return skillAttributes;
     }
 
     public SpriteRenderer GetSpriteRenderer()
