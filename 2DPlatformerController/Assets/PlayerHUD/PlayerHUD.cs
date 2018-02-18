@@ -10,15 +10,15 @@ public class PlayerHUD : MonoBehaviour {
     public Text Strength;
     public Text Agility;
     public Text Vitality;
-    SkillAttributes skillAttributes;
+    
     private void Awake()
     {
-        skillAttributes = hero.GetSkillAttributes();
         UpdateUI();
     }
     #region PlayerUI
     void UpdateUI()
     {
+        var skillAttributes = hero.GetSkillAttributes();
         Strength.text = skillAttributes.Strength.ToString();
         Agility.text = skillAttributes.Agility.ToString();
         Vitality.text = skillAttributes.Vitality.ToString();
@@ -26,24 +26,25 @@ public class PlayerHUD : MonoBehaviour {
     }
     public void OnUpgradeStrengthClicked()
     {
+        var skillAttributes = hero.GetSkillAttributes();
         skillManager.UpdateStrengthAttributeValue(skillAttributes, skillAttributes.Strength+10);
         UpdateUI();
     }
 
     public void OnUpgradeAgilityClicked()
     {
+        var skillAttributes = hero.GetSkillAttributes();
         skillManager.UpdateAgilityAttributeValue(skillAttributes, skillAttributes.Agility  + 10);
         UpdateUI();
     }
 
     public void OnUpgradeVitalityClicked()
     {
+        var skillAttributes = hero.GetSkillAttributes();
         skillManager.UpdateVitalityAttributeValue(skillAttributes, skillAttributes.Vitality + 10);
         UpdateUI();
     }
 
     //public UpdateUI
     #endregion PlayerUI 
-
-
 }
