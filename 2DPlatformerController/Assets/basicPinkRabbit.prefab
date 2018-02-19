@@ -135,6 +135,7 @@ MonoBehaviour:
     expToLevelUp: 0
     level: 0
     canUpgrade: 0
+    upgradeOpportunities: 1
   teamAttributes:
     Team: Team2
     OpossiteTeamLayer: 9

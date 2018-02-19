@@ -9181,6 +9181,7 @@ MonoBehaviour:
     expToLevelUp: 100
     level: 0
     canUpgrade: 0
+    upgradeOpportunities: 0
   teamAttributes:
     Team: Team1
     OpossiteTeamLayer: 8

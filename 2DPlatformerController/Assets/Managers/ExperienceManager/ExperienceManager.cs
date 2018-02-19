@@ -24,6 +24,7 @@ public class ExperienceManager : IExperienceManager
         if(experienceAttribute.experience >= experienceAttribute.expToLevelUp)
         {
             experienceAttribute.level++;
+            experienceAttribute.upgradePoints++;
             experienceAttribute.canUpgrade = true;
             //experienceAttribute.playerHUD.SetActive(true);
             return true;

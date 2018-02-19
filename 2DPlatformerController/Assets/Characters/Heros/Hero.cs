@@ -75,9 +75,9 @@ public class Hero : PhysicsObjectBasic, ICharacter
         else if(Input.GetKeyDown(KeyCode.E))
         {
             int expToAdd = UnityEngine.Random.Range(20, 100);
-            
             experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
-            
+            if (experienceAttribute.canUpgrade)
+                PlayerHUD.playerHUD.SetActive(true);
         }
     }
 

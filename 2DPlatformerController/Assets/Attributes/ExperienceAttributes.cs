@@ -12,12 +12,14 @@ namespace Assets.Attributes
         public int expToLevelUp;
         public int level;
         public bool canUpgrade;
+        public int upgradePoints;
         //public GameObject playerHUD;
         public ExperienceAttribute()
         {
             experience = 10;
             level = 0;
             expToLevelUp = 100;
+            upgradePoints = 0;
         }
 
 
