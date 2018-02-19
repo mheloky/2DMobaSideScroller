@@ -5,6 +5,7 @@ using Assets.Attributes;
 
 public interface IExperienceManager
 {
-    void AddExperience(ExperienceAttribute gameObjectAttributes, int exp);
-    bool LevelUp(ExperienceAttribute vitalityAttributes);
+    void AddExperience(ExperienceAttribute experienceAttribute, int exp);
+    bool LevelUp(ExperienceAttribute experienceAttribute);
+    bool CanUpgrade(ExperienceAttribute experienceAttribute);
 }

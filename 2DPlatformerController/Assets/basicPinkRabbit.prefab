@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814372210835400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5487547, y: 4, z: 0}
+  m_LocalPosition: {x: 1.5477037, y: 4, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,6 +130,11 @@ MonoBehaviour:
     height: 1
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
+  experienceAttribute:
+    experience: 0
+    expToLevelUp: 0
+    level: 0
+    canUpgrade: 0
   teamAttributes:
     Team: Team2
     OpossiteTeamLayer: 9

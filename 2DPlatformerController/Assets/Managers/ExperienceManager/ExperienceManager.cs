@@ -1,30 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using Assets.Attributes;
 
 public class ExperienceManager : IExperienceManager
 {
-
-	public void AddExperience(ExperienceAttribute gameObjectAttributes, int exp)
+    public const int expToAddPerLvl = 100;
+    public void AddExperience(ExperienceAttribute experienceAttribute, int exp)
     {
-        gameObjectAttributes.experience += exp;
+        experienceAttribute.experience = exp;
         
-        if(LevelUp(gameObjectAttributes))
+        if(LevelUp(experienceAttribute))
         {
-            gameObjectAttributes.expToLevelUp += 100;
-            gameObjectAttributes.experience = 0;
+            experienceAttribute.experience = (experienceAttribute.expToLevelUp - experienceAttribute.experience) * (-1);
+            experienceAttribute.expToLevelUp += expToAddPerLvl;
+            
         }
     }
 
-    public bool LevelUp(ExperienceAttribute gameObjectAttributes)
+    public bool LevelUp(ExperienceAttribute experienceAttribute)
     {
-        if(gameObjectAttributes.experience >= gameObjectAttributes.expToLevelUp)
+        if(experienceAttribute.experience >= experienceAttribute.expToLevelUp)
         {
-            gameObjectAttributes.level++;
+            experienceAttribute.level++;
+            experienceAttribute.canUpgrade = true;
+            //experienceAttribute.playerHUD.SetActive(true);
             return true;
         }
+        //experienceAttribute.canUpgrade = false;
         return false;
+    }
+
+    public bool CanUpgrade(ExperienceAttribute experienceAttribute)
+    {
+        return experienceAttribute.canUpgrade;
     }
 
 }

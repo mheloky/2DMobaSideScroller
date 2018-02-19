@@ -11,12 +11,14 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 {
     #region Properties
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
+    public ExperienceAttribute experienceAttribute = new ExperienceAttribute();
     [Header("Put 9 if it's team 2 and put 8 if it's team 1")]
     public TeamAttributes teamAttributes = new TeamAttributes();
     public TeamManager teamManager = new TeamManager();
     DamageManager dmgManager = new DamageManager();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    IExperienceManager experienceManager = new ExperienceManager();
     IAnimatorManager animatorManager = new AnimatorManagerCreep();
     IMovementManager movementManager = new MovementManager();
     CreepAttackManager attackManager = new CreepAttackManager();
@@ -106,6 +108,17 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
     {
         return teamAttributes;
     }
+
+    public IExperienceManager GetExperienceManager()
+    {
+        return experienceManager;
+    }
+
+    public ExperienceAttribute GetExperienceAttributes()
+    {
+        return experienceAttribute;
+    }
+
 
     public SpriteRenderer GetSpriteRenderer()
     {

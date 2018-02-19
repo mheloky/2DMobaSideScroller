@@ -9176,6 +9176,11 @@ MonoBehaviour:
     height: 1
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
   teamAttributes:
     Team: Team1
     OpossiteTeamLayer: 8
@@ -20730,8 +20735,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 612917014}
-        m_MethodName: AddExp
+      - m_Target: {fileID: 1295381223}
+        m_MethodName: OnAddExpClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

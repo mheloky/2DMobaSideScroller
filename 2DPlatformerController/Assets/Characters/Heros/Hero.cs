@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class Hero : PhysicsObjectBasic, ICharacter
 {
     DamageManager dmgManager;
+    IExperienceManager experienceManager = new ExperienceManager();
     SkillAttributes skillAttributes = new SkillAttributes();
     IMovementManager movementManager = new MovementManager();
     AnimatorManagerHero animatorManager = new AnimatorManagerHero();
@@ -18,9 +19,11 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public IAttack basicAttack;
     public IAttack specialAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
+    public ExperienceAttribute experienceAttribute = new ExperienceAttribute();
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+
     // Use this for initialization
     void Awake()
     {
@@ -29,6 +32,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         basicAttack = heroAttackManager.GetBasicAttack_SwordHit(teamAttributes.OpossiteTeamLayer);
         specialAttack = heroAttackManager.GetSpecialAttack_LightningStrike(teamAttributes.OpossiteTeamLayer);
         spriteRenderer = GetComponent<SpriteRenderer>();
+        experienceManager = new ExperienceManager();
         dmgManager = new DamageManager();
         movementManager = new MovementManager();
         animatorManager = new AnimatorManagerHero();
@@ -67,6 +71,13 @@ public class Hero : PhysicsObjectBasic, ICharacter
                    
                 }
             }
+        }
+        else if(Input.GetKeyDown(KeyCode.E))
+        {
+            int expToAdd = UnityEngine.Random.Range(20, 100);
+            
+            experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
+            
         }
     }
 
@@ -130,7 +141,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
 
     public SkillAttributes GetSkillAttributes()
     {
-        print(skillAttributes.Strength + " " + skillAttributes.Agility + " " + skillAttributes.Vitality);
         return skillAttributes;
     }
 
@@ -148,7 +158,11 @@ public class Hero : PhysicsObjectBasic, ICharacter
     {
         return animator;
     }
-
+    public ExperienceAttribute GetExperienceAttributes()
+    {
+        print(experienceAttribute.experience + " " + experienceAttribute.level);
+        return this.experienceAttribute;
+    }
     public MovementAttributes GetMovementAttributes()
     {
         return movementAttributes;
