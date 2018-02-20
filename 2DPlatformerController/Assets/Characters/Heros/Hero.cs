@@ -23,6 +23,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+	public GameObject particalSystem;
 
     // Use this for initialization
     void Awake()
@@ -64,6 +65,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
                 {
                     if (basicAttackTargets[i] != null)
                     {
+						particalSystem.GetComponent<ParticleSystem> ().Play ();
                         Debug.Log(basicAttackTargets[i].gameObject().name);
                         IDamagable target = basicAttackTargets[i];
                         Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
