@@ -706,7 +706,7 @@ PlayerSettings:
   cloudServicesEnabled:
     Analytics: 0
     Build: 0
-    Collab: 0
+    Collab: 1
     ErrorHub: 0
     Game_Performance: 0
     Hub: 0
@@ -715,9 +715,9 @@ PlayerSettings:
     Unity_Ads: 0
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: 9579d17d-49c0-41cf-aa80-8a0716669b53
-  projectName: Platformer
-  organizationId: roboconsole
+  cloudProjectId: e851fe46-df90-4280-bec3-991e35ef91a4
+  projectName: Platformer-2D
+  organizationId: r-d-content-team
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
