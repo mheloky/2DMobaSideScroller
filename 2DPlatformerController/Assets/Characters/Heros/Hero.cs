@@ -65,7 +65,8 @@ public class Hero : PhysicsObjectBasic, ICharacter
                 {
                     if (basicAttackTargets[i] != null)
                     {
-						particalSystem.GetComponent<ParticleSystem> ().Play ();
+                        
+;
                         Debug.Log(basicAttackTargets[i].gameObject().name);
                         IDamagable target = basicAttackTargets[i];
                         Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
@@ -86,12 +87,20 @@ public class Hero : PhysicsObjectBasic, ICharacter
 
   private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
     {
+        GameObject ParticleSpark = Instantiate(particalSystem);
+        ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x-0.5f, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z);
+        StartCoroutine(DestroySpark(ParticleSpark));
         dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
         StartCoroutine(Attacking());
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
 
         vitalityManager.DestroyIfHPIsZero(this);
     //    animatorManager.ExecuteAttackAnimation(this);
+    }
+    IEnumerator DestroySpark(GameObject Spark)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(Spark);
     }
     IEnumerator GettingAttacked(SpriteRenderer spriteRend)
     {
