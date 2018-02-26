@@ -9,6 +9,7 @@ namespace Assets.Attributes
     [System.Serializable]
     public class VitalityAttributes
     {
+        
         public bool isHero;
         public float MaxHP;
         public float HP;
@@ -61,6 +62,11 @@ namespace Assets.Attributes
                 //   Destroy(damagableAttributes.HealthSlider.gameObject);
                 //  Destroy(gameObject);
             }
+        }
+
+        public void RegenerateHP()
+        {
+
         }
     }
 }

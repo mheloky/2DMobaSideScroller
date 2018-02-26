@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class Hero : PhysicsObjectBasic, ICharacter
 {
+    public bool canBuy { get; set; }
     DamageManager dmgManager;
     IExperienceManager experienceManager = new ExperienceManager();
     SkillAttributes skillAttributes = new SkillAttributes();
@@ -16,6 +17,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     AnimatorManagerHero animatorManager = new AnimatorManagerHero();
     IVitalityManager vitalityManager = new VitalityManager();
     IHeroAttackManager heroAttackManager = new HeroAttackManager();
+    public IInventoryManager inventoryManager = new InventoryManager();
     public IAttack basicAttack;
     public IAttack specialAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
@@ -23,6 +25,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+    public InventoryAttributes inventoryAttributes = new InventoryAttributes();
 
     // Use this for initialization
     void Awake()
@@ -44,9 +47,16 @@ public class Hero : PhysicsObjectBasic, ICharacter
         ShellRadius = .3f;
 
     }
-       
+    float second = 1f;   
     protected override void ComputeVelocity()
     {
+        second -= Time.deltaTime;
+        if(second <= 0)
+        {
+            inventoryAttributes.goldAmount++;
+            second = 1f;
+        }
+
         var move=movementManager.GetHorizontalMovementVector();
         velocity = movementManager.GetJumpManagementVector(this);
         animatorManager.ExecuteFlipSprite(move.x,this);
@@ -64,20 +74,28 @@ public class Hero : PhysicsObjectBasic, ICharacter
                 {
                     if (basicAttackTargets[i] != null)
                     {
-                        Debug.Log(basicAttackTargets[i].gameObject().name);
+
                         IDamagable target = basicAttackTargets[i];
                         Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
                     }
-                   
+
                 }
             }
         }
-        else if(Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             int expToAdd = UnityEngine.Random.Range(20, 100);
             experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
             if (experienceAttribute.canUpgrade)
                 PlayerHUD.playerHUD.SetActive(true);
+            inventoryAttributes.goldAmount += 200;
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            ShopMenuUI.shopMenuUI.SetActive(!(ShopMenuUI.shopMenuUI.activeSelf));
+
+
         }
     }
 
@@ -87,7 +105,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
         dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
         StartCoroutine(Attacking());
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
-
         vitalityManager.DestroyIfHPIsZero(this);
     //    animatorManager.ExecuteAttackAnimation(this);
     }

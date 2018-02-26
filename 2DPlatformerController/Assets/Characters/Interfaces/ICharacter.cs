@@ -6,4 +6,5 @@ public interface ICharacter : IDamager, IDamagable, ITeamMember, IAnimatable, IM
     GameObject GetGameObject();
     SkillAttributes GetSkillAttributes();
     ExperienceAttribute GetExperienceAttributes();
+    
 }

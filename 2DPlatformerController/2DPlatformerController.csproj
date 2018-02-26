@@ -300,6 +300,7 @@
     <Compile Include="Assets\Attacks\IAttack.cs" />
     <Compile Include="Assets\Attributes\DamagerAttributes.cs" />
     <Compile Include="Assets\Attributes\ExperienceAttributes.cs" />
+    <Compile Include="Assets\Attributes\InventoryAttributes.cs" />
     <Compile Include="Assets\Attributes\MovementAttributes.cs" />
     <Compile Include="Assets\Attributes\SkillAttributes.cs" />
     <Compile Include="Assets\Attributes\SpawnerAttributes .cs" />
@@ -317,6 +318,13 @@
     <Compile Include="Assets\Characters\Physics\PhysicsObjectBasic.cs" />
     <Compile Include="Assets\Characters\Spawners\Spawner.cs" />
     <Compile Include="Assets\Characters\Towers\Tower.cs" />
+    <Compile Include="Assets\HeroInventory\PlayerInventorySlot.cs" />
+    <Compile Include="Assets\HeroInventory\Slot.cs" />
+    <Compile Include="Assets\Items\AgilityItem.cs" />
+    <Compile Include="Assets\Items\Item.cs" />
+    <Compile Include="Assets\Items\Potions.cs" />
+    <Compile Include="Assets\Items\StrengthItem.cs" />
+    <Compile Include="Assets\Items\VitalityItem.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\AnimatorManagerCreep.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\AnimatorManagerHero.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\IAnimatorManager.cs" />
@@ -332,6 +340,8 @@
     <Compile Include="Assets\Managers\DeltaManagers\IDeltaManager.cs" />
     <Compile Include="Assets\Managers\ExperienceManager\ExperienceManager.cs" />
     <Compile Include="Assets\Managers\ExperienceManager\IExperienceManager.cs" />
+    <Compile Include="Assets\Managers\InventoryManager\IInventoryManager.cs" />
+    <Compile Include="Assets\Managers\InventoryManager\InventoryManager.cs" />
     <Compile Include="Assets\Managers\MovementManagers\IMovementManager.cs" />
     <Compile Include="Assets\Managers\MovementManagers\MovementManager.cs" />
     <Compile Include="Assets\Managers\SkillManager\ISkillManager.cs" />
@@ -341,6 +351,11 @@
     <Compile Include="Assets\Managers\VitalityManagers\IVitalityManager.cs" />
     <Compile Include="Assets\Managers\VitalityManagers\VitalityManagerManager.cs" />
     <Compile Include="Assets\PlayerHUD\PlayerHUD.cs" />
+    <Compile Include="Assets\PlayerHUD\Shop\ItemDescriptionSlot.cs" />
+    <Compile Include="Assets\PlayerHUD\Shop\OnClicked.cs" />
+    <Compile Include="Assets\PlayerHUD\Shop\ShopMenuSlot.cs" />
+    <Compile Include="Assets\PlayerHUD\Shop\ShopMenuUI.cs" />
+    <Compile Include="Assets\Shop\Shop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\2DPlatformer\Sprites\Genetica Texture Pack 10 - Mystery Forest\READ ME.txt" />
