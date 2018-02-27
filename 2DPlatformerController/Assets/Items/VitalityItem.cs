@@ -7,6 +7,7 @@ using UnityEngine;
 public class VitalityItem : Item {
 
     public float hp;
+    public float hpRegen;
     public float armor;
     
 }

@@ -34,13 +34,7 @@ public class OnClicked : MonoBehaviour, IPointerClickHandler
 
     public void BuyItem()
     {
-        if(shopMenuUI.GetHero().IsOnSpawn())
-            shopMenuUI.BuyItem(shopMenuSlot.item);
+        shopMenuUI.BuyItem(shopMenuSlot.item);
         //hero.inventoryManager.AddItemToInventory(hero.inventoryAttributes, shopMenuSlot.item);
-    }
-
-    public void UsePotion()
-    {
-
     }
 }

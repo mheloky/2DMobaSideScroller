@@ -7,12 +7,10 @@ public class ShopMenuUI : MonoBehaviour
     public Text goldAmount;
     public Transform itemsParent;
     Hero hero;
-    PlayerHUD playerHUD;
     PlayerInventorySlot[] slots;
     public static GameObject shopMenuUI;
     private void Start()
     {
-        playerHUD = PlayerHUD.playerHUD.GetComponent<PlayerHUD>();
         hero = GameObject.Find("Hero").GetComponent<Hero>();
         shopMenuUI = gameObject;
         slots = itemsParent.GetComponentsInChildren<PlayerInventorySlot>();
@@ -27,7 +25,6 @@ public class ShopMenuUI : MonoBehaviour
     void UpdateUI()
     {
         UpdateInventorySlots();
-        playerHUD.UpdateUI();
     }
 
     void UpdateInventorySlots()
@@ -51,21 +48,7 @@ public class ShopMenuUI : MonoBehaviour
 
     public void BuyItem(Item item)
     {
-        hero.inventoryManager.BuyItem(hero, item);
-        print(hero.GetDamagerAttributes().AttackDamage);
+        hero.inventoryManager.BuyItem(hero.inventoryAttributes, item);
         UpdateUI();
-        
-    }
-
-    public void UsePotion(Item item)
-    {
-        Potions potion = (Potions)item;
-        hero.UseHPPotion(potion.additiveRegen, potion.timeAmount);
-    }
-
-
-    public Hero GetHero()
-    {
-        return hero;
     }
 }

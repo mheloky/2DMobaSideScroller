@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   itemName: Item
-  itemDescription: Armor +20
+  itemDescription: Armor +15
   icon: {fileID: 21300000, guid: 4af785b46d1eed84f8aa314d75a3c54b, type: 3}
   cost: 350
-  itemID: 2
-  hp: 0
+  itemID: 0
+  hp: 200
+  hpRegen: 10
   armor: 20

@@ -10,9 +10,4 @@ public class Item : ScriptableObject {
     public Sprite icon;
     public int cost;
     public int itemID;
-
-    virtual public void Use()
-    {
-
-    }
 }

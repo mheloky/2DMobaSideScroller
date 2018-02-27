@@ -9,9 +9,7 @@ using UnityEngine.UI;
 
 public class Hero : PhysicsObjectBasic, ICharacter
 {
-    bool isOnSpawn;
-    
-    public bool isUsingPotion;
+    public bool canBuy { get; set; }
     DamageManager dmgManager;
     IExperienceManager experienceManager = new ExperienceManager();
     SkillAttributes skillAttributes = new SkillAttributes();
@@ -111,71 +109,8 @@ public class Hero : PhysicsObjectBasic, ICharacter
         }
     }
 
-    public bool UseHPPotion(float HPreg, float timeRegen)
-    {
-        if (vitalityAttributes.HP >= vitalityAttributes.MaxHP || isUsingPotion)
-        {
-            StopCoroutine(RegHpByPotion(HPreg, timeRegen));
-            return false;
-        }
-        else
-        {
-            StartCoroutine(RegHpByPotion(HPreg, timeRegen));
-            isUsingPotion = true;
-            return true;
-        }
-    }
 
-    public void RegenHP(float HPreg, float timeRegen)
-    {
-        IEnumerator coroutine = RegHpByPotion(HPreg, timeRegen);
-        if (vitalityAttributes.HP <= vitalityAttributes.MaxHP && isOnSpawn)
-        {
-            StartCoroutine(coroutine);
-            print("Started: " + Time.time);
-            
-        }
-        else if(!isOnSpawn || vitalityAttributes.HP >= vitalityAttributes.MaxHP)
-        {
-            StopAllCoroutines();
-            print("Stopped: " + Time.time);
-        }
-        else
-        {
-            print("Another ");
-        }
-    }
-
-    public IEnumerator RegHpByPotion(float HPreg, float timeRegen)
-    {
-        while (timeRegen >= 0)
-        {
-            if (vitalityAttributes.MaxHP > vitalityAttributes.HP)
-            {
-                if (vitalityAttributes.MaxHP < vitalityAttributes.HP + HPreg)
-                {
-                    HPreg = vitalityAttributes.MaxHP - vitalityAttributes.HP;
-                    vitalityAttributes.HP = vitalityAttributes.MaxHP;
-                }
-                else
-                {
-                    vitalityAttributes.HP += HPreg;
-                }
-               
-            }
-            else
-            {
-                isUsingPotion = false;
-                break;
-            }
-
-            timeRegen -= 1;
-            yield return new WaitForSeconds(1.0f);
-        }
-        isUsingPotion = false;
-    }
-
-    private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
+  private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
     {
         GameObject ParticleSpark = Instantiate(particalSystem);
         ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x-0.5f, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z);
@@ -280,20 +215,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
     GameObject IDamagable.gameObject()
     {
         return this.gameObject;
-    }
-
-    public InventoryAttributes GetInventoryAttributes()
-    {
-        return inventoryAttributes;
-    }
-
-    public bool IsOnSpawn()
-    {
-        return isOnSpawn;
-    }
-    public void SetIsOnSpawn(bool isOnSpawn)
-    {
-        this.isOnSpawn = isOnSpawn;
     }
     #endregion
 }

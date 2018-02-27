@@ -124,7 +124,6 @@ MonoBehaviour:
     isHero: 0
     MaxHP: 100
     HP: 100
-    armor: 0
     IsInvincible: 0
     SliderToLoad: {fileID: 114732496606847216, guid: 3eff70e8afa055040b9aacea3fdc1407,
       type: 2}
