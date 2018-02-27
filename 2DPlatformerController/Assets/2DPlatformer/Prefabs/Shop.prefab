@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1366414469416288}
+  m_RootGameObject: {fileID: 1315214288735792}
   m_IsPrefabParent: 1
---- !u!1 &1366414469416288
+--- !u!1 &1315214288735792
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4646981790592464}
-  - component: {fileID: 61382297711992816}
-  - component: {fileID: 114908040204458864}
+  - component: {fileID: 4619616926784728}
+  - component: {fileID: 61318109157359826}
+  - component: {fileID: 114632498321088352}
   m_Layer: 0
-  m_Name: Shop(1)
+  m_Name: Shop
   m_TagString: Team=Team1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &4646981790592464
+--- !u!4 &4619616926784728
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1366414469416288}
+  m_GameObject: {fileID: 1315214288735792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.98, y: 5.33, z: -1.1289062}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,12 +41,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61382297711992816
+--- !u!61 &61318109157359826
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1366414469416288}
+  m_GameObject: {fileID: 1315214288735792}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,15 +66,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 4}
   m_EdgeRadius: 0.4
---- !u!114 &114908040204458864
+--- !u!114 &114632498321088352
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1366414469416288}
+  m_GameObject: {fileID: 1315214288735792}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fdc1fc527d6488c4b9f048c0addb6979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopUI: {fileID: 1300160609023796, guid: 7210719ba2c4a604eb58359eef024e38, type: 2}
+  shopUI: {fileID: 0}

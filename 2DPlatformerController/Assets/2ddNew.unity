@@ -8757,9 +8757,17 @@ MonoBehaviour:
     height: 1
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
     Team: Team1
     OpossiteTeamLayer: 8
+  particalSystem: {fileID: 1272555461420156, guid: 80184033e329ea449b17124fc1b8dce7,
+    type: 2}
 --- !u!50 &612917015
 Rigidbody2D:
   serializedVersion: 4

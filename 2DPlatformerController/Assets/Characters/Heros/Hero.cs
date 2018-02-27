@@ -25,11 +25,11 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-<<<<<<< HEAD
+// HEAD
     public InventoryAttributes inventoryAttributes = new InventoryAttributes();
-=======
+//
 	public GameObject particalSystem;
->>>>>>> 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
+// 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
 
     // Use this for initialization
     void Awake()
@@ -78,13 +78,13 @@ public class Hero : PhysicsObjectBasic, ICharacter
                 {
                     if (basicAttackTargets[i] != null)
                     {
-<<<<<<< HEAD
+// HEAD
 
-=======
+//
                         
 ;
                         Debug.Log(basicAttackTargets[i].gameObject().name);
->>>>>>> 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
+// 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
                         IDamagable target = basicAttackTargets[i];
                         Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
                     }
