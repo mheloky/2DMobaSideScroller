@@ -9071,6 +9071,7 @@ GameObject:
   - component: {fileID: 612917015}
   - component: {fileID: 612917016}
   - component: {fileID: 612917014}
+  - component: {fileID: 612917017}
   m_Layer: 9
   m_Name: Hero
   m_TagString: Team=Team1
@@ -9145,13 +9146,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 612917010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -3.71, y: 5.01, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &612917014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9181,10 +9182,16 @@ MonoBehaviour:
     expToLevelUp: 100
     level: 0
     canUpgrade: 0
-    upgradeOpportunities: 0
+    upgradePoints: 0
   teamAttributes:
     Team: Team1
     OpossiteTeamLayer: 8
+  inventoryAttributes:
+    items: []
+    goldAmount: 0
+    size: 0
+  particalSystem: {fileID: 1205718218308752, guid: 06fa332a69d0f5b4aab2d216dc826dba,
+    type: 2}
 --- !u!50 &612917015
 Rigidbody2D:
   serializedVersion: 4
@@ -9230,6 +9237,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37, y: 0.46}
   m_EdgeRadius: 0
+--- !u!114 &612917017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612917010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c81b01d02cad1c4ca0dc1f892adfe90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &639645153
 GameObject:
   m_ObjectHideFlags: 0
@@ -17745,6 +17763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf13df8e73fc744686b925132c9acd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsParent: {fileID: 0}
   Strength: {fileID: 1626760153}
   Agility: {fileID: 109466553}
   Vitality: {fileID: 78192414}
@@ -23957,7 +23976,7 @@ Prefab:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: orthographic size
-      value: 2.8515625
+      value: 3.1484375
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
