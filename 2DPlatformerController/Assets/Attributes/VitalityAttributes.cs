@@ -13,6 +13,7 @@ namespace Assets.Attributes
         public bool isHero;
         public float MaxHP;
         public float HP;
+        public float armor;
         public bool IsInvincible;
         public Slider SliderToLoad;
         public float height;
@@ -64,9 +65,5 @@ namespace Assets.Attributes
             }
         }
 
-        public void RegenerateHP()
-        {
-
-        }
     }
 }

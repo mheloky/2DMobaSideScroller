@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour {
     public GameObject shopUI;
-
+    IEnumerator coroutine;
 
 	// Use this for initialization
 	void Awake () {
         //shopUI = GameObject.Find("MenuHUD");
         //shopUI.SetActive(false);
+        
     }
 	
 	// Update is called once per frame
@@ -22,8 +23,8 @@ public class Shop : MonoBehaviour {
         {
             if (collision.gameObject.GetComponent<Hero>() == hero && collision.gameObject.tag == gameObject.tag)
             {
-                hero.canBuy = true;
-                
+                hero.SetIsOnSpawn(true);
+                hero.RegenHP(10, 30);
             }
         }
         
@@ -36,8 +37,8 @@ public class Shop : MonoBehaviour {
         {
             if (collision.gameObject.GetComponent<Hero>() == hero && collision.gameObject.tag == gameObject.tag)
             {
-                hero.canBuy = false;
-
+                hero.SetIsOnSpawn(false);
+                hero.RegenHP(10, 30);
             }
         }
     }

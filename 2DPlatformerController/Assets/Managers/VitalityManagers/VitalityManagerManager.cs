@@ -17,4 +17,6 @@ public class VitalityManager : IVitalityManager
             UnityEngine.Object.Destroy(character.GetGameObject());
         }
     }
+
+    
 }
