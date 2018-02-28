@@ -9,16 +9,9 @@ using UnityEngine.UI;
 
 public class Hero : PhysicsObjectBasic, ICharacter
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public bool canBuy { get; set; }
->>>>>>> parent of 381e6c0... Inventory system plus some Items
-=======
     bool isOnSpawn;
     
     public bool isUsingPotion;
->>>>>>> parent of f63bbdf... Revert "Inventory system plus some Items"
     DamageManager dmgManager;
     IExperienceManager experienceManager = new ExperienceManager();
     SkillAttributes skillAttributes = new SkillAttributes();
@@ -26,6 +19,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     AnimatorManagerHero animatorManager = new AnimatorManagerHero();
     IVitalityManager vitalityManager = new VitalityManager();
     IHeroAttackManager heroAttackManager = new HeroAttackManager();
+    public IInventoryManager inventoryManager = new InventoryManager();
     public IAttack basicAttack;
     public IAttack specialAttack;
     public VitalityAttributes vitalityAttributes = new VitalityAttributes();
@@ -33,8 +27,11 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+// HEAD
+    public InventoryAttributes inventoryAttributes = new InventoryAttributes();
+//
 	public GameObject particalSystem;
-	public AudioSource hitSound;
+// 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
 
     // Use this for initialization
     void Awake()
@@ -56,62 +53,53 @@ public class Hero : PhysicsObjectBasic, ICharacter
         ShellRadius = .3f;
 
     }
-
-	void OnCollisionEnter (Collision col)
-	{
-		Debug.Log ("Radi");
-		if(col.gameObject.name == "ProjectileA")
-		{
-			Destroy(col.gameObject);
-		}
-	}
-       
+    float second = 1f;   
     protected override void ComputeVelocity()
     {
+        second -= Time.deltaTime;
+        if(second <= 0)
+        {
+            inventoryAttributes.goldAmount++;
+            second = 1f;
+        }
+
         var move=movementManager.GetHorizontalMovementVector();
         velocity = movementManager.GetJumpManagementVector(this);
         animatorManager.ExecuteFlipSprite(move.x,this);
         animatorManager.UpdateVelocityParametrer(this);
-		basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
+        basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
         vitalityAttributes.UpdateHealtheSlider(gameObject);
         movementManager.UpdateTargetVelocity(move, this);
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-			
-			List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
+            List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
             if (basicAttackTargets[0] != null)
             {
 
                 for (int i = 0; i < basicAttackTargets.Count; i++)
                 {
                     if (basicAttackTargets[i] != null)
-                    {	
-						particalSystem.GetComponent<ParticleSystem> ().Play ();
+                    {
+// HEAD
 
+//
+                        
+;
                         Debug.Log(basicAttackTargets[i].gameObject().name);
+// 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
                         IDamagable target = basicAttackTargets[i];
-						Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
+                        Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
                     }
-                   
+
                 }
             }
         }
-        else if(Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             int expToAdd = UnityEngine.Random.Range(20, 100);
             experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
             if (experienceAttribute.canUpgrade)
                 PlayerHUD.playerHUD.SetActive(true);
-<<<<<<< HEAD
-        }
-    }
-
-
-	private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
-    {
-		dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack, hitSound, particalSystem);
-=======
             inventoryAttributes.goldAmount += 200;
         }
         else if (Input.GetKeyDown(KeyCode.P))
@@ -193,12 +181,15 @@ public class Hero : PhysicsObjectBasic, ICharacter
         ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x-0.5f, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z);
         StartCoroutine(DestroySpark(ParticleSpark));
         dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
->>>>>>> parent of 381e6c0... Inventory system plus some Items
         StartCoroutine(Attacking());
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
-
         vitalityManager.DestroyIfHPIsZero(this);
     //    animatorManager.ExecuteAttackAnimation(this);
+    }
+    IEnumerator DestroySpark(GameObject Spark)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(Spark);
     }
     IEnumerator GettingAttacked(SpriteRenderer spriteRend)
     {
@@ -290,14 +281,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
     {
         return this.gameObject;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> parent of 381e6c0... Inventory system plus some Items
-=======
 
     public InventoryAttributes GetInventoryAttributes()
     {
@@ -312,7 +295,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
     {
         this.isOnSpawn = isOnSpawn;
     }
->>>>>>> parent of f63bbdf... Revert "Inventory system plus some Items"
     #endregion
 }
 

@@ -7,9 +7,12 @@ using Assets.Managers;
 
 public class PlayerHUD : MonoBehaviour {
     #region Properties
-    ICharacter hero;
+    Hero hero;
     ISkillManager skillManager = new SkillManager();
     IExperienceManager experienceManager = new ExperienceManager();
+
+    PlayerInventorySlot[] slots;
+    public Transform itemsParent;
     public static GameObject playerHUD;
     public Text Strength;
     public Text Agility;
@@ -19,6 +22,7 @@ public class PlayerHUD : MonoBehaviour {
     {
         hero = GameObject.Find("Hero").GetComponent<Hero>();
         playerHUD = gameObject;
+        slots = itemsParent.GetComponentsInChildren<PlayerInventorySlot>();
         playerHUD.SetActive(false);
         UpdateUI();
 
@@ -33,12 +37,30 @@ public class PlayerHUD : MonoBehaviour {
     public void UpdateUI()
     {
         var skillAttributes = hero.GetSkillAttributes();
-        print(skillAttributes.Strength);
         Strength.text = skillAttributes.Strength.ToString();
         Agility.text = skillAttributes.Agility.ToString();
         Vitality.text = skillAttributes.Vitality.ToString();
-        
+        UpdateInventorySlots();
 
+    }
+
+    void UpdateInventorySlots()
+    {
+        List<Item> inventoryItems = hero.inventoryAttributes.items;
+        int i = 0;
+        foreach(Item item in inventoryItems)
+        {
+            if(item)
+            {
+                slots[i].AddItem(item);
+            }
+            else
+            {
+                slots[i].ClearSlot();
+            }
+            i++;
+        }
+        
     }
 
     private void ShowPlayerHUD()

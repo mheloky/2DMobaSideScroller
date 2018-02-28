@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6802712a5664e64b898ccf1b7f5b417, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: 
+  itemName: Item
+  itemDescription: Attack Damage +15
+  icon: {fileID: 21300000, guid: c1dd5acfd8557654e86eecee8a06f6b8, type: 3}
+  cost: 250
+  itemID: 1
+  damage: 15
