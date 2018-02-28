@@ -2,12 +2,15 @@
 using System.Collections;
 
 public class TrackingSystem : MonoBehaviour {
+	
 	public float speed = 100.0f;
+
 	public GameObject m_target = null;
+	public GameObject ammo;
+
 	Vector3 m_lastKnownPosition = Vector3.zero;
 	Quaternion m_lookAtRotation;
 
-	// Update is called once per frame
 	void Update () {
 		if(m_target){
 			if(m_lastKnownPosition != m_target.transform.position){
@@ -30,4 +33,6 @@ public class TrackingSystem : MonoBehaviour {
 
 		return true;
 	}
+
+
 }

@@ -46,6 +46,15 @@ public class Hero : PhysicsObjectBasic, ICharacter
         ShellRadius = .3f;
 
     }
+
+	void OnCollisionEnter (Collision col)
+	{
+		Debug.Log ("Radi");
+		if(col.gameObject.name == "ProjectileA")
+		{
+			Destroy(col.gameObject);
+		}
+	}
        
     protected override void ComputeVelocity()
     {
@@ -188,13 +197,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         return this.gameObject;
     }
 
-	void OnCollisionEnter (Collision col)
-	{
-		if(col.gameObject.name == "ProjectileA")
-		{
-			Destroy(col.gameObject);
-		}
-	}
+
 
     #endregion
 }

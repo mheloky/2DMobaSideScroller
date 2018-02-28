@@ -1,13 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Characters\Heros\Hero.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Characters\Towers\TrackingProjectile.cs">
     <Files>
-      <File FileName="Assets\Characters\Towers\TrackingProjectile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Characters\Towers\ShootingSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets\Characters\Towers\PlayerEnter.cs" Line="10" Column="1" />
-      <File FileName="Assets\Characters\Towers\CannonClose.cs" Line="1" Column="1" />
-      <File FileName="Assets\Characters\Creeps\EnemyCreep.cs" Line="1" Column="1" />
-      <File FileName="Assets\Characters\Heros\Hero.cs" Line="193" Column="41" />
+      <File FileName="Assets\Characters\Creeps\EnemyCreep.cs" Line="151" Column="6" />
+      <File FileName="Assets\Characters\Towers\TrackingProjectile.cs" Line="108" Column="3" />
+      <File FileName="Assets\Managers\DamageManagers\DamageManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -87,8 +87,6 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 
 	private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
     {
-		//Debug.Log ("Napada");
-
 		dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack, audio, particalSystem);
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
 
