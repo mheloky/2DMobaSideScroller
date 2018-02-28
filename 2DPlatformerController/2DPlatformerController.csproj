@@ -316,7 +316,13 @@
     <Compile Include="Assets\Characters\Interfaces\ITeamMember.cs" />
     <Compile Include="Assets\Characters\Physics\PhysicsObjectBasic.cs" />
     <Compile Include="Assets\Characters\Spawners\Spawner.cs" />
+    <Compile Include="Assets\Characters\Towers\BaseProjectile.cs" />
+    <Compile Include="Assets\Characters\Towers\CannonClose.cs" />
+    <Compile Include="Assets\Characters\Towers\PlayerEnter.cs" />
+    <Compile Include="Assets\Characters\Towers\ShootingSystem.cs" />
     <Compile Include="Assets\Characters\Towers\Tower.cs" />
+    <Compile Include="Assets\Characters\Towers\TrackingProjectile.cs" />
+    <Compile Include="Assets\Characters\Towers\TrackingSystem.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\AnimatorManagerCreep.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\AnimatorManagerHero.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\IAnimatorManager.cs" />
