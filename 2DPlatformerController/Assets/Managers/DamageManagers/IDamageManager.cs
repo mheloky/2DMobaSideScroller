@@ -13,6 +13,6 @@ public interface IDamageManager
     /// <param name="damagableAttributes"></param>
     /// <param name="hpDelta"></param>
     /// <returns>Returns if the object should be destoryed or no</returns>
-    bool DistributeDamageWithInvincible(ICharacter character, IAttack attack);
-    List<IDamagable> GetTargetsInRange(ICharacter character);
+	bool DistributeDamageWithInvincible(ICharacter character, IAttack attack, AudioSource audio, GameObject particalSystem);
+	List<IDamagable> GetTargetsInRange(ICharacter character);
 }

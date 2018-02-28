@@ -10,12 +10,13 @@ public class CreepAttackManager : IHeroAttackManager
         LayerMask masks;
         masks =1<<team ;
         attack.GetDamageAttributes().ToAttack = masks;
-        attack.GetDamageAttributes().AttackDamage = 1;
+        attack.GetDamageAttributes().AttackDamage = 10;
         attack.GetDamageAttributes().Cleave = 2;
         attack.GetDamageAttributes().HowFatItIs = 1;
         attack.GetDamageAttributes().Radius = 2;
         attack.GetDamageAttributes().AttackDamage = 10;
         attack.GetDamageAttributes().AttackCooldownInSeconds = 10;
+
         return attack;
     }
 

@@ -8,7 +8,7 @@ using Assets.Abilities;
 
 public class DamageManager:IDamageManager
 {
-    public bool DistributeDamageWithInvincible(ICharacter character, IAttack attack)
+	public bool DistributeDamageWithInvincible(ICharacter character, IAttack attack, AudioSource audio, GameObject particalSystem)
     {
         var damagableAttributes = character.GetDamagerAttributes();
         var vitalityAttributes = character.GetVitalityAttributes();
@@ -20,15 +20,22 @@ public class DamageManager:IDamageManager
             damageAttributes.AttackDamage >= damagableAttributes.AttackCooldownInSeconds 
             && !vitalityAttributes.IsInvincible)
         {
+			audio.Play ();
+			particalSystem.GetComponent<ParticleSystem> ().Play ();
             damagableAttributes.LastAttackTime = DateTime.Now;
             vitalityAttributes.HP -= damageAttributes.AttackDamage;
+
             if (vitalityAttributes.HP <= 0)
+				
                 return true;
         }
 
         return false; 
     }
-    public List<IDamagable> GetTargetsInRange(ICharacter character)
+
+
+
+	public List<IDamagable> GetTargetsInRange(ICharacter character)
     {
         var gameObject = character.GetGameObject();
         var damagableAttributes = character.GetDamagerAttributes();
@@ -41,7 +48,8 @@ public class DamageManager:IDamageManager
         {
             var target = hits[i].collider.gameObject;
             targets.Add(target.GetComponent<IDamagable>());
-            Debug.DrawLine(gameObject.transform.position, target.transform.position, Color.red);
+			Debug.DrawLine(gameObject.transform.position, target.transform.position, Color.red);
+
         }
 
         return targets;

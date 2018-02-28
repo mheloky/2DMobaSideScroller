@@ -9,11 +9,9 @@ namespace Assets.Attributes
     [System.Serializable]
     public class VitalityAttributes
     {
-        
         public bool isHero;
         public float MaxHP;
         public float HP;
-        public float armor;
         public bool IsInvincible;
         public Slider SliderToLoad;
         public float height;
@@ -64,6 +62,5 @@ namespace Assets.Attributes
                 //  Destroy(gameObject);
             }
         }
-
     }
 }
