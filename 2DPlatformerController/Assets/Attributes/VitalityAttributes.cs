@@ -62,5 +62,13 @@ namespace Assets.Attributes
                 //  Destroy(gameObject);
             }
         }
+<<<<<<< HEAD
+=======
+
+        public void RegenerateHP()
+        {
+
+        }
+>>>>>>> parent of 381e6c0... Inventory system plus some Items
     }
 }

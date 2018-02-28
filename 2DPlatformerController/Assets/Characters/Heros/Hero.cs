@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class Hero : PhysicsObjectBasic, ICharacter
 {
+<<<<<<< HEAD
+=======
+    public bool canBuy { get; set; }
+>>>>>>> parent of 381e6c0... Inventory system plus some Items
     DamageManager dmgManager;
     IExperienceManager experienceManager = new ExperienceManager();
     SkillAttributes skillAttributes = new SkillAttributes();
@@ -93,6 +97,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
             experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
             if (experienceAttribute.canUpgrade)
                 PlayerHUD.playerHUD.SetActive(true);
+<<<<<<< HEAD
         }
     }
 
@@ -100,6 +105,26 @@ public class Hero : PhysicsObjectBasic, ICharacter
 	private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
     {
 		dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack, hitSound, particalSystem);
+=======
+            inventoryAttributes.goldAmount += 200;
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            ShopMenuUI.shopMenuUI.SetActive(!(ShopMenuUI.shopMenuUI.activeSelf));
+
+
+        }
+    }
+
+
+  private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
+    {
+        GameObject ParticleSpark = Instantiate(particalSystem);
+        ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x-0.5f, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z);
+        StartCoroutine(DestroySpark(ParticleSpark));
+        dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
+>>>>>>> parent of 381e6c0... Inventory system plus some Items
         StartCoroutine(Attacking());
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
 
@@ -196,9 +221,12 @@ public class Hero : PhysicsObjectBasic, ICharacter
     {
         return this.gameObject;
     }
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> parent of 381e6c0... Inventory system plus some Items
     #endregion
 }
 
