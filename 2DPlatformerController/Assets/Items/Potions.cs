@@ -14,5 +14,8 @@ public class Potions : Item {
     public int potionID;
     public float additiveRegen;
     public float timeAmount;
+
+
+
 }
 

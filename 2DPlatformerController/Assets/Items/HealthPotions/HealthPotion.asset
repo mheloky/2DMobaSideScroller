@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a8c0747aeec1249bccbb2a5a2cc64d, type: 3}
-  m_Name: SmallHealthPotion
+  m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  itemName: Small Health Potion
-  itemDescription: Add 6.5 HP every second
-  icon: {fileID: 21300000, guid: 3ad9bd2708f63d848918b9be708da3c0, type: 3}
-  cost: 30
+  itemName: Health Potion
+  itemDescription: Add extra 13.5 HP every second
+  icon: {fileID: 21300000, guid: b27212bab5731d841b0ab82ebe05bba4, type: 3}
+  cost: 50
   itemID: 3
-  potionID: 0
-  additiveRegen: 6.5
+  potionID: 1
+  additiveRegen: 13.5
   timeAmount: 10

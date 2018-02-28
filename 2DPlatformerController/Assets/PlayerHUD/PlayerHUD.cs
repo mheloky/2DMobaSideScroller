@@ -30,7 +30,7 @@ public class PlayerHUD : MonoBehaviour {
     }
     #region PlayerUI
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         var skillAttributes = hero.GetSkillAttributes();
         print(skillAttributes.Strength);
