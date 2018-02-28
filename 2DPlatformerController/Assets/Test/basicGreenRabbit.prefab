@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000402896598828}
   m_LocalRotation: {x: -0, y: -0.0024656584, z: 0, w: 0.99999696}
-  m_LocalPosition: {x: -2.668415, y: 4, z: 0}
+  m_LocalPosition: {x: -2.6267052, y: 4, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4325906018829390}
@@ -83,7 +83,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000402896598828}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -127,7 +127,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000402896598828}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6a3665c5b3f73f044b68fd562675d299, type: 3}
@@ -234,8 +234,8 @@ MonoBehaviour:
     JumpTakeOffSpeed: 0
   vitalityAttributes:
     isHero: 0
-    MaxHP: 100
-    HP: 100
+    MaxHP: 20
+    HP: 20
     IsInvincible: 0
     SliderToLoad: {fileID: 114732496606847216, guid: 3eff70e8afa055040b9aacea3fdc1407,
       type: 2}
