@@ -12,7 +12,6 @@ namespace Assets.Attributes
         public bool isHero;
         public float MaxHP;
         public float HP;
-        public float armor;
         public bool IsInvincible;
         public Slider SliderToLoad;
         public float height;
@@ -63,16 +62,5 @@ namespace Assets.Attributes
                 //  Destroy(gameObject);
             }
         }
-<<<<<<< HEAD
-=======
-
-<<<<<<< HEAD
-        public void RegenerateHP()
-        {
-
-        }
->>>>>>> parent of 381e6c0... Inventory system plus some Items
-=======
->>>>>>> parent of f63bbdf... Revert "Inventory system plus some Items"
     }
 }
