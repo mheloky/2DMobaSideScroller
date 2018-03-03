@@ -104,7 +104,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         else if (Input.GetKeyDown(KeyCode.P))
         {
 
-            ShopMenuUI.shopMenuUI.SetActive(!(ShopMenuUI.shopMenuUI.activeSelf));
+            //ShopMenuUI.shopMenuUI.SetActive(!(ShopMenuUI.shopMenuUI.activeSelf));
 
 
         }

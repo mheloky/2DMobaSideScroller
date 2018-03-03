@@ -25,6 +25,7 @@ public class Shop : MonoBehaviour {
             {
                 hero.SetIsOnSpawn(true);
                 hero.RegenHP(10, 30);
+                ShopMenuUI.shopMenuUI.SetActive(true);
             }
         }
         
@@ -39,6 +40,7 @@ public class Shop : MonoBehaviour {
             {
                 hero.SetIsOnSpawn(false);
                 hero.RegenHP(10, 30);
+                ShopMenuUI.shopMenuUI.SetActive(false);
             }
         }
     }

@@ -12594,6 +12594,31 @@ Prefab:
       propertyPath: ShapeModule.radiusThickness
       value: 1.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198365048892977156, guid: 2664651705742cb44b3a015e260315b3,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198365048892977156, guid: 2664651705742cb44b3a015e260315b3,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198365048892977156, guid: 2664651705742cb44b3a015e260315b3,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198365048892977156, guid: 2664651705742cb44b3a015e260315b3,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198365048892977156, guid: 2664651705742cb44b3a015e260315b3,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2664651705742cb44b3a015e260315b3, type: 2}
   m_IsPrefabParent: 0
@@ -13724,6 +13749,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &870652144 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1870359775465514, guid: 7210719ba2c4a604eb58359eef024e38,
+    type: 2}
+  m_PrefabInternal: {fileID: 603866520}
 --- !u!1 &873165383
 GameObject:
   m_ObjectHideFlags: 0
@@ -22566,7 +22596,7 @@ Prefab:
         type: 2}
       propertyPath: shopUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 870652144}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 315fb27f253819b41aafa41691cde330, type: 2}
   m_IsPrefabParent: 0

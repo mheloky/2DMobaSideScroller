@@ -16,6 +16,7 @@ public class ShopMenuUI : MonoBehaviour
         hero = GameObject.Find("Hero").GetComponent<Hero>();
         shopMenuUI = gameObject;
         slots = itemsParent.GetComponentsInChildren<PlayerInventorySlot>();
+        gameObject.SetActive(false);
         UpdateUI();
     }
 
