@@ -52,7 +52,7 @@ public class ShopMenuUI : MonoBehaviour
     public void BuyItem(Item item)
     {
         hero.inventoryManager.BuyItem(hero, item);
-        print(hero.GetDamagerAttributes().AttackDamage);
+
         UpdateUI();
         
     }

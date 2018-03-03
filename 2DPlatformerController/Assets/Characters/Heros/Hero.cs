@@ -98,8 +98,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         {
             int expToAdd = UnityEngine.Random.Range(20, 100);
             experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
-            if (experienceAttribute.canUpgrade)
-                PlayerHUD.playerHUD.SetActive(true);
+
             inventoryAttributes.goldAmount += 200;
         }
         else if (Input.GetKeyDown(KeyCode.P))
@@ -260,7 +259,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     }
     public ExperienceAttribute GetExperienceAttributes()
     {
-        print(experienceAttribute.experience + " " + experienceAttribute.level);
+
         return this.experienceAttribute;
     }
     public MovementAttributes GetMovementAttributes()

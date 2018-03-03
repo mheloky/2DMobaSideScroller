@@ -17,22 +17,44 @@ public class PlayerHUD : MonoBehaviour {
     public Text Strength;
     public Text Agility;
     public Text Vitality;
+    private Button[] buttons;
     #endregion
     private void Awake()
     {
         hero = GameObject.Find("Hero").GetComponent<Hero>();
         playerHUD = gameObject;
         slots = itemsParent.GetComponentsInChildren<PlayerInventorySlot>();
-        playerHUD.SetActive(false);
         UpdateUI();
-
+        buttons = new Button[3];
+        buttons[0] = Strength.GetComponentInParent<Button>();
+        buttons[1] = Agility.GetComponentInParent<Button>();
+        buttons[2] = Vitality.GetComponentInParent<Button>();
+        SetInteractionButtons();
     }
 
     private void Update()
     {
-
+        SetInteractionButtons();
     }
     #region PlayerUI
+
+    public void SetInteractionButtons()
+    {
+        if (hero.experienceAttribute.canUpgrade)
+        {
+            foreach (Button btn in buttons)
+            {
+                btn.interactable = true;
+            }
+        }
+        else
+        {
+            foreach (Button btn in buttons)
+            {
+                btn.interactable = false;
+            }
+        }
+    }
 
     public void UpdateUI()
     {
@@ -75,7 +97,6 @@ public class PlayerHUD : MonoBehaviour {
         {
             experienceAttributes.canUpgrade = true;
         }
-        playerHUD.SetActive(experienceAttributes.canUpgrade);
     }
 
     public void OnUpgradeStrengthClicked()

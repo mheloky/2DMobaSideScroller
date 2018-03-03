@@ -14,7 +14,6 @@ public class OnClicked : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         shopMenuSlot = GetComponentInParent<ShopMenuSlot>();
-        print(gameObject.GetComponentInParent<ShopMenuUI>());
     }
     public void OnPointerClick(PointerEventData eventData)
     {

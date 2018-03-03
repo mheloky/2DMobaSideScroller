@@ -41,6 +41,5 @@ public class PlayerInventorySlot : Slot {
         item = null;
         icon.sprite = null;
         icon.enabled = false;
-        print("Clearing: " + gameObject);
     }
 }
