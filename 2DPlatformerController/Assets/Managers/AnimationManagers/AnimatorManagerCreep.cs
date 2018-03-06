@@ -27,6 +27,5 @@ public class AnimatorManagerCreep: IAnimatorManager
     public void ExecuteAttackAnimation(ICharacter character)
     {
         character.GetAnimator().SetBool("basicAttack", true);
-
     }
 }

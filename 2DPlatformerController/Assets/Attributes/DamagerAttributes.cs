@@ -15,4 +15,5 @@ public class DamagerAttributes
     public int Cleave;
     public float HowFatItIs;
     public LayerMask ToAttack;
+    public AudioClip clip;
 }

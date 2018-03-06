@@ -9,6 +9,7 @@ namespace Assets.Attributes
     [System.Serializable]
     public class VitalityAttributes
     {
+        
         public bool isHero;
         public float MaxHP;
         public float HP;
@@ -19,6 +20,10 @@ namespace Assets.Attributes
         public Slider HealthSlider;
         [HideInInspector]
         public GameObject canvas;
+        [HideInInspector]
+        public AudioSource audioSource;
+        public AudioClip clip;
+        public AudioClip StepSound;
         public void UpdateHealtheSlider(GameObject gameObject)
         {
             HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + height, gameObject.transform.position.z);
@@ -61,6 +66,11 @@ namespace Assets.Attributes
                 //   Destroy(damagableAttributes.HealthSlider.gameObject);
                 //  Destroy(gameObject);
             }
+        }
+
+        public void RegenerateHP()
+        {
+
         }
     }
 }

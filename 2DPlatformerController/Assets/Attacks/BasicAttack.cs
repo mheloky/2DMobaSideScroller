@@ -28,7 +28,6 @@ namespace Assets.Abilities
         public void SetTargets(List<IDamagable> theTargets)
         {
             targets = theTargets;
-
         }
     }
 }

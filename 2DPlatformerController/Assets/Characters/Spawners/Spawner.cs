@@ -33,14 +33,14 @@ public class Spawner : MonoBehaviour, IDamager
 
     public void SpawnCreeps()
     {
-        var positionDelta = 10;
+        var positionDelta = 5;
         if (spawnerAttributes.Team == TAGS.Team2)
-                positionDelta = -10;
+                positionDelta = -5;
 
         var enemyCreepRawObj = Instantiate(spawnerAttributes.SpawnUnit1);
         var enemyCreep = enemyCreepRawObj.GetComponent<EnemyCreep>();
         enemyCreep.teamAttributes.Team = spawnerAttributes.Team;
-        spawnerAttributes.SpawnUnit1.transform.position = new Vector3(this.transform.position.x + positionDelta , 4f);
+        spawnerAttributes.SpawnUnit1.transform.position = new Vector3(this.transform.position.x + positionDelta , transform.position.y+1);
 
         spawnerAttributes.spawnCount++;
     }
