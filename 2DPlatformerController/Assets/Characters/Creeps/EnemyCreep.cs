@@ -80,8 +80,11 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
     {
 
         dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
-        StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
-        animatorManager.ExecuteAttackAnimation(this);
+        if (this.gameObject.activeInHierarchy)
+        {
+            StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
+            animatorManager.ExecuteAttackAnimation(this);
+        }
     }
 
     public void TakeDamage(int damage)
