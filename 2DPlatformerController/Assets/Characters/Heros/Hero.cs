@@ -29,6 +29,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     public InventoryAttributes inventoryAttributes = new InventoryAttributes();
 //
 	public GameObject particalSystem;
+    bool PlayStep;
 // 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
 
     // Use this for initialization
@@ -60,7 +61,14 @@ public class Hero : PhysicsObjectBasic, ICharacter
             inventoryAttributes.goldAmount++;
             second = 1f;
         }
-
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            if (!gameObject.GetComponent<AudioSource>().isPlaying&&!PlayStep)
+            {
+                PlayStep = true;
+                StartCoroutine(PlaySteps(0.065f));
+            }
+        }
         var move=movementManager.GetHorizontalMovementVector();
         velocity = movementManager.GetJumpManagementVector(this);
         animatorManager.ExecuteFlipSprite(move.x,this);
@@ -107,6 +115,14 @@ public class Hero : PhysicsObjectBasic, ICharacter
 
 
         }
+    }
+    IEnumerator PlaySteps(float time)
+    {
+        yield return new WaitForSeconds(time);
+            gameObject.GetComponent<AudioSource>().clip = gameObject.GetComponent<ICharacter>().GetVitalityAttributes().StepSound;
+            gameObject.GetComponent<AudioSource>().Play();
+            PlayStep = false;
+        
     }
     private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
     {

@@ -25,6 +25,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
     SkillAttributes skillAttributes = new SkillAttributes();
     public IAttack basicAttack;
     public IVitalityManager vitalityManager = new VitalityManager();
+    private bool PlayStep;
     #endregion
 
     // Use this for initialization
@@ -39,6 +40,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
         Physics2D.IgnoreLayerCollision(14, 14);
         Physics2D.IgnoreLayerCollision(15, 15);
+       
     }
 
     protected override void ComputeVelocity()
@@ -47,7 +49,14 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         animatorManager.ExecuteFlipSprite(move.x, this);
         vitalityAttributes.UpdateHealtheSlider(gameObject);
         basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
-
+        if (move.x>0.1f)
+        {
+            if (!gameObject.GetComponent<AudioSource>().isPlaying && !PlayStep)
+            {
+                PlayStep = true;
+                StartCoroutine(PlaySteps(0.065f));
+            }
+        }
         var basicAttackDamagerAttributes = basicAttack.GetDamageAttributes();
         List<IDamagable> targets = basicAttack.GetTargets();
         for (int i = 0; i < targets.Count; i++)
@@ -60,7 +69,14 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
         }
         movementManager.UpdateTargetVelocity(move, this);
     }
+    IEnumerator PlaySteps(float time)
+    {
+        yield return new WaitForSeconds(time);
+        gameObject.GetComponent<AudioSource>().clip = gameObject.GetComponent<ICharacter>().GetVitalityAttributes().StepSound;
+        gameObject.GetComponent<AudioSource>().Play();
+        PlayStep = false;
 
+    }
     public DamagerAttributes GetDamagerAttributes()
     {
         return basicAttack.GetDamageAttributes();

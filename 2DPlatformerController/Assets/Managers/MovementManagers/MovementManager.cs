@@ -27,14 +27,7 @@ public class MovementManager:IMovementManager
                 velocity.y= physicsObjectBasic.GetVelocity().y * 0.5f;
             }
         }
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            if (!physicsObjectBasic.gameObject.GetComponent<AudioSource>().isPlaying)
-            {
-                physicsObjectBasic.gameObject.GetComponent<AudioSource>().clip = physicsObjectBasic.gameObject.GetComponent<ICharacter>().GetVitalityAttributes().StepSound;
-                physicsObjectBasic.gameObject.GetComponent<AudioSource>().Play();
-            }
-        }
+       
         return velocity;
     }
 
