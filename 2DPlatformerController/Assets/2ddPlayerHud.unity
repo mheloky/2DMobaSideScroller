@@ -1708,7 +1708,7 @@ GameObject:
   - component: {fileID: 72306173}
   - component: {fileID: 72306174}
   - component: {fileID: 72306175}
-  m_Layer: 14
+  m_Layer: 9
   m_Name: Tower1
   m_TagString: Team=Team1
   m_Icon: {fileID: 0}
@@ -1768,7 +1768,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.1, y: 6.55, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 266889851}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1798,7 +1799,7 @@ CapsuleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 72306170}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1821,16 +1822,6 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 0
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 0
-    AttackCooldownInSeconds: 0
-    Radius: 0
-    Cleave: 0
-    HowFatItIs: 0
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 0
-    clip: {fileID: 0}
   vitalityAttributes:
     isHero: 0
     MaxHP: 0
@@ -1843,9 +1834,17 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     clip: {fileID: 0}
     StepSound: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
     Team: 
     OpossiteTeamLayer: 0
+  target: {fileID: 0}
+  line: {fileID: 277400007}
 --- !u!1 &73009521
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,16 +2122,6 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 0
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 0
-    AttackCooldownInSeconds: 0
-    Radius: 0
-    Cleave: 0
-    HowFatItIs: 0
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 0
-    clip: {fileID: 0}
   vitalityAttributes:
     isHero: 0
     MaxHP: 0
@@ -2145,9 +2134,17 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     clip: {fileID: 0}
     StepSound: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
     Team: 
     OpossiteTeamLayer: 0
+  target: {fileID: 0}
+  line: {fileID: 0}
 --- !u!1 &76834063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,16 +2936,6 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 0
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 0
-    AttackCooldownInSeconds: 0
-    Radius: 0
-    Cleave: 0
-    HowFatItIs: 0
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 0
-    clip: {fileID: 0}
   vitalityAttributes:
     isHero: 0
     MaxHP: 0
@@ -2961,9 +2948,17 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     clip: {fileID: 0}
     StepSound: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
     Team: 
     OpossiteTeamLayer: 0
+  target: {fileID: 0}
+  line: {fileID: 0}
 --- !u!50 &98993760
 Rigidbody2D:
   serializedVersion: 4
@@ -4634,7 +4629,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 169649239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.7, y: -1.42, z: -0.11}
+  m_LocalPosition: {x: -37.04, y: -1.28, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 741822284}
@@ -10486,6 +10481,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &266889850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 266889851}
+  - component: {fileID: 266889852}
+  - component: {fileID: 266889853}
+  m_Layer: 9
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &266889851
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266889850}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2287014, y: 2.2286975, z: 7.8004417}
+  m_Children: []
+  m_Father: {fileID: 72306172}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &266889852
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266889850}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &266889853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266889850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198b588025002243813f9c7c40b2c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &268443208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10562,6 +10614,123 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &277400006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 277400008}
+  - component: {fileID: 277400007}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!120 &277400007
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 277400006}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 25
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    serializedVersion: 2
+    widthMultiplier: 0.2
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    generateLightingData: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+--- !u!4 &277400008
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 277400006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.7457144, y: -1.3285712, z: -3.443}
+  m_LocalScale: {x: 0.28571424, y: 0.28571424, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1316646775}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &278702051
 Prefab:
   m_ObjectHideFlags: 0
@@ -23770,7 +23939,7 @@ MonoBehaviour:
     canvas: {fileID: 0}
     audioSource: {fileID: 0}
     clip: {fileID: 8300000, guid: b6c2cde217d67a84aa9947f17353197b, type: 3}
-    StepSound: {fileID: 0}
+    StepSound: {fileID: 8300000, guid: 5c7ddc6ca8a4a33458f288dffc1ac564, type: 3}
   experienceAttribute:
     experience: 10
     expToLevelUp: 100
@@ -26419,16 +26588,6 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 0
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 0
-    AttackCooldownInSeconds: 0
-    Radius: 0
-    Cleave: 0
-    HowFatItIs: 0
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 0
-    clip: {fileID: 0}
   vitalityAttributes:
     isHero: 0
     MaxHP: 0
@@ -26441,9 +26600,17 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     clip: {fileID: 0}
     StepSound: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
     Team: 
     OpossiteTeamLayer: 0
+  target: {fileID: 0}
+  line: {fileID: 0}
 --- !u!70 &713325310
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -55079,7 +55246,7 @@ GameObject:
   - component: {fileID: 1316646773}
   - component: {fileID: 1316646772}
   - component: {fileID: 1316646771}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tower2 (1)
   m_TagString: Team=Team2
   m_Icon: {fileID: 0}
@@ -55100,31 +55267,30 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 0
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 0
-    AttackCooldownInSeconds: 0
-    Radius: 0
-    Cleave: 0
-    HowFatItIs: 0
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 0
-    clip: {fileID: 0}
   vitalityAttributes:
     isHero: 0
-    MaxHP: 0
-    HP: 0
+    MaxHP: 300
+    HP: 300
     IsInvincible: 0
-    SliderToLoad: {fileID: 0}
-    height: 0
+    SliderToLoad: {fileID: 114732496606847216, guid: 3eff70e8afa055040b9aacea3fdc1407,
+      type: 2}
+    height: 2
     HealthSlider: {fileID: 0}
     canvas: {fileID: 0}
     audioSource: {fileID: 0}
     clip: {fileID: 0}
     StepSound: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
-    Team: 
-    OpossiteTeamLayer: 0
+    Team: Team2
+    OpossiteTeamLayer: 9
+  target: {fileID: 0}
+  line: {fileID: 277400007}
 --- !u!50 &1316646772
 Rigidbody2D:
   serializedVersion: 4
@@ -55151,14 +55317,14 @@ CapsuleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1316646770}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21646573, y: 0}
-  m_Size: {x: 0.07228613, y: 1.1699998}
+  m_Offset: {x: 0, y: -0.3}
+  m_Size: {x: 0.22, y: 2}
   m_Direction: 0
 --- !u!212 &1316646774
 SpriteRenderer:
@@ -55213,7 +55379,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.11, y: 4.65, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1500333921}
+  - {fileID: 277400008}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -59817,6 +59985,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1500333920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1500333921}
+  - component: {fileID: 1500333923}
+  - component: {fileID: 1500333922}
+  m_Layer: 8
+  m_Name: Sphere (1)
+  m_TagString: Team=Team2
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1500333921
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1500333920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.2287028, y: 2.228697, z: 7.80044}
+  m_Children: []
+  m_Father: {fileID: 1316646775}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500333922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1500333920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198b588025002243813f9c7c40b2c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 1316646771}
+--- !u!58 &1500333923
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1500333920}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1504667046
 GameObject:
   m_ObjectHideFlags: 0
@@ -75496,7 +75721,7 @@ GameObject:
   - component: {fileID: 1794818525}
   - component: {fileID: 1794818524}
   - component: {fileID: 1794818523}
-  m_Layer: 14
+  m_Layer: 8
   m_Name: Tower1 (2)
   m_TagString: Team=Team1
   m_Icon: {fileID: 0}
@@ -75517,16 +75742,6 @@ MonoBehaviour:
   movementAttributes:
     MaxSpeed: 0
     JumpTakeOffSpeed: 0
-  damagableAttributes:
-    AttackDamage: 0
-    AttackCooldownInSeconds: 0
-    Radius: 0
-    Cleave: 0
-    HowFatItIs: 0
-    ToAttack:
-      serializedVersion: 2
-      m_Bits: 0
-    clip: {fileID: 0}
   vitalityAttributes:
     isHero: 0
     MaxHP: 0
@@ -75539,9 +75754,17 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     clip: {fileID: 0}
     StepSound: {fileID: 0}
+  experienceAttribute:
+    experience: 10
+    expToLevelUp: 100
+    level: 0
+    canUpgrade: 0
+    upgradePoints: 0
   teamAttributes:
     Team: 
     OpossiteTeamLayer: 0
+  target: {fileID: 0}
+  line: {fileID: 0}
 --- !u!70 &1794818524
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

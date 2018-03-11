@@ -213,7 +213,7 @@ MonoBehaviour:
     canvas: {fileID: 0}
     audioSource: {fileID: 0}
     clip: {fileID: 8300000, guid: b6c2cde217d67a84aa9947f17353197b, type: 3}
-    StepSound: {fileID: 0}
+    StepSound: {fileID: 8300000, guid: 5c7ddc6ca8a4a33458f288dffc1ac564, type: 3}
   experienceAttribute:
     experience: 0
     expToLevelUp: 0

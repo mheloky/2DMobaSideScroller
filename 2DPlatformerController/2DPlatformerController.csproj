@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -340,6 +342,7 @@
     <Compile Include="Assets\Abilities.cs" />
     <Compile Include="Assets\Attacks\BasicAttack.cs" />
     <Compile Include="Assets\Attacks\IAttack.cs" />
+    <Compile Include="Assets\attackTower.cs" />
     <Compile Include="Assets\Attributes\DamagerAttributes.cs" />
     <Compile Include="Assets\Attributes\ExperienceAttributes.cs" />
     <Compile Include="Assets\Attributes\InventoryAttributes.cs" />
@@ -371,8 +374,10 @@
     <Compile Include="Assets\Managers\AnimationManagers\AnimatorManagerHero.cs" />
     <Compile Include="Assets\Managers\AnimationManagers\IAnimatorManager.cs" />
     <Compile Include="Assets\Managers\AttackManagers\CreepAttackManager.cs" />
+    <Compile Include="Assets\Managers\AttackManagers\TowerAttackManager.cs" />
     <Compile Include="Assets\Managers\AttackManagers\HeroAttackManager.cs" />
     <Compile Include="Assets\Managers\AttackManagers\ICreepAttackManager.cs" />
+    <Compile Include="Assets\Managers\AttackManagers\ITowerAttackManager .cs" />
     <Compile Include="Assets\Managers\AttackManagers\IHeroAttackManager.cs" />
     <Compile Include="Assets\Managers\CollisionManagers\CollisionDetectionManager.cs" />
     <Compile Include="Assets\Managers\CollisionManagers\ICollisionDetectionManager.cs" />

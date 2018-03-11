@@ -27,25 +27,25 @@ namespace Assets.Attributes
         public void UpdateHealtheSlider(GameObject gameObject)
         {
             HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + height, gameObject.transform.position.z);
-            HealthSlider.value = HP;
+            HealthSlider.value = HP/ gameObject.GetComponent<ICharacter>().GetVitalityAttributes().MaxHP*100;
             ColorBlock cb = HealthSlider.colors;
-            if (HP > (MaxHP * (2f / 3f)))
+            if (HP > (gameObject.GetComponent<ICharacter>().GetVitalityAttributes().MaxHP * (2f / 3f)))
             {
                 cb.normalColor = Color.green;
                 HealthSlider.colors = cb;
             }
-            else if (HP > (MaxHP * (1f / 3f)))
+            else if (HP > (gameObject.GetComponent<ICharacter>().GetVitalityAttributes().MaxHP * (1f / 3f)))
             {
                 cb.normalColor = Color.yellow;
                 HealthSlider.colors = cb;
             }
-            else if (HP > MaxHP * (1f /6f)) 
+            else if (HP > gameObject.GetComponent<ICharacter>().GetVitalityAttributes().MaxHP * (1f /6f)) 
             {
                 cb.normalColor = Color.red;
                 HealthSlider.colors = cb;
             }
             
-            else if (HP < MaxHP*(1f/6f))
+            else if (HP < gameObject.GetComponent<ICharacter>().GetVitalityAttributes().MaxHP * (1f/6f))
             {
                 cb.normalColor = new Color(0.4f,0,0);
                 HealthSlider.colors = cb;
