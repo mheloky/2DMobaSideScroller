@@ -12,6 +12,7 @@ public class Abilities : MonoBehaviour {
     bool LaserBeingUsed;
     private GameObject laser;
     bool IsPlayerCasting;
+    bool ShieldHasCd;
     public Sprite SpecialAttackSprite;
     // Use this for initialization
     void Start () {
@@ -20,12 +21,12 @@ public class Abilities : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyUp(KeyCode.Alpha2) && !LaserCd && !IsPlayerCasting && IsPlayerShown)
+        if (Input.GetKeyUp(KeyCode.Alpha2) && !LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd)
         {
                 StartCoroutine(MakeSpriteInvis(gameObject.GetComponent<SpriteRenderer>()));
                 hero.vitalityAttributes.HealthSlider.gameObject.SetActive(false);
         }
-        if (Input.GetKeyUp(KeyCode.Alpha3) &&!LaserCd && !IsPlayerCasting && IsPlayerShown)
+        if (Input.GetKeyUp(KeyCode.Alpha3) &&!LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd)
         {
             Target = hero.basicAttack.GetTargets()[0].gameObject();
             StartCoroutine(WaitCD( 5f));
@@ -34,7 +35,15 @@ public class Abilities : MonoBehaviour {
             laser.transform.position = Target.transform.position;
             StartCoroutine(DeployLaser());
         }
-        if (Input.GetKeyUp(KeyCode.Alpha1) && !LaserCd && !IsPlayerCasting && IsPlayerShown)
+        if(Input.GetKeyUp(KeyCode.Alpha4) && !LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd)
+        {
+            ShieldHasCd = true;
+            hero.revives = 2;
+            hero.Shields[0].SetActive(true);
+            hero.Shields[1].SetActive(true);
+            StartCoroutine(Shields());
+        }
+            if (Input.GetKeyUp(KeyCode.Alpha1) && !LaserCd && !IsPlayerCasting && IsPlayerShown&&!ShieldHasCd)
         {
             StartCoroutine(SpecialAttack());
         }
@@ -42,6 +51,14 @@ public class Abilities : MonoBehaviour {
         {
             laser.transform.position = Vector3.Lerp(laser.transform.position, Target.transform.position, Time.deltaTime * 1f);
         }
+    }
+    IEnumerator Shields()
+    {
+        yield return new WaitForSeconds(3f);
+        hero.revives = 0;
+        hero.Shields[0].SetActive(false);
+        hero.Shields[1].SetActive(false);
+        ShieldHasCd = false;
     }
     IEnumerator SpecialAttack()
     {

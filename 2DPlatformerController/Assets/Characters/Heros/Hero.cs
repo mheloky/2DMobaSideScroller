@@ -31,6 +31,9 @@ public class Hero : PhysicsObjectBasic, ICharacter
 	public GameObject particalSystem;
     bool PlayStep;
     public bool cannotWalk;
+    public int revives;
+    [Header("Have at least 2 objects here")]
+    public GameObject[] Shields;
 // 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
 
     // Use this for initialization
@@ -58,6 +61,13 @@ public class Hero : PhysicsObjectBasic, ICharacter
     float second = 1f;   
     protected override void ComputeVelocity()
     {
+        if (vitalityAttributes.HP <= 1 && revives > 0)
+        {
+            vitalityAttributes.HP = 20;
+            Shields[revives-1].SetActive(false);
+            revives--;
+
+        }
         if (!cannotWalk)
         {
             second -= Time.deltaTime;
