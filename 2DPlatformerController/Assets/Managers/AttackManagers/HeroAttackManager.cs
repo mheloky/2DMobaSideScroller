@@ -28,7 +28,6 @@ public class HeroAttackManager : IHeroAttackManager
         attack.GetDamageAttributes().Cleave = 2;
         attack.GetDamageAttributes().HowFatItIs = 1;
         attack.GetDamageAttributes().Radius = 2;
-        attack.GetDamageAttributes().AttackDamage = 10;
         attack.GetDamageAttributes().AttackCooldownInSeconds = 10;
         return attack;
     }

@@ -18,9 +18,10 @@ public class Tower : PhysicsObjectBasic, ICharacter
     public ExperienceAttribute experienceAttribute = new ExperienceAttribute();
     public TeamAttributes teamAttributes = new TeamAttributes();
     public TowerAttackManager towerAttackManager = new TowerAttackManager();
-    public GameObject target;
+    private GameObject target;
     bool hasCD;
     public LineRenderer line;
+    public GameObject Spark;
     //private IAttac
     #endregion
     // Use this for initialization
@@ -41,6 +42,22 @@ public class Tower : PhysicsObjectBasic, ICharacter
         vitalityAttributes.UpdateHealtheSlider(gameObject);
         if (target != null)
        Attack();
+        float boxSize=10;
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position,new Vector2(boxSize, boxSize),0);
+        Debug.DrawLine(transform.position, new Vector3(transform.position.x - boxSize/2, transform.position.y, transform.position.z));
+        int i = 0;
+        while (i < hitColliders.Length)
+        {
+            if (hitColliders[i].gameObject.layer == teamAttributes.OpossiteTeamLayer)
+            {
+                target = hitColliders[i].gameObject;
+                Debug.Log("EnemyEntered");
+                break;
+            }
+            Debug.Log("EnemyNotEntered");
+            target = null;
+            i++;
+        }
     }
     void Attack()
     {
@@ -49,11 +66,14 @@ public class Tower : PhysicsObjectBasic, ICharacter
             hasCD = true;
             target.GetComponent<IDamagable>().GetVitalityAttributes().HP -= basicAttack.GetDamageAttributes().AttackDamage;
             line.SetPosition(0, target.transform.position);
-            line.SetPosition(1, transform.position);
-            StartCoroutine(CoolDown());
+            line.SetPosition(1, new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z+10));
+            GameObject ParticleSpark = Instantiate(Spark);
+            ParticleSpark.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z + 5);
+            ParticleSpark.GetComponent<Spark>().target = target.transform;
+            StartCoroutine(CoolDown(ParticleSpark));
         }
     }
-    IEnumerator CoolDown()
+    IEnumerator CoolDown(GameObject Spark)
     {
         yield return new WaitForSeconds(0.5f);
         line.SetPosition(0, new Vector2(1111, 1111));
@@ -119,11 +139,11 @@ public class Tower : PhysicsObjectBasic, ICharacter
 
     public Animator GetAnimator()
     {
-        throw new NotImplementedException();
+        return null;
     }
 
     public MovementAttributes GetMovementAttributes()
     {
-        throw new NotImplementedException();
+        return null;
     }
 }

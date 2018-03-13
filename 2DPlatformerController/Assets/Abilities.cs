@@ -11,6 +11,8 @@ public class Abilities : MonoBehaviour {
     bool LaserCd=false;
     bool LaserBeingUsed;
     private GameObject laser;
+    bool IsPlayerCasting;
+    public Sprite SpecialAttackSprite;
     // Use this for initialization
     void Start () {
         hero = gameObject.GetComponent<Hero>();
@@ -18,12 +20,12 @@ public class Abilities : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyUp(KeyCode.Alpha2)&&IsPlayerShown)
+        if (Input.GetKeyUp(KeyCode.Alpha2) && !LaserCd && !IsPlayerCasting && IsPlayerShown)
         {
                 StartCoroutine(MakeSpriteInvis(gameObject.GetComponent<SpriteRenderer>()));
                 hero.vitalityAttributes.HealthSlider.gameObject.SetActive(false);
         }
-        if (Input.GetKeyUp(KeyCode.Alpha3) &&!LaserCd)
+        if (Input.GetKeyUp(KeyCode.Alpha3) &&!LaserCd && !IsPlayerCasting && IsPlayerShown)
         {
             Target = hero.basicAttack.GetTargets()[0].gameObject();
             StartCoroutine(WaitCD( 5f));
@@ -32,10 +34,37 @@ public class Abilities : MonoBehaviour {
             laser.transform.position = Target.transform.position;
             StartCoroutine(DeployLaser());
         }
+        if (Input.GetKeyUp(KeyCode.Alpha1) && !LaserCd && !IsPlayerCasting && IsPlayerShown)
+        {
+            StartCoroutine(SpecialAttack());
+        }
         if (LaserBeingUsed)
         {
             laser.transform.position = Vector3.Lerp(laser.transform.position, Target.transform.position, Time.deltaTime * 1f);
         }
+    }
+    IEnumerator SpecialAttack()
+    {
+        hero.GetComponent<ICharacter>().GetAnimator().enabled = false;
+        hero.cannotWalk = true;
+        hero.GetComponent<SpriteRenderer>().sprite = SpecialAttackSprite;
+
+        yield return new WaitForSeconds(1f);
+        hero.cannotWalk = false;
+        hero.GetComponent<ICharacter>().GetAnimator().enabled = true;
+        hero.GetComponent<ICharacter>().GetAnimator().Play("Attack");
+        GameObject ParticleSpark = Instantiate(hero.particalSystem);
+        IDamagable trgt = hero.basicAttack.GetTargets()[0];
+        ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z + 5);
+        attack();
+        yield return new WaitForSeconds(0.2f);
+        Destroy(ParticleSpark);
+
+    }
+    void attack()
+    {
+        IDamagable trgt = hero.basicAttack.GetTargets()[0];
+        hero.dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), hero.specialAttack);
     }
     IEnumerator DeployLaser()
     {

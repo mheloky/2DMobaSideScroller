@@ -20,7 +20,7 @@ namespace Assets.Attributes
         public Slider HealthSlider;
         [HideInInspector]
         public GameObject canvas;
-        [HideInInspector]
+
         public AudioSource audioSource;
         public AudioClip clip;
         public AudioClip StepSound;

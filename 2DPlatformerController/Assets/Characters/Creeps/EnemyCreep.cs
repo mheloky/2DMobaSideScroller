@@ -54,7 +54,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
             if (!gameObject.GetComponent<AudioSource>().isPlaying && !PlayStep)
             {
                 PlayStep = true;
-                StartCoroutine(PlaySteps(0.065f));
+                StartCoroutine(PlaySteps(0.15f));
             }
         }
         var basicAttackDamagerAttributes = basicAttack.GetDamageAttributes();

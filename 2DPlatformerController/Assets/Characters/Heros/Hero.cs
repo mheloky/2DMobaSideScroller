@@ -30,6 +30,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
 //
 	public GameObject particalSystem;
     bool PlayStep;
+    public bool cannotWalk;
 // 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
 
     // Use this for initialization
@@ -46,74 +47,83 @@ public class Hero : PhysicsObjectBasic, ICharacter
         animatorManager = new AnimatorManagerHero();
         animator = GetComponent<Animator>();
         basicAttack.GetDamageAttributes().clip = vitalityAttributes.clip;
+        specialAttack.GetDamageAttributes().clip = vitalityAttributes.clip;
         vitalityAttributes.canvas = GameObject.Find("CanvasWorld");
         vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
-        Physics2D.IgnoreLayerCollision(14, 14);
+       
+        Physics2D.IgnoreLayerCollision(8, 9);
         ShellRadius = .3f;
 
     }
     float second = 1f;   
     protected override void ComputeVelocity()
     {
-        second -= Time.deltaTime;
-        if(second <= 0)
+        if (!cannotWalk)
         {
-            inventoryAttributes.goldAmount++;
-            second = 1f;
-        }
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            if (!gameObject.GetComponent<AudioSource>().isPlaying&&!PlayStep)
+            second -= Time.deltaTime;
+            if (second <= 0)
             {
-                PlayStep = true;
-                StartCoroutine(PlaySteps(0.065f));
+                inventoryAttributes.goldAmount++;
+                second = 1f;
             }
-        }
-        var move=movementManager.GetHorizontalMovementVector();
-        velocity = movementManager.GetJumpManagementVector(this);
-        animatorManager.ExecuteFlipSprite(move.x,this);
-        animatorManager.UpdateVelocityParametrer(this);
-        basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
-        vitalityAttributes.UpdateHealtheSlider(gameObject);
-        movementManager.UpdateTargetVelocity(move, this);
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
-            if (basicAttackTargets[0] != null)
+            if (Input.GetAxis("Horizontal") != 0)
             {
-
-                for (int i = 0; i < basicAttackTargets.Count; i++)
+                if (!gameObject.GetComponent<AudioSource>().isPlaying && !PlayStep)
                 {
-                    if (basicAttackTargets[i] != null)
-                    {
-// HEAD
-
-//
-                        
-;
-                        Debug.Log(basicAttackTargets[i].gameObject().name);
-// 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
-                        IDamagable target = basicAttackTargets[i];
-                        Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
-                    }
-
+                    PlayStep = true;
+                    StartCoroutine(PlaySteps(0.1f));
                 }
             }
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            int expToAdd = UnityEngine.Random.Range(20, 100);
-            experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
-            if (experienceAttribute.canUpgrade)
-                PlayerHUD.playerHUD.SetActive(true);
-            inventoryAttributes.goldAmount += 200;
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
+            var move = movementManager.GetHorizontalMovementVector();
 
-            ShopMenuUI.shopMenuUI.SetActive(!(ShopMenuUI.shopMenuUI.activeSelf));
+            velocity = movementManager.GetJumpManagementVector(this);
+            animatorManager.ExecuteFlipSprite(move.x, this);
+            animatorManager.UpdateVelocityParametrer(this);
+            basicAttack.SetTargets(dmgManager.GetTargetsInRange(this));
+            vitalityAttributes.UpdateHealtheSlider(gameObject);
+
+            movementManager.UpdateTargetVelocity(move, this);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(Attacking());
+                List<IDamagable> basicAttackTargets = basicAttack.GetTargets();
+                if (basicAttackTargets[0] != null)
+                {
+
+                    for (int i = 0; i < basicAttackTargets.Count; i++)
+                    {
+                        if (basicAttackTargets[i] != null)
+                        {
+                            // HEAD
+
+                            //
+
+                            ;
+                            Debug.Log(basicAttackTargets[i].gameObject().name);
+                            // 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
+                            IDamagable target = basicAttackTargets[i];
+                            Attack(target, gameObject.GetComponent<Rigidbody2D>(), basicAttack);
+                        }
+
+                    }
+                }
+
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                int expToAdd = UnityEngine.Random.Range(20, 100);
+                experienceManager.AddExperience(experienceAttribute, experienceAttribute.experience + expToAdd);
+                if (experienceAttribute.canUpgrade)
+                    PlayerHUD.playerHUD.SetActive(true);
+                inventoryAttributes.goldAmount += 200;
+            }
+            else if (Input.GetKeyDown(KeyCode.P))
+            {
+
+                ShopMenuUI.shopMenuUI.SetActive(!(ShopMenuUI.shopMenuUI.activeSelf));
 
 
+            }
         }
     }
     IEnumerator PlaySteps(float time)
@@ -130,7 +140,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z+5);
         StartCoroutine(DestroySpark(ParticleSpark));
         dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
-        StartCoroutine(Attacking());
+
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
         vitalityManager.DestroyIfHPIsZero(this);
     //    animatorManager.ExecuteAttackAnimation(this);
@@ -149,9 +159,8 @@ public class Hero : PhysicsObjectBasic, ICharacter
     IEnumerator Attacking()
     {
         this.GetComponent<ICharacter>().GetAnimator().Play("Attack");
-        this.GetComponent<ICharacter>().GetAnimator().SetBool("basicAttack", true);
         yield return new WaitForSeconds(0.5f);
-        this.GetComponent<ICharacter>().GetAnimator().SetBool("basicAttack", false);
+
     }
     /*
     public void BigAbility()
