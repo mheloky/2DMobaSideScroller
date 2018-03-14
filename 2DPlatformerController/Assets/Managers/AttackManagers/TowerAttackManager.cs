@@ -10,7 +10,7 @@ public class TowerAttackManager : ITowerAttackManager
         LayerMask masks;
         masks = 1 << team;
         attack.GetDamageAttributes().ToAttack = masks;
-        attack.GetDamageAttributes().AttackDamage = 5;
+        attack.GetDamageAttributes().AttackDamage = 15;
         attack.GetDamageAttributes().Cleave = 1;
         attack.GetDamageAttributes().HowFatItIs = 1;
         attack.GetDamageAttributes().Radius = 2;

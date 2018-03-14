@@ -30,6 +30,10 @@ public class DamageManager:IDamageManager
                     Attacker.GetVitalityAttributes().MP += character.GetVitalityAttributes().MpGivenOnDeath;
                     return true;
                 }
+                else
+                {
+                    Attacker.GetVitalityAttributes().MP = Attacker.GetVitalityAttributes().MaxMP;
+                }
         }
 
         return false; 

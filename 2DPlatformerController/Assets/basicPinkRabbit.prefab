@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814372210835400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.051685, y: 5.1207542, z: 0}
+  m_LocalPosition: {x: 27.35329, y: 5.0362787, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -218,7 +218,7 @@ MonoBehaviour:
     audioSource: {fileID: 0}
     clip: {fileID: 8300000, guid: b6c2cde217d67a84aa9947f17353197b, type: 3}
     StepSound: {fileID: 8300000, guid: 5c7ddc6ca8a4a33458f288dffc1ac564, type: 3}
-    MpGivenOnDeath: 0
+    MpGivenOnDeath: 20
   experienceAttribute:
     experience: 0
     expToLevelUp: 0

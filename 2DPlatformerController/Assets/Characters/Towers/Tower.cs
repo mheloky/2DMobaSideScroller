@@ -64,7 +64,18 @@ public class Tower : PhysicsObjectBasic, ICharacter
         if (!hasCD)
         {
             hasCD = true;
-            target.GetComponent<IDamagable>().GetVitalityAttributes().HP -= basicAttack.GetDamageAttributes().AttackDamage;
+            if (!(target.GetComponent<IDamagable>().GetVitalityAttributes().HP - basicAttack.GetDamageAttributes().AttackDamage <= 0))
+            {
+                target.GetComponent<IDamagable>().GetVitalityAttributes().HP -= basicAttack.GetDamageAttributes().AttackDamage;
+            }
+            else if (target.GetComponent<Hero>() != null&&target.GetComponent<Hero>().revives>0)
+            {
+                target.GetComponent<IDamagable>().GetVitalityAttributes().HP = 1;
+            }
+            else
+            {
+                target.GetComponent<IDamagable>().GetVitalityAttributes().HP -= basicAttack.GetDamageAttributes().AttackDamage;
+            }
             line.SetPosition(0, target.transform.position);
             line.SetPosition(1, new Vector3(transform.position.x, transform.position.y+1.5f, transform.position.z+10));
             GameObject ParticleSpark = Instantiate(Spark);
