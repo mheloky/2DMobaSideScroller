@@ -14,6 +14,7 @@ public class Abilities : MonoBehaviour {
     bool IsPlayerCasting;
     bool ShieldHasCd;
     public Sprite SpecialAttackSprite;
+    public int[] ManaCost;
     // Use this for initialization
     void Start () {
         hero = gameObject.GetComponent<Hero>();
@@ -21,12 +22,14 @@ public class Abilities : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyUp(KeyCode.Alpha2) && !LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd)
+        if (Input.GetKeyUp(KeyCode.Alpha2) && !LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd&&hero.vitalityAttributes.MP-ManaCost[1]>=0)
         {
                 StartCoroutine(MakeSpriteInvis(gameObject.GetComponent<SpriteRenderer>()));
                 hero.vitalityAttributes.HealthSlider.gameObject.SetActive(false);
+            hero.vitalityAttributes.ManaSlider.gameObject.SetActive(false);
+            hero.vitalityAttributes.MP -= ManaCost[1];
         }
-        if (Input.GetKeyUp(KeyCode.Alpha3) &&!LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd)
+        if (Input.GetKeyUp(KeyCode.Alpha3) &&!LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd&&hero.vitalityAttributes.MP - ManaCost[2] >= 0)
         {
             Target = hero.basicAttack.GetTargets()[0].gameObject();
             StartCoroutine(WaitCD( 5f));
@@ -34,17 +37,20 @@ public class Abilities : MonoBehaviour {
             laser = Instantiate(LaserImage);
             laser.transform.position = Target.transform.position;
             StartCoroutine(DeployLaser());
+            hero.vitalityAttributes.MP -=ManaCost[2];
         }
-        if(Input.GetKeyUp(KeyCode.Alpha4) && !LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd)
+        if(Input.GetKeyUp(KeyCode.Alpha4) && !LaserCd && !IsPlayerCasting && IsPlayerShown && !ShieldHasCd && hero.vitalityAttributes.MP - ManaCost[3] >= 0)
         {
             ShieldHasCd = true;
             hero.revives = 2;
             hero.Shields[0].SetActive(true);
             hero.Shields[1].SetActive(true);
             StartCoroutine(Shields());
+            hero.vitalityAttributes.MP -= ManaCost[3];
         }
-            if (Input.GetKeyUp(KeyCode.Alpha1) && !LaserCd && !IsPlayerCasting && IsPlayerShown&&!ShieldHasCd)
+            if (Input.GetKeyUp(KeyCode.Alpha1) && !LaserCd && !IsPlayerCasting && IsPlayerShown&&!ShieldHasCd && hero.vitalityAttributes.MP - ManaCost[0] >= 0)
         {
+            hero.vitalityAttributes.MP -= ManaCost[0];
             StartCoroutine(SpecialAttack());
         }
         if (LaserBeingUsed)
@@ -81,7 +87,7 @@ public class Abilities : MonoBehaviour {
     void attack()
     {
         IDamagable trgt = hero.basicAttack.GetTargets()[0];
-        hero.dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), hero.specialAttack);
+        hero.dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), hero.specialAttack,gameObject.GetComponent<ICharacter>());
     }
     IEnumerator DeployLaser()
     {
@@ -133,6 +139,7 @@ public class Abilities : MonoBehaviour {
         else
         {
             hero.vitalityAttributes.HealthSlider.gameObject.SetActive(true);
+            hero.vitalityAttributes.ManaSlider.gameObject.SetActive(true);
             IsPlayerShown = true;
         }
     }

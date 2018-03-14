@@ -95,7 +95,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
     private void Attack(IDamagable trgt, Rigidbody2D primaryCollider, IAttack attack)
     {
 
-        dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
+        dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack, gameObject.GetComponent<ICharacter>());
         if (this.gameObject.activeInHierarchy)
         {
             StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
@@ -105,7 +105,7 @@ public class EnemyCreep : PhysicsObjectBasic, ICharacter
 
     public void TakeDamage(int damage)
     {
-        var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(this, basicAttack);
+        var shouldBeDestroyed = dmgManager.DistributeDamageWithInvincible(this, basicAttack, gameObject.GetComponent<ICharacter>());
         vitalityManager.DestroyIfHPIsZero(this, shouldBeDestroyed);
     }
 

@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814372210835400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.096832, y: 5.0441856, z: 0}
+  m_LocalPosition: {x: 27.051685, y: 5.1207542, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -208,12 +208,17 @@ MonoBehaviour:
     IsInvincible: 0
     SliderToLoad: {fileID: 114732496606847216, guid: 3eff70e8afa055040b9aacea3fdc1407,
       type: 2}
+    ManaSliderToLoad: {fileID: 0}
     height: 1
     HealthSlider: {fileID: 0}
+    ManaSlider: {fileID: 0}
     canvas: {fileID: 0}
+    MP: 0
+    MaxMP: 0
     audioSource: {fileID: 0}
     clip: {fileID: 8300000, guid: b6c2cde217d67a84aa9947f17353197b, type: 3}
     StepSound: {fileID: 8300000, guid: 5c7ddc6ca8a4a33458f288dffc1ac564, type: 3}
+    MpGivenOnDeath: 0
   experienceAttribute:
     experience: 0
     expToLevelUp: 0

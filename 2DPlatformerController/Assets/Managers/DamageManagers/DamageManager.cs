@@ -8,7 +8,7 @@ using Assets.Abilities;
 
 public class DamageManager:IDamageManager
 {
-    public bool DistributeDamageWithInvincible(ICharacter character, IAttack attack)
+    public bool DistributeDamageWithInvincible(ICharacter character, IAttack attack,ICharacter Attacker)
     {
         var damagableAttributes = character.GetDamagerAttributes();
         var vitalityAttributes = character.GetVitalityAttributes();
@@ -25,7 +25,11 @@ public class DamageManager:IDamageManager
             character.GetVitalityAttributes().audioSource.clip=attack.GetDamageAttributes().clip;
             character.GetVitalityAttributes().audioSource.Play();
             if (vitalityAttributes.HP <= 0)
-                return true;
+                if (Attacker.GetVitalityAttributes().MP + character.GetVitalityAttributes().MpGivenOnDeath <= Attacker.GetVitalityAttributes().MaxMP)
+                {
+                    Attacker.GetVitalityAttributes().MP += character.GetVitalityAttributes().MpGivenOnDeath;
+                    return true;
+                }
         }
 
         return false; 

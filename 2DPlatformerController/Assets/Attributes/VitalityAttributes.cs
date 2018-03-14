@@ -15,15 +15,21 @@ namespace Assets.Attributes
         public float HP;
         public bool IsInvincible;
         public Slider SliderToLoad;
+        public Slider ManaSliderToLoad;
+
         public float height;
         [HideInInspector]
         public Slider HealthSlider;
         [HideInInspector]
+        public Slider ManaSlider;
+        [HideInInspector]
         public GameObject canvas;
-
+        public float MP;
+        public float MaxMP;
         public AudioSource audioSource;
         public AudioClip clip;
         public AudioClip StepSound;
+        public float MpGivenOnDeath;
         public void UpdateHealtheSlider(GameObject gameObject)
         {
             HealthSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + height, gameObject.transform.position.z);
@@ -33,6 +39,7 @@ namespace Assets.Attributes
             {
                 cb.normalColor = Color.green;
                 HealthSlider.colors = cb;
+
             }
             else if (HP > (gameObject.GetComponent<ICharacter>().GetVitalityAttributes().MaxHP * (1f / 3f)))
             {
@@ -67,7 +74,11 @@ namespace Assets.Attributes
                 //  Destroy(gameObject);
             }
         }
-
+        public void UpdateManaSlider(GameObject gameObject)
+        {
+            ManaSlider.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + height-0.1f, gameObject.transform.position.z);
+            ManaSlider.value = MP / MaxMP * 100;
+        }
         public void RegenerateHP()
         {
 

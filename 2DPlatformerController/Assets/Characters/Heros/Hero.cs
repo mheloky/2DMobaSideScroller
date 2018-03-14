@@ -53,7 +53,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         specialAttack.GetDamageAttributes().clip = vitalityAttributes.clip;
         vitalityAttributes.canvas = GameObject.Find("CanvasWorld");
         vitalityAttributes.HealthSlider = Instantiate(vitalityAttributes.SliderToLoad, vitalityAttributes.canvas.gameObject.transform);
-       
+        vitalityAttributes.ManaSlider = Instantiate(vitalityAttributes.ManaSliderToLoad, vitalityAttributes.canvas.gameObject.transform);
         Physics2D.IgnoreLayerCollision(8, 9);
         ShellRadius = .3f;
 
@@ -61,6 +61,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
     float second = 1f;   
     protected override void ComputeVelocity()
     {
+        vitalityAttributes.UpdateHealtheSlider(gameObject);
         if (vitalityAttributes.HP <= 1 && revives > 0)
         {
             vitalityAttributes.HP = 20;
@@ -68,6 +69,8 @@ public class Hero : PhysicsObjectBasic, ICharacter
             revives--;
 
         }
+
+        vitalityAttributes.UpdateManaSlider(gameObject);
         if (!cannotWalk)
         {
             second -= Time.deltaTime;
@@ -149,7 +152,7 @@ public class Hero : PhysicsObjectBasic, ICharacter
         GameObject ParticleSpark = Instantiate(particalSystem);
         ParticleSpark.transform.position = new Vector3(trgt.gameObject().transform.position.x, trgt.gameObject().transform.position.y, trgt.gameObject().transform.position.z+5);
         StartCoroutine(DestroySpark(ParticleSpark));
-        dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack);
+        dmgManager.DistributeDamageWithInvincible(trgt.gameObject().GetComponent<ICharacter>(), attack, gameObject.GetComponent<ICharacter>());
 
         StartCoroutine(GettingAttacked(trgt.gameObject().GetComponent<SpriteRenderer>()));
         vitalityManager.DestroyIfHPIsZero(this);
