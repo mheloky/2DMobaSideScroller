@@ -22,6 +22,7 @@ public class Tower : PhysicsObjectBasic, ICharacter
     bool hasCD;
     public LineRenderer line;
     public GameObject Spark;
+    public Collider2D colliderr;
     //private IAttac
     #endregion
     // Use this for initialization
@@ -48,13 +49,17 @@ public class Tower : PhysicsObjectBasic, ICharacter
         int i = 0;
         while (i < hitColliders.Length)
         {
+            Debug.Log(gameObject.tag);
+            Debug.Log(hitColliders[i].gameObject.tag);
+            Debug.Log("WaitForEndOfFrame");
+            
             if (hitColliders[i].gameObject.layer == teamAttributes.OpossiteTeamLayer)
             {
                 target = hitColliders[i].gameObject;
                 Debug.Log("EnemyEntered");
                 break;
             }
-            Debug.Log("EnemyNotEntered");
+            //Debug.Log("EnemyNotEntered");
             target = null;
             i++;
         }
@@ -96,7 +101,14 @@ public class Tower : PhysicsObjectBasic, ICharacter
     {
         return gameObject;
     }
-
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        Debug.Log("Entered" + collider.gameObject.name);
+        if (gameObject.tag == collider.gameObject.tag)
+        {
+            Physics2D.IgnoreCollision(collider.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+        }
+    }
     public Slider GetHealthSlider()
     {
         return vitalityAttributes.HealthSlider;

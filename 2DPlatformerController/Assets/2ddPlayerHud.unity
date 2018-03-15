@@ -1849,6 +1849,7 @@ MonoBehaviour:
     OpossiteTeamLayer: 0
   line: {fileID: 277400007}
   Spark: {fileID: 0}
+  colliderr: {fileID: 0}
 --- !u!1 &73009521
 GameObject:
   m_ObjectHideFlags: 0
@@ -10391,7 +10392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 277400008}
   - component: {fileID: 277400007}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18925,7 +18926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477824436}
   - component: {fileID: 477824435}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: piq_68684_400x400 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26473,6 +26474,7 @@ MonoBehaviour:
     OpossiteTeamLayer: 0
   line: {fileID: 0}
   Spark: {fileID: 0}
+  colliderr: {fileID: 0}
 --- !u!70 &713325310
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -55164,6 +55166,7 @@ MonoBehaviour:
     OpossiteTeamLayer: 9
   line: {fileID: 277400007}
   Spark: {fileID: 1900601502310034, guid: 43e3100225c357c43a2b3134d07df7b4, type: 2}
+  colliderr: {fileID: 0}
 --- !u!50 &1316646772
 Rigidbody2D:
   serializedVersion: 4
@@ -75735,10 +75738,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1794574879}
   - component: {fileID: 1794574878}
-  - component: {fileID: 1794574877}
   - component: {fileID: 1794574876}
   - component: {fileID: 1794574875}
   - component: {fileID: 1794574874}
+  - component: {fileID: 1794574877}
   m_Layer: 8
   m_Name: Tower2 (2)
   m_TagString: Team=Team2
@@ -75869,6 +75872,7 @@ MonoBehaviour:
     OpossiteTeamLayer: 9
   line: {fileID: 1319501030}
   Spark: {fileID: 1900601502310034, guid: 43e3100225c357c43a2b3134d07df7b4, type: 2}
+  colliderr: {fileID: 0}
 --- !u!50 &1794574876
 Rigidbody2D:
   serializedVersion: 4
@@ -75889,8 +75893,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &1794574877
-CapsuleCollider2D:
+--- !u!61 &1794574877
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -75901,9 +75905,19 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3}
-  m_Size: {x: 0.22, y: 2}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 1.17}
+    newSize: {x: 0.64, y: 1.17}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 1.17}
+  m_EdgeRadius: 0
 --- !u!212 &1794574878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -76023,6 +76037,7 @@ MonoBehaviour:
     OpossiteTeamLayer: 0
   line: {fileID: 0}
   Spark: {fileID: 0}
+  colliderr: {fileID: 0}
 --- !u!70 &1794818524
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -76200,7 +76215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801537297}
   - component: {fileID: 1801537296}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: piq_68684_400x400
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78596,6 +78611,7 @@ MonoBehaviour:
     OpossiteTeamLayer: 9
   line: {fileID: 210870327}
   Spark: {fileID: 1900601502310034, guid: 43e3100225c357c43a2b3134d07df7b4, type: 2}
+  colliderr: {fileID: 0}
 --- !u!50 &1860844440
 Rigidbody2D:
   serializedVersion: 4
