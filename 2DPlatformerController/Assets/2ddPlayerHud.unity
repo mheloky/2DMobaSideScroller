@@ -74314,12 +74314,12 @@ Prefab:
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: limits.Array.data[0].y
-      value: -5.3
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: limits.Array.data[0].height
-      value: 19.7
+      value: 11.31
       objectReference: {fileID: 0}
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
@@ -74339,7 +74339,7 @@ Prefab:
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
       propertyPath: deadzone.height
-      value: 5.9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 2}
@@ -74452,6 +74452,11 @@ Prefab:
         type: 2}
       propertyPath: referenceOrthographicSize
       value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 114123390247084860, guid: 0f387d2a5577afa47b4f87e4e846f091,
+        type: 2}
+      propertyPath: deadzone.y
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f387d2a5577afa47b4f87e4e846f091, type: 2}
