@@ -22,7 +22,7 @@ public class PlayerHUD : MonoBehaviour {
     {
         hero = GameObject.Find("Hero").GetComponent<Hero>();
         playerHUD = gameObject;
-        slots = itemsParent.GetComponentsInChildren<PlayerInventorySlot>();
+        //slots = itemsParent.GetComponentsInChildren<PlayerInventorySlot>();
         playerHUD.SetActive(false);
         UpdateUI();
 

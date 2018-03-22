@@ -92,7 +92,7 @@ public class PhysicsObjectBasic : MonoBehaviour
     void Movement(Vector2 move, bool yMovement)
     {
         var distance = move.magnitude;
-        TheCollisionDetector.Detect(RigidBody, move,velocity, ShellRadius, yMovement);
+        TheCollisionDetector.Detect(RigidBody, move,velocity, ShellRadius, yMovement,false);
         //dont check collision if not moving (more efficient)
         RigidBody.position += move.normalized * TheCollisionDetector.DistanceToMove;
     }

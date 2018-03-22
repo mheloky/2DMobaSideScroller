@@ -49,7 +49,7 @@ public class CollisionDetectionManager:ICollisionDetectionManager
         MinGroundNormalY = .65f;
     }
 
-    public void Detect(Rigidbody2D rigidBody, Vector2 moveVector, Vector2 velocity, float shellRadius, bool yMovement)
+    public void Detect(Rigidbody2D rigidBody, Vector2 moveVector, Vector2 velocity, float shellRadius, bool yMovement, bool detectComponentsOnSameTeam)
     {
             _isGrounded = false;
             DistanceToMove = 0;
@@ -67,7 +67,11 @@ public class CollisionDetectionManager:ICollisionDetectionManager
                 //Get a collection of what items we will collide with
                 for (int i = 0; i < count; i++)
                 {
-                    hitBufferList.Add(hitBuffer[i]);
+                    var hbItem = hitBuffer[i];
+                    if(hbItem.rigidbody!=null && hbItem.rigidbody.gameObject.layer!=rigidBody.gameObject.layer)
+                        hitBufferList.Add(hbItem);
+                    else if(hbItem.rigidbody == null)
+                { hitBufferList.Add(hbItem); }
                 }
 
                 //For each collidind item, if the normal vector is horizontal enough (.65) then we are grounded
