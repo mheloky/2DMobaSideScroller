@@ -1,6 +1,4 @@
-﻿
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEngine;
 using System;
 using Assets.Attributes;
 using System.Collections.Generic;

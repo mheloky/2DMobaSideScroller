@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using Assets.Attributes;
 
 public interface IVitalityManager

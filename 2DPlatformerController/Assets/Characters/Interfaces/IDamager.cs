@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using Assets.Attributes;
 using UnityEngine.UI;
 public interface IDamager 

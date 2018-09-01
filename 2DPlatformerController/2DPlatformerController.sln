@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DPlatformerController", "2DPlatformerController.csproj", "{F017CDCF-CD30-2968-756E-74FD073D94F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DPlatformerController.Editor", "2DPlatformerController.Editor.csproj", "{5E5A9336-FB4F-E7FC-886F-73A23EB1FF21}"
