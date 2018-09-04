@@ -16,7 +16,6 @@ namespace Assets.Attributes
         public bool IsInvincible;
         public Slider SliderToLoad;
         public Slider ManaSliderToLoad;
-
         public float height;
         [HideInInspector]
         public Slider HealthSlider;

@@ -9,34 +9,40 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class Hero : PhysicsObjectBasic, ICharacter
 {
-    public bool canBuy { get; set; }
+
+    #region Attributes
+    SkillAttributes skillAttributes = new SkillAttributes();
+    public VitalityAttributes vitalityAttributes = new VitalityAttributes();
+    public ExperienceAttribute experienceAttribute = new ExperienceAttribute();
+    public TeamAttributes teamAttributes = new TeamAttributes();
+    public InventoryAttributes inventoryAttributes = new InventoryAttributes();
+    #endregion
+
+    #region Managers
     public DamageManager dmgManager;
     IExperienceManager experienceManager = new ExperienceManager();
-    SkillAttributes skillAttributes = new SkillAttributes();
     IMovementManager movementManager = new MovementManager();
     AnimatorManagerHero animatorManager = new AnimatorManagerHero();
     IVitalityManager vitalityManager = new VitalityManager();
     IHeroAttackManager heroAttackManager = new HeroAttackManager();
     public IInventoryManager inventoryManager = new InventoryManager();
+    #endregion
+
+    #region Components
     public IAttack basicAttack;
     public IAttack specialAttack;
-    public VitalityAttributes vitalityAttributes = new VitalityAttributes();
-    public ExperienceAttribute experienceAttribute = new ExperienceAttribute();
-    public TeamAttributes teamAttributes = new TeamAttributes();
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-// HEAD
-    public InventoryAttributes inventoryAttributes = new InventoryAttributes();
-//
-	public GameObject particalSystem;
+
+    public bool canBuy { get; set; }
+    public GameObject particalSystem;
     bool PlayStep;
     public bool cannotWalk;
     public int revives;
     [Header("Have at least 2 objects here")]
     public GameObject[] Shields;
-// 5c55ec2b2f2b92f4f36db769a2c93fcf41bd3823
+    #endregion
 
-    // Use this for initialization
     void Awake()
     {
 
@@ -56,7 +62,6 @@ public class Hero : PhysicsObjectBasic, ICharacter
         vitalityAttributes.ManaSlider = Instantiate(vitalityAttributes.ManaSliderToLoad, vitalityAttributes.canvas.gameObject.transform);
         Physics2D.IgnoreLayerCollision(8, 9);
         ShellRadius = .3f;
-
     }
     float second = 1f;   
     protected override void ComputeVelocity()

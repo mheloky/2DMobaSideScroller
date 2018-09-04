@@ -49,17 +49,11 @@ public class Tower : PhysicsObjectBasic, ICharacter
         int i = 0;
         while (i < hitColliders.Length)
         {
-            Debug.Log(gameObject.tag);
-            Debug.Log(hitColliders[i].gameObject.tag);
-            Debug.Log("WaitForEndOfFrame");
-            
             if (hitColliders[i].gameObject.layer == teamAttributes.OpossiteTeamLayer)
             {
                 target = hitColliders[i].gameObject;
-                Debug.Log("EnemyEntered");
                 break;
             }
-            //Debug.Log("EnemyNotEntered");
             target = null;
             i++;
         }
@@ -103,7 +97,6 @@ public class Tower : PhysicsObjectBasic, ICharacter
     }
     void OnCollisionEnter2D(Collision2D collider)
     {
-        Debug.Log("Entered" + collider.gameObject.name);
         if (gameObject.tag == collider.gameObject.tag)
         {
             Physics2D.IgnoreCollision(collider.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
