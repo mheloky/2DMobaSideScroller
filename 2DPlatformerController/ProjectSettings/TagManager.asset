@@ -15,14 +15,14 @@ TagManager:
   - UI
   - 
   - 
-  - Level
-  - Enemy
+  - Team2
+  - Team1
   - Usable
   - Pickup
   - IgnorePlayer
   - Player
-  - Team1
-  - Team2
+  - Enemy
+  - Level
   - 
   - 
   - 
