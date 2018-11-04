@@ -285,14 +285,13 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\2DPlatformer\Scripts\DeadzoneCamera.cs" />
     <Compile Include="Assets\Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
-    <Compile Include="Assets\AutoMoveCrate.cs" />
-    <Compile Include="Assets\CollisionManager.cs" />
-    <Compile Include="Assets\GravityForceManagercs.cs" />
-    <Compile Include="Assets\MovementManager.cs" />
-    <Compile Include="Assets\PhysicsObject.cs" />
-    <Compile Include="Assets\PhysicsObjectStatus.cs" />
-    <Compile Include="Assets\PlayerControllerManager.cs" />
-    <Compile Include="Assets\PlayerPlatformerController.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsManagers\CollisionManager.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsManagers\GravityForceManagercs.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsManagers\MovementManager.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsManagers\PlayerControllerManager.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsObjects\PhysicsObject.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsObjects\PhysicsObjectStatus.cs" />
+    <Compile Include="Assets\Assets\2DPlatformer\Scripts\PhysicsObjects\Player.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
