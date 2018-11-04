@@ -34,6 +34,11 @@ public class PhysicsObject : MonoBehaviour {
         get;
         set;
     }
+    MovementManager TheMovementManager
+    {
+        get;
+        set;
+    }
     #endregion
 
 
@@ -45,12 +50,12 @@ public class PhysicsObject : MonoBehaviour {
         ThePhysicsObjectStatus = new PhysicsObjectStatus();
         TheCollisionManager = new CollisionManager(this.GetGameObject().layer);
         ThePlayerControllerManager = new PlayerControllerManager();
+        TheMovementManager = new MovementManager();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        targetVelocity = Vector2.zero;
-        ComputeVelocity();
+      
 	}
 
     protected virtual void ComputeVelocity()
@@ -60,8 +65,10 @@ public class PhysicsObject : MonoBehaviour {
 
     void FixedUpdate()
     {
-        ThePlayerControllerManager.MoveWithCollision(this,GetComponent<Rigidbody2D>(), TheCollisionManager);
-        gravityManager.ApplyGravityWithCollision(this, rigidbody2D, TheCollisionManager);
+        targetVelocity = Vector2.zero;
+        ComputeVelocity();
+        ThePlayerControllerManager.MoveWithCollision(this,GetComponent<Rigidbody2D>(), TheCollisionManager, TheMovementManager);
+        gravityManager.ApplyGravityWithCollision(this, rigidbody2D, TheCollisionManager, TheMovementManager);
    
     }
 

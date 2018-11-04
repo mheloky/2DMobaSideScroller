@@ -8,21 +8,20 @@ namespace Physics
     {
         #region Properties
         float gravityModifier = 1f;
-        MovementManager theMovementManager;
         #endregion
 
         public GravityForceManager(PhysicsObject physicsObjects)
         {
-            theMovementManager = new MovementManager();
+            
         }
 
-        public void ApplyGravityWithCollision(PhysicsObject physicsObjects, Rigidbody2D rigidbody2D,CollisionManager collisionManager)
+        public void ApplyGravityWithCollision(PhysicsObject physicsObjects, Rigidbody2D rigidbody2D,CollisionManager collisionManager, MovementManager theMovementManager)
         {
             physicsObjects.Velocity += GetGravityVelocity();
-            ExecuteGravity(physicsObjects, rigidbody2D, collisionManager);
+            ExecuteGravity(physicsObjects, rigidbody2D, collisionManager, theMovementManager);
         }
 
-        void ExecuteGravity(PhysicsObject physicsObjects, Rigidbody2D rigidbody2D, CollisionManager collisionManager)
+        void ExecuteGravity(PhysicsObject physicsObjects, Rigidbody2D rigidbody2D, CollisionManager collisionManager, MovementManager theMovementManager)
         {
             var deltaPosition = physicsObjects.Velocity * Time.deltaTime;
             var nextMovePosition = Vector2.up * deltaPosition.y;
