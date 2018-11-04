@@ -11,6 +11,6 @@ public class AutoMoveCrate : PhysicsObject {
 	
 	// Update is called once per frame
 	void Update () {
-        this.gravityManager.targetVelocity = Vector2.left;
+       /// this.ThePlayerControllerManager.targetVelocity = Vector2.left;
 	}
 }
