@@ -14,7 +14,7 @@ public class PhysicsObject : MonoBehaviour {
         get;
         set;
     }
-    public GravityForceManager gravityManager
+    public GravityForceManager TheGravityManager
     {
         get;
         set;
@@ -46,7 +46,7 @@ public class PhysicsObject : MonoBehaviour {
     void Start () {
 
         rigidbody2D = GetComponent<Rigidbody2D>();
-        gravityManager = new GravityForceManager(this);
+        TheGravityManager = new GravityForceManager(this);
         ThePhysicsObjectStatus = new PhysicsObjectStatus();
         TheCollisionManager = new CollisionManager(this.GetGameObject().layer);
         ThePlayerControllerManager = new PlayerControllerManager();
@@ -68,7 +68,7 @@ public class PhysicsObject : MonoBehaviour {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
         ThePlayerControllerManager.MoveWithCollision(this,GetComponent<Rigidbody2D>(), TheCollisionManager, TheMovementManager);
-        gravityManager.ApplyGravityWithCollision(this, rigidbody2D, TheCollisionManager, TheMovementManager);
+        TheGravityManager.ApplyGravityWithCollision(this, rigidbody2D, TheCollisionManager, TheMovementManager);
    
     }
 
