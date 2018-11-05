@@ -12,17 +12,24 @@ public class Player : PhysicsObject {
         get;
         set;
     }
+    Animator TheAnimator
+    {
+        get;
+        set;
+    }
     #endregion
 
     private void Awake()
     {
         TheSpriteRenderer = GetComponent<SpriteRenderer>();
+        TheAnimator = GetComponent<Animator>();
     }
 
     protected override void ExecutePerFrame()
     {
         ExecuteJumpLogic();
         ExecuteFlipSpriteLogic();
+        ExecueChangeAnimationLogic();
     }
 
     #region Helper Methods
@@ -57,6 +64,12 @@ public class Player : PhysicsObject {
         }
 
         targetVelocity = move * maxSpeed;
+    }
+
+    void ExecueChangeAnimationLogic()
+    {
+        TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
+        TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x)/ maxSpeed);
     }
     #endregion
     // Update is called once per frame
