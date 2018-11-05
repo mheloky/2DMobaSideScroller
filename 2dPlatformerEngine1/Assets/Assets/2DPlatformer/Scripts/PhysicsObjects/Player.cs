@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class Player : PhysicsObject {
 
+    #region Properties
     public float maxSpeed = 7;
     public float JumpSpeed = 7;
+    SpriteRenderer TheSpriteRenderer
+    {
+        get;
+        set;
+    }
+    #endregion
 
+    private void Awake()
+    {
+        TheSpriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
-    protected override void ComputeVelocity()
+    protected override void ExecutePerFrame()
+    {
+        ExecuteJumpLogic();
+        ExecuteFlipSpriteLogic();
+    }
+
+    #region Helper Methods
+    void ExecuteJumpLogic()
     {
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxis("Horizontal");
@@ -21,12 +39,26 @@ public class Player : PhysicsObject {
         {
             Velocity.y = Velocity.y > 0 ? Velocity.y * .5f : Velocity.y;
         }
+    }
+
+    void ExecuteFlipSpriteLogic()
+    {
+        Vector2 move = Vector2.zero;
+        move.x = Input.GetAxis("Horizontal");
+        if (move.x < 0f)
+        {
+
+            TheSpriteRenderer.flipX = true;
+        }
+        if (move.x > .0f)
+        {
+
+            TheSpriteRenderer.flipX = false;
+        }
 
         targetVelocity = move * maxSpeed;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    #endregion
+    // Update is called once per frame
+
 }

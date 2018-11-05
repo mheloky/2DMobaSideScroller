@@ -41,7 +41,6 @@ public class PhysicsObject : MonoBehaviour {
     }
     #endregion
 
-
     // Use this for initialization
     void Start () {
 
@@ -52,29 +51,25 @@ public class PhysicsObject : MonoBehaviour {
         ThePlayerControllerManager = new PlayerControllerManager();
         TheMovementManager = new MovementManager();
     }
-	
-	// Update is called once per frame
-	void Update () {
-      
-	}
-
-    protected virtual void ComputeVelocity()
-    {
-
-    }
 
     void FixedUpdate()
     {
         targetVelocity = Vector2.zero;
-        ComputeVelocity();
-        ThePlayerControllerManager.MoveWithCollision(this,GetComponent<Rigidbody2D>(), TheCollisionManager, TheMovementManager);
+        ExecutePerFrame();
+        ThePlayerControllerManager.MoveWithCollision(this, GetComponent<Rigidbody2D>(), TheCollisionManager, TheMovementManager);
         TheGravityManager.ApplyGravityWithCollision(this, rigidbody2D, TheCollisionManager, TheMovementManager);
-   
+
+    }
+
+    #region Helper Methods
+    protected virtual void ExecutePerFrame()
+    {
+
     }
 
     public GameObject GetGameObject()
     {
         return gameObject;
     }
-
+    #endregion
 }
