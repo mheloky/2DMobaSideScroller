@@ -20,7 +20,8 @@ public class Player : PhysicsObject {
     #endregion
 
     private void Awake()
-    {
+    { 
+        //All Looks Good
         TheSpriteRenderer = GetComponent<SpriteRenderer>();
         TheAnimator = GetComponent<Animator>();
     }
