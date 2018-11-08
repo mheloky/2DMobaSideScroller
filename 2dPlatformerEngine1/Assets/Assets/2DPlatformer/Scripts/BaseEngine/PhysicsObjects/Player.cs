@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,6 +72,8 @@ public class Player : PhysicsObject {
     {
         TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
         TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x)/ maxSpeed);
+        TheAnimator.SetBool("IsWalking", Input.GetAxis("Horizontal")!=0f);
+        TheAnimator.SetBool("IsRunning", Input.GetAxis("Horizontal") != 0f && Math.Abs(Velocity.x)>3);
     }
     #endregion
     // Update is called once per frame
