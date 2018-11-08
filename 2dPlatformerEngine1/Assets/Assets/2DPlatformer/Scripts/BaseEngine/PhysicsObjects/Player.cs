@@ -66,11 +66,12 @@ public class Player : PhysicsObject {
         }
 
         targetVelocity = move * maxSpeed;
+        //Debug.Log(maxSpeed+":"+targetVelocity);
     }
 
     void ExecueChangeAnimationLogic()
     {
-        TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
+        //TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
         TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x)/ maxSpeed);
         TheAnimator.SetBool("IsWalking", Input.GetAxis("Horizontal")!=0f);
         TheAnimator.SetBool("IsRunning", Input.GetAxis("Horizontal") != 0f && Math.Abs(Velocity.x)>3);
