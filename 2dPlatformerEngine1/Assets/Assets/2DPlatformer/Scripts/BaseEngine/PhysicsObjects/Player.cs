@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TCPIPGame;
 
 public class Player : PhysicsObject {
 
@@ -22,6 +23,7 @@ public class Player : PhysicsObject {
 
     private void Awake()
     { 
+        
         //All Looks Good
         TheSpriteRenderer = GetComponent<SpriteRenderer>();
         TheAnimator = GetComponent<Animator>();

@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2dPlatformerEngine1", "2dPlatformerEngine1.csproj", "{E3D3AADA-07E4-F1AE-CDF3-F5A72B015F70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{00546426-B808-017B-A583-D8DD64CB4546}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCPIPGame", "..\..\..\..\source\repos\WebSockets\TCPIPGame\TCPIPGame.csproj", "{22DF3C80-C0A8-4453-B67F-E1870FFF1FE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E3D3AADA-07E4-F1AE-CDF3-F5A72B015F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3D3AADA-07E4-F1AE-CDF3-F5A72B015F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3D3AADA-07E4-F1AE-CDF3-F5A72B015F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3D3AADA-07E4-F1AE-CDF3-F5A72B015F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00546426-B808-017B-A583-D8DD64CB4546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00546426-B808-017B-A583-D8DD64CB4546}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00546426-B808-017B-A583-D8DD64CB4546}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00546426-B808-017B-A583-D8DD64CB4546}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22DF3C80-C0A8-4453-B67F-E1870FFF1FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DF3C80-C0A8-4453-B67F-E1870FFF1FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DF3C80-C0A8-4453-B67F-E1870FFF1FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DF3C80-C0A8-4453-B67F-E1870FFF1FE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
