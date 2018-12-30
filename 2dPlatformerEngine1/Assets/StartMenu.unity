@@ -379,6 +379,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 166467342}
+  - component: {fileID: 166467343}
   m_Layer: 5
   m_Name: IndividualGameRoomScreen
   m_TagString: Untagged
@@ -400,16 +401,31 @@ RectTransform:
   - {fileID: 314326928}
   - {fileID: 333325353}
   - {fileID: 145331516}
-  - {fileID: 1520422940}
   - {fileID: 378654803}
+  - {fileID: 1002094358}
   m_Father: {fileID: 1899159483}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -221, y: 586}
+  m_AnchoredPosition: {x: -19, y: 21}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &166467343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166467341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfb13f638c2389498432b70835f8868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtPlayerNameTemplate: {fileID: 1002094359}
+  TheNetworkManager: {fileID: 2036111539}
+  isVisible: 0
 --- !u!1 &191950762
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +930,7 @@ RectTransform:
   - {fileID: 1032767281}
   - {fileID: 349507700}
   m_Father: {fileID: 166467342}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1133,7 +1149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00015190641}
+  m_AnchoredPosition: {x: 0, y: -0.000007117268}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &406192690
@@ -1251,7 +1267,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1854575240}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9381706
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2187,7 +2203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsVisible: 1
   SetupGameRoomScreen: {fileID: 2041363415}
-  IndividualGameRoomScreen: {fileID: 166467341}
+  IndividualGameRoomScreen: {fileID: 166467343}
   InputFieldGameRoomName: {fileID: 1120813519}
   TheNetworkManager: {fileID: 2036111539}
 --- !u!1 &700862884
@@ -2666,6 +2682,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1002094357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1002094358}
+  - component: {fileID: 1002094360}
+  - component: {fileID: 1002094359}
+  m_Layer: 5
+  m_Name: txtPlayerNameTemplate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1002094358
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002094357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 166467342}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1002094359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002094357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1002094360
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002094357}
+  m_CullTransparentMesh: 0
 --- !u!1 &1026350314
 GameObject:
   m_ObjectHideFlags: 0
@@ -4206,11 +4301,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520422937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -511.5, y: -870, z: 0}
+  m_LocalPosition: {x: -530.5, y: -413, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 166467342}
-  m_RootOrder: 3
+  m_Father: {fileID: 1899159483}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1599917845
 GameObject:
@@ -4246,7 +4341,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 136.40048, y: 0.000003905597}
+  m_AnchoredPosition: {x: 136.40002, y: 0.000003905597}
   m_SizeDelta: {x: -1021.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1599917847
@@ -4714,6 +4809,7 @@ RectTransform:
   - {fileID: 2041363416}
   - {fileID: 166467342}
   - {fileID: 2036111538}
+  - {fileID: 1520422940}
   m_Father: {fileID: 1443385798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4866,7 +4962,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1801637355}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9339249
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
