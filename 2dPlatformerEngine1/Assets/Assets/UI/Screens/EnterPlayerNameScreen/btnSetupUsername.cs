@@ -28,7 +28,7 @@ public class btnSetupUsername : MonoBehaviour {
     public void Click_SendUsername(string aa)
     {
        TheNetworkManager.SendMessageToServer(new MessageConnectToServerRequest(inputFieldUsername.text));
-       ActiveGameRoomScreen.gameObject.SetActive(true);
+       ActiveGameRoomScreen.SetActive(true);
        EnterUsernameScreen.SetActive(false);
     }
 
