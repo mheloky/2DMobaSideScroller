@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class createGameScreen : MonoBehaviour {
+public class SetupGameRoomScreen : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public multiplayerScreen theMultiplayerScreen;

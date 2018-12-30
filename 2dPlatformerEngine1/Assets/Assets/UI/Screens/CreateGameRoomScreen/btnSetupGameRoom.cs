@@ -9,13 +9,14 @@ public class btnSetupGameRoom : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public bool IsVisible = true;
-    public GameObject GameRoomScreen;
+    public GameObject IndividualGameRoomScreen;
     public InputField InputFieldGameRoomName;
     public NetworkManager TheNetworkManager;
 
 	// Use this for initialization
 	void Start () {
         theUIPresenter.Initialize(this.gameObject, IsVisible);
+        TheNetworkManager.on
     }
 	
 	// Update is called once per frame

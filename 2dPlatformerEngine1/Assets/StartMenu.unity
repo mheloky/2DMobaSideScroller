@@ -380,7 +380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 166467342}
   m_Layer: 5
-  m_Name: GameRoomScreen
+  m_Name: IndividualGameRoomScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1133,7 +1133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000015718178}
+  m_AnchoredPosition: {x: 0, y: 0.0008959108}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &406192690
@@ -1389,7 +1389,7 @@ GameObject:
   - component: {fileID: 558109257}
   - component: {fileID: 558109261}
   m_Layer: 5
-  m_Name: btnJoinGameRoom
+  m_Name: btnJoinGameRoomTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2186,7 +2186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsVisible: 1
-  GameRoomScreen: {fileID: 166467341}
+  IndividualGameRoomScreen: {fileID: 166467341}
+  InputFieldGameRoomName: {fileID: 1120813519}
   TheNetworkManager: {fileID: 2036111539}
 --- !u!1 &700862884
 GameObject:
@@ -3869,7 +3870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnterUsernameScreen: {fileID: 1916806663}
   inputFieldUsername: {fileID: 563681711}
-  GameRoomScreen: {fileID: 2017108806}
+  ActiveGameRoomScreen: {fileID: 2017108806}
   TheNetworkManager: {fileID: 2036111539}
   IsVisible: 1
 --- !u!114 &1452251528
@@ -4016,7 +4017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnGameRoomTemplate: {fileID: 558109255}
   ActiveGameRoomsScreen: {fileID: 2017108806}
-  CreateGameScreen: {fileID: 2041363415}
+  SetupGameScreen: {fileID: 2041363415}
   IsVisible: 1
 --- !u!114 &1478476681
 MonoBehaviour:
@@ -4244,7 +4245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 136.40001, y: 0.000003905597}
+  m_AnchoredPosition: {x: 136.40251, y: 0.000003905597}
   m_SizeDelta: {x: -1021.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1599917847
@@ -4783,7 +4784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b201a9290e2644083a4bb7c9885b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveGameRoomsScreen: {fileID: 2017108808}
+  ActiveGameRoomsScreen: {fileID: 0}
   isVisible: 0
 --- !u!1 &1921569797
 GameObject:
@@ -5039,7 +5040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheNetworkManager: {fileID: 2036111539}
-  isVisible: 1
+  isVisible: 0
 --- !u!1 &2036111537
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class btnCreateGameRoom : MonoBehaviour {
     public UIPresenter theUIPresenter = new UIPresenter();
     public GameObject btnGameRoomTemplate;
     public GameObject ActiveGameRoomsScreen;
-    public GameObject CreateGameScreen;
+    public GameObject SetupGameScreen;
 
     public bool IsVisible = true;
 
@@ -25,7 +25,7 @@ public class btnCreateGameRoom : MonoBehaviour {
 
     public void Click_CreateRoom(string aa)
     {
-        CreateGameScreen.SetActive(true);
+        SetupGameScreen.SetActive(true);
         ActiveGameRoomsScreen.SetActive(false);
     }
 }
