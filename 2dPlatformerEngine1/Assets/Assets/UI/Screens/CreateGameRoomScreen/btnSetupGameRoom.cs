@@ -16,16 +16,21 @@ public class btnSetupGameRoom : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         theUIPresenter.Initialize(this.gameObject, IsVisible);
-        TheNetworkManager.on
+        TheNetworkManager.OnCreateRoomResponseReceived += TheNetworkManager_OnCreateRoomResponseReceived;
     }
-	
-	// Update is called once per frame
-	void Update () {
+-
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
     public void Click(string str)
     {
         TheNetworkManager.SendMessageToServer(new MessageCreateRoomRequest(InputFieldGameRoomName.text));
+    }
+
+    private void TheNetworkManager_OnCreateRoomResponseReceived(object sender, MessageCreateRoomResponse e)
+    {
+        Debug.Log(string.Format("Response Received-Created Game Room:{0}", e.RoomName));
     }
 }
