@@ -6,7 +6,7 @@ using UnityEngine;
 public class SetupGameRoomScreen : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
-    public multiplayerScreen ActiveGameRoomsScreen;
+    public ActiveGameRoomsScreen ActiveGameRoomsScreen;
     public bool isVisible = false;
 
     // Use this for initialization

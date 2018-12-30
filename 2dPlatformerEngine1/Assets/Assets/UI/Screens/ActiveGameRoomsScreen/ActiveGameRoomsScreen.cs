@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
-public class multiplayerScreen : MonoBehaviour {
+public class ActiveGameRoomsScreen : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public NetworkManager TheNetworkManager;
