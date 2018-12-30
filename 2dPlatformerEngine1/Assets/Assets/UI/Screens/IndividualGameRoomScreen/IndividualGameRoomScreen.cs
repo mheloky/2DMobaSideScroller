@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameRoomScreen : MonoBehaviour {
+public class IndividualGameRoomScreen : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public bool isVisible = false;
