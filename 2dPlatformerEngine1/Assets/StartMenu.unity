@@ -1133,7 +1133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000015618041}
+  m_AnchoredPosition: {x: 0, y: 0.0000034590737}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &406192690
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1854575240}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99566245
+  m_Size: 0.97036636
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4015,9 +4015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672a9f4a1e6d4904681c4584d93d097e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnGameRoomTemplate: {fileID: 0}
-  ActiveGameRoomsScreen: {fileID: 0}
-  SetupGameScreen: {fileID: 0}
+  btnGameRoomTemplate: {fileID: 558109255}
+  ActiveGameRoomsScreen: {fileID: 2017108806}
+  SetupGameScreen: {fileID: 2041363415}
   IsVisible: 1
 --- !u!114 &1478476681
 MonoBehaviour:
@@ -4245,7 +4245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 136.40009, y: 0.000003905597}
+  m_AnchoredPosition: {x: 136.4001, y: 0.000003905597}
   m_SizeDelta: {x: -1021.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1599917847
@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1801637355}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9953647
+  m_Size: 0.9683316
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

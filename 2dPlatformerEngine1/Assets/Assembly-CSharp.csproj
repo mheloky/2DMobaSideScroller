@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{17533FA3-357A-CEC6-ED1C-9FA92629C572}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -71,18 +70,18 @@
     <Compile Include="Assets\2DPlatformer\Scripts\DeadzoneCamera.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
     <Compile Include="Assets\hmm\Class1.cs" />
-    <Compile Include="Assets\UI\Screens\ActiveGameRoomsScreen\ActiveGameRoomsScreen.cs" />
     <Compile Include="Assets\UI\NetworkManager.cs" />
+    <Compile Include="Assets\UI\Screens\ActiveGameRoomsScreen\ActiveGameRoomsScreen.cs" />
     <Compile Include="Assets\UI\Screens\ActiveGameRoomsScreen\CreateJoinScreen\btnCreateGameRoom.cs" />
     <Compile Include="Assets\UI\Screens\ActiveGameRoomsScreen\CreateJoinScreen\btnJoinGameRoom.cs" />
     <Compile Include="Assets\UI\Screens\CreateGameRoomScreen\btnSetupGameRoom.cs" />
+    <Compile Include="Assets\UI\Screens\CreateGameRoomScreen\SetupGameRoomScreen.cs" />
     <Compile Include="Assets\UI\Screens\EnterPlayerNameScreen\btnSetupUsername.cs" />
     <Compile Include="Assets\UI\Screens\EnterPlayerNameScreen\EnterMultiplayerNameScreen.cs" />
     <Compile Include="Assets\UI\Screens\GameRoomScreen\GameRoomScreen.cs" />
     <Compile Include="Assets\UI\Screens\StartupMenuScreen\btnExit.cs" />
     <Compile Include="Assets\UI\Screens\StartupMenuScreen\btnMultiplayer.cs" />
     <Compile Include="Assets\UI\Screens\StartupMenuScreen\StartupMenuScreen.cs" />
-    <Compile Include="Assets\UI\SetupGameRoomScreen.cs" />
     <Compile Include="Assets\UI\UIController.cs" />
     <Compile Include="Assets\UI\UIPresenter.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
