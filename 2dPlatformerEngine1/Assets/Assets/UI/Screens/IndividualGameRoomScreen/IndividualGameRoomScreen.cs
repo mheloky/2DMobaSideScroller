@@ -17,7 +17,7 @@ public class IndividualGameRoomScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         theUIPresenter.Initialize(this.gameObject, isVisible);
-
+        //TheNetworkManager.
     }
 	
 	// Update is called once per frame

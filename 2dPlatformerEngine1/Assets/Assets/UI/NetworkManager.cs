@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TCPIPGame.Client;
 using TCPIPGame.Messages;
+using TCPIPGame.Server.DomainObjects;
 using UnityEngine;
 
 public class NetworkManager : MonoBehaviour
@@ -63,5 +64,10 @@ public class NetworkManager : MonoBehaviour
     public AGameClientStatus GetGameClientStatus()
     {
         return _gameClient.TheGameClientStatus;
+    }
+
+    public GameRoomHost GetRoomHost(int roomID)
+    {
+        return _gameClient.TheGameClientStatus.
     }
 }
