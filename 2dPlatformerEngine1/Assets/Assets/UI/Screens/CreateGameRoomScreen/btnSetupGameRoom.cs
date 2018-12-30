@@ -18,7 +18,7 @@ public class btnSetupGameRoom : MonoBehaviour {
         theUIPresenter.Initialize(this.gameObject, IsVisible);
         TheNetworkManager.OnCreateRoomResponseReceived += TheNetworkManager_OnCreateRoomResponseReceived;
     }
--
+
     // Update is called once per frame
     void Update () {
 		

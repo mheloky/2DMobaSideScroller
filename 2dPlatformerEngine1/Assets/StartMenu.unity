@@ -1133,7 +1133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000027096452}
+  m_AnchoredPosition: {x: 0, y: -0.000009906089}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &406192690
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1854575240}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999887
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1728,7 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 782a9aad52fe4ba4d84812decd4ba03d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isVisible: 0
+  isVisible: 1
 --- !u!1 &573326473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,9 +1961,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a3db41d77552ee4fb9f7ee3b46f2ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartMenu: {fileID: 0}
-  EnterNameScreen: {fileID: 0}
-  TheNetworkManager: {fileID: 0}
+  StartMenu: {fileID: 570923916}
+  EnterNameScreen: {fileID: 1916806663}
+  TheNetworkManager: {fileID: 2036111539}
 --- !u!1 &651685378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1801637355}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999986
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
