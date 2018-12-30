@@ -13,7 +13,6 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         theUIPresenter.SetVisibility(this.gameObject, false);
-
     }
 
     // Update is called once per frame
