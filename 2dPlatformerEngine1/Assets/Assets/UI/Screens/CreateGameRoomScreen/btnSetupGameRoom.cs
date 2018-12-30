@@ -9,6 +9,7 @@ public class btnSetupGameRoom : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public bool IsVisible = true;
+    public GameObject SetupGameRoomScreen;
     public GameObject IndividualGameRoomScreen;
     public InputField InputFieldGameRoomName;
     public NetworkManager TheNetworkManager;
@@ -27,6 +28,8 @@ public class btnSetupGameRoom : MonoBehaviour {
     public void Click(string str)
     {
         TheNetworkManager.SendMessageToServer(new MessageCreateRoomRequest(InputFieldGameRoomName.text));
+        SetupGameRoomScreen.SetActive(false);
+        IndividualGameRoomScreen.SetActive(true);
     }
 
     private void TheNetworkManager_OnCreateRoomResponseReceived(object sender, MessageCreateRoomResponse e)
