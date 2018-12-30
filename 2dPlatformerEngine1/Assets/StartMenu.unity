@@ -1133,7 +1133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000009906089}
+  m_AnchoredPosition: {x: 0, y: -0.000015618041}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &406192690
@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1854575240}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99999887
+  m_Size: 0.99566245
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3868,10 +3868,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f415972ef61784dbb59496e0a5f7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnterUsernameScreen: {fileID: 0}
-  inputFieldUsername: {fileID: 0}
-  ActiveGameRoomScreen: {fileID: 0}
-  TheNetworkManager: {fileID: 0}
+  EnterUsernameScreen: {fileID: 1916806663}
+  inputFieldUsername: {fileID: 563681711}
+  ActiveGameRoomScreen: {fileID: 2017108806}
+  TheNetworkManager: {fileID: 2036111539}
   IsVisible: 1
 --- !u!114 &1452251528
 MonoBehaviour:
@@ -4245,7 +4245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 136.40002, y: 0.000003905597}
+  m_AnchoredPosition: {x: 136.40009, y: 0.000003905597}
   m_SizeDelta: {x: -1021.4, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1599917847
@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1801637355}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999986
+  m_Size: 0.9953647
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
