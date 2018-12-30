@@ -12,7 +12,6 @@ public class EnterMultiplayerNameScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         theUIPresenter.Initialize(this.gameObject, isVisible);
-        ActiveGameRoomsScreen.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame

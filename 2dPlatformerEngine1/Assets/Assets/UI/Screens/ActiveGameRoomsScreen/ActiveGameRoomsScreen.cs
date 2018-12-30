@@ -12,7 +12,7 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-     //   this.gameObject.SetActive(isVisible);
+        theUIPresenter.SetVisibility(this.gameObject, false);
 
     }
 
