@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TxtGameRoom : MonoBehaviour {
+public class txtGameRoom : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public int RoomID;

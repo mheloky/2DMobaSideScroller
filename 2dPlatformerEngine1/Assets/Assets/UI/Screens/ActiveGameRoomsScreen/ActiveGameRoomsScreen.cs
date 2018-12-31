@@ -11,7 +11,7 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
     public UIPresenter theUIPresenter = new UIPresenter();
     public NetworkManager TheNetworkManager;
     public GameObject content;
-    public TxtGameRoom TxtGameRoomTemplate;
+    public txtGameRoom TxtGameRoomTemplate;
     public bool isVisible = false;
 
     // Use this for initialization
