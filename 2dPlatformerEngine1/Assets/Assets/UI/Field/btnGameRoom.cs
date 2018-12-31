@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class txtGameRoom : MonoBehaviour {
+public class btnGameRoom : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public int RoomID;
     public string RoomName;
+    public IndividualGameRoomScreen individualGameRoomScreen;
     public bool IsVisible = false;
 
     // Use this for initialization
@@ -20,6 +21,11 @@ public class txtGameRoom : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void Click (string str)
+    {
+        individualGameRoomScreen.SetRoomID(RoomID);
+    }
 
     public void SetRoomID(int roomID)
     {

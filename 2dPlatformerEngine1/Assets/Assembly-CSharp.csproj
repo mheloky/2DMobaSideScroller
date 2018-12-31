@@ -69,8 +69,7 @@
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\Player.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\DeadzoneCamera.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
-    <Compile Include="Assets\hmm\Class1.cs" />
-    <Compile Include="Assets\UI\Field\txtGameRoom.cs" />
+    <Compile Include="Assets\UI\Field\btnGameRoom.cs" />
     <Compile Include="Assets\UI\NetworkManager.cs" />
     <Compile Include="Assets\UI\Screens\ActiveGameRoomsScreen\ActiveGameRoomsScreen.cs" />
     <Compile Include="Assets\UI\Screens\ActiveGameRoomsScreen\CreateJoinScreen\btnCreateGameRoom.cs" />

@@ -11,7 +11,7 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
     public UIPresenter theUIPresenter = new UIPresenter();
     public NetworkManager TheNetworkManager;
     public GameObject content;
-    public txtGameRoom TxtGameRoomTemplate;
+    public btnGameRoom btnGameRoomTemplate;
     public bool isVisible = false;
 
     // Use this for initialization
@@ -27,7 +27,9 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
         for (int i = 0; i < gameRooms.Count; i++)
         {
             var theGameRoom = gameRooms[i];
-            var item = Instantiate(TxtGameRoomTemplate);
+            var item = Instantiate(btnGameRoomTemplate);
+            item.SetRoomID(theGameRoom.GetRoomID());
+            item.SetRoomName(theGameRoom.GetRoomName());
             item.SetText(theGameRoom.GetRoomName());
             item.transform.parent = content.transform;
             item.transform.localPosition = Vector3.zero;

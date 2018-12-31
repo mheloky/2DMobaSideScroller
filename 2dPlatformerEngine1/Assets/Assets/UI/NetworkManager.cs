@@ -13,6 +13,7 @@ public class NetworkManager : MonoBehaviour
     public event EventHandler<MessageConnectToServerResponse> OnConnectedToServerResponseReceived;
     public event EventHandler<MessageCreateRoomResponse> OnCreateRoomResponseReceived;
     public event EventHandler<MessageGetGameRoomsResponse> OnGetGameRoomsResponseReceived;
+    public event EventHandler<MessageGetGameRoomPlayersResponse> OnGetGameRoomPlayersResponseReceived;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,8 @@ public class NetworkManager : MonoBehaviour
         _gameClient.OnConnectedToServerResponseReceived += _gameClient_OnConnectedToServerResponseReceived;
         _gameClient.OnCreateGameRoomSuccessful += _gameClient_OnCreateGameRoomSuccessful;
         _gameClient.OnGetGameRoomsRequestSuccessful += _gameClient_OnGetGameRoomsRequestSuccessful;
+        _gameClient.OnGetGameRoomPlayersRequestSuccessful += _gameClient_OnGetGameRoomPlayersRequestSuccessful;
     }
-
-
 
     // Update is called once per frame
     void Update()
@@ -67,6 +67,15 @@ public class NetworkManager : MonoBehaviour
             OnGetGameRoomsResponseReceived(sender, e);
         }
     }
+
+    private void _gameClient_OnGetGameRoomPlayersRequestSuccessful(object sender, MessageGetGameRoomPlayersResponse e)
+    {
+        if (OnGetGameRoomPlayersResponseReceived != null)
+        {
+            OnGetGameRoomPlayersResponseReceived(sender, e);
+        }
+    }
+
 
     public void SendMessageToServer(AClientMessage message)
     {
