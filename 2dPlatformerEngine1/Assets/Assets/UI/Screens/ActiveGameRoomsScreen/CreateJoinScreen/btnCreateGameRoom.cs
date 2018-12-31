@@ -10,11 +10,12 @@ public class btnCreateGameRoom : MonoBehaviour {
     public GameObject btnGameRoomTemplate;
     public GameObject ActiveGameRoomsScreen;
     public GameObject SetupGameScreen;
-
     public bool IsVisible = true;
 
-	// Use this for initialization
-	void Start () {
+    //public GameObject content;
+
+    // Use this for initialization
+    void Start () {
         theUIPresenter.Initialize(this.gameObject, IsVisible);
     }
 	
@@ -27,5 +28,9 @@ public class btnCreateGameRoom : MonoBehaviour {
     {
         SetupGameScreen.SetActive(true);
         ActiveGameRoomsScreen.SetActive(false);
+
+       // var item = Instantiate(btnGameRoomTemplate);
+       // item.transform.parent = content.transform;
+       // item.transform.localPosition = Vector3.zero;
     }
 }
