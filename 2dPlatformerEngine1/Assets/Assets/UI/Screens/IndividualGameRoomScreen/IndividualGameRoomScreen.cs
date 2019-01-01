@@ -20,14 +20,18 @@ public class IndividualGameRoomScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         theUIPresenter.Initialize(this.gameObject, isVisible);
-        TheNetworkManager.OnGetGameRoomPlayersResponseReceived += TheNetworkManager_OnGetGameRoomPlayersResponseReceived;
-        TheNetworkManager.SendMessageToServer(new MessageGetGameRoomPlayersRequest(_roomID));
     }
 
     // Update is called once per frame
     void Update () {
 		
 	}
+
+    public void Setup()
+    {
+        TheNetworkManager.OnGetGameRoomPlayersResponseReceived += TheNetworkManager_OnGetGameRoomPlayersResponseReceived;
+        TheNetworkManager.SendMessageToServer(new MessageGetGameRoomPlayersRequest(_roomID));
+    }
 
     private void TheNetworkManager_OnGetGameRoomPlayersResponseReceived(object sender, MessageGetGameRoomPlayersResponse e)
     {

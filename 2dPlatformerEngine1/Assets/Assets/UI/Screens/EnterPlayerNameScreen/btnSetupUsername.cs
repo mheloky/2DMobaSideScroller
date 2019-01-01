@@ -10,7 +10,7 @@ public class btnSetupUsername : MonoBehaviour {
     public UIPresenter theUIPresenter = new UIPresenter();
     public GameObject EnterUsernameScreen;
     public InputField inputFieldUsername;
-    public GameObject ActiveGameRoomScreen;
+    public ActiveGameRoomsScreen ActiveGameRoomScreen;
     public NetworkManager TheNetworkManager;
     public bool IsVisible = true;
 
@@ -28,7 +28,8 @@ public class btnSetupUsername : MonoBehaviour {
     public void Click_SendUsername(string aa)
     {
        TheNetworkManager.SendMessageToServer(new MessageConnectToServerRequest(inputFieldUsername.text));
-       ActiveGameRoomScreen.SetActive(true);
+       ActiveGameRoomScreen.Setup();
+       ActiveGameRoomScreen.gameObject.SetActive(true);
        EnterUsernameScreen.SetActive(false);
     }
 

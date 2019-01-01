@@ -17,6 +17,10 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
     // Use this for initialization
     void Start () {
         theUIPresenter.SetVisibility(this.gameObject, false);
+    }
+
+    public void Setup()
+    {
         TheNetworkManager.SendMessageToServer(new MessageGetGameRoomsRequest());
         TheNetworkManager.OnGetGameRoomsResponseReceived += TheNetworkManager_OnGetGameRoomsResponseReceived;
     }

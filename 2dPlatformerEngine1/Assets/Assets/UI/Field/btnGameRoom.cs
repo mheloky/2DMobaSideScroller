@@ -25,6 +25,7 @@ public class btnGameRoom : MonoBehaviour {
     void Click (string str)
     {
         individualGameRoomScreen.SetRoomID(RoomID);
+        individualGameRoomScreen.Setup();
     }
 
     public void SetRoomID(int roomID)
