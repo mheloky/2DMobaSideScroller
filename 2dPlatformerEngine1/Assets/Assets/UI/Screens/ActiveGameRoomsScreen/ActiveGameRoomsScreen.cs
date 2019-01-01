@@ -12,6 +12,7 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
     public NetworkManager TheNetworkManager;
     public GameObject content;
     public btnGameRoom btnGameRoomTemplate;
+    public MainThreadSyncronizer TheMainThreadSyncronizer;
     public bool isVisible = false;
 
     // Use this for initialization
@@ -27,17 +28,20 @@ public class ActiveGameRoomsScreen : MonoBehaviour {
 
     private void TheNetworkManager_OnGetGameRoomsResponseReceived(object sender, TCPIPGame.Messages.MessageGetGameRoomsResponse e)
     {
-        var gameRooms = e.TheGameRooms;
-        for (int i = 0; i < gameRooms.Count; i++)
+        TheMainThreadSyncronizer.Actions.Add(new System.Action(() =>
         {
-            var theGameRoom = gameRooms[i];
-            var item = Instantiate(btnGameRoomTemplate);
-            item.SetRoomID(theGameRoom.GetRoomID());
-            item.SetRoomName(theGameRoom.GetRoomName());
-            item.SetText(theGameRoom.GetRoomName());
-            item.transform.parent = content.transform;
-            item.transform.localPosition = Vector3.zero;
-        }
+            var gameRooms = e.TheGameRooms;
+            for (int i = 0; i < gameRooms.Count; i++)
+            {
+                var theGameRoom = gameRooms[i];
+                var item = Instantiate(btnGameRoomTemplate);
+                item.SetRoomID(theGameRoom.GetRoomID());
+                item.SetRoomName(theGameRoom.GetRoomName());
+                item.SetText(theGameRoom.GetRoomName());
+                item.transform.parent = content.transform;
+                item.transform.localPosition = Vector3.zero;
+            }
+        }));
     }
 
     // Update is called once per frame

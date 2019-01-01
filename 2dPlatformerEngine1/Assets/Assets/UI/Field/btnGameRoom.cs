@@ -50,11 +50,11 @@ public class btnGameRoom : MonoBehaviour {
 
     public void SetText(string text)
     {
-        GetComponent<Text>().text = text;
+        GetComponentInChildren<Text>().text = text;
     }
 
     public string GetText(string text)
     {
-        return GetComponent<Text>().text;
+        return GetComponentInChildren<Text>().text;
     }
 }

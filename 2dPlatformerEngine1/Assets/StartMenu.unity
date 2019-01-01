@@ -1725,7 +1725,7 @@ MonoBehaviour:
   RoomID: 0
   RoomName: 
   individualGameRoomScreen: {fileID: 0}
-  IsVisible: 0
+  IsVisible: 1
 --- !u!114 &558109258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2901,6 +2901,7 @@ GameObject:
   - component: {fileID: 858134723}
   - component: {fileID: 858134722}
   - component: {fileID: 858134721}
+  - component: {fileID: 858134724}
   m_Layer: 5
   m_Name: btnJoinGameRoom
   m_TagString: Untagged
@@ -2968,7 +2969,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 858134722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 858134724}
+        m_MethodName: Click
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &858134722
@@ -3008,6 +3020,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858134719}
   m_CullTransparentMesh: 0
+--- !u!114 &858134724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858134719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bc83ce549f506499cc1b4e1c6581f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnGameRoomTemplate: {fileID: 558109257}
+  content: {fileID: 1599917845}
+  isVisible: 1
 --- !u!1 &938786832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3957,6 +3984,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186305591}
   m_CullTransparentMesh: 0
+--- !u!1 &1251814130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251814132}
+  - component: {fileID: 1251814131}
+  m_Layer: 0
+  m_Name: MainThreadSyncronizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1251814131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251814130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a60c2ef1390a2049830382e2d8d140e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1251814132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251814130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 316.2725, y: 367.65726, z: 2.688075}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1296390825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5693,6 +5763,7 @@ MonoBehaviour:
   TheNetworkManager: {fileID: 2036111539}
   content: {fileID: 70014565}
   btnGameRoomTemplate: {fileID: 558109257}
+  TheMainThreadSyncronizer: {fileID: 1251814131}
   isVisible: 0
 --- !u!1 &2036111537
 GameObject:

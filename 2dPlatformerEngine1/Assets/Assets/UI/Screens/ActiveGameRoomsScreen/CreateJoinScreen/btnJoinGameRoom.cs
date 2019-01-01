@@ -18,4 +18,9 @@ public class btnJoinGameRoom : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void Click(string s)
+    {
+
+    }
 }
