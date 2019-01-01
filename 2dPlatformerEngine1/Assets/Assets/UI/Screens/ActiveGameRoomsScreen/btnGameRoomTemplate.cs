@@ -9,6 +9,7 @@ public class btnGameRoomTemplate : MonoBehaviour {
     public UIPresenter theUIPresenter = new UIPresenter();
     public int RoomID;
     public string RoomName;
+    public GameObject activeGameRoomsScreen;
     public IndividualGameRoomScreen individualGameRoomScreen;
     public bool IsVisible = false;
 
@@ -26,8 +27,8 @@ public class btnGameRoomTemplate : MonoBehaviour {
     {
         individualGameRoomScreen.SetRoomID(RoomID);
         individualGameRoomScreen.Setup();
-       // theUIPresenter.Initialize(this, false);
-       // individualGameRoomScreen.theUIPresenter.Initialize(individualGameRoomScreen, true);
+        activeGameRoomsScreen.SetActive(false);
+        individualGameRoomScreen.gameObject.SetActive(true);
     }
 
     public void SetRoomID(int roomID)

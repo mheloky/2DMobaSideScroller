@@ -1,5 +1,6 @@
 ﻿using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
 using Assets.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TCPIPGame.Messages;
@@ -14,6 +15,7 @@ public class IndividualGameRoomScreen : MonoBehaviour {
     public Text txtPlayerNameTemplate;
     public GameObject content;
     public NetworkManager TheNetworkManager;
+    public MainThreadSyncronizer TheMainThreadSyncronizer;
     public bool isVisible = false;
 
 
@@ -35,17 +37,21 @@ public class IndividualGameRoomScreen : MonoBehaviour {
 
     private void TheNetworkManager_OnGetGameRoomPlayersResponseReceived(object sender, MessageGetGameRoomPlayersResponse e)
     {
-        var gameRoomPlayers = e.GameRoomPlayers;
-        for (int i = 0; i < gameRoomPlayers.Count; i++)
-        {
-            var theGameRoomPlayer = gameRoomPlayers[i];
-            GameRoomStatus.ThePlayers.Add(theGameRoomPlayer);
+       TheMainThreadSyncronizer.Actions.Add(new Action(() =>
+       {
+           var gameRoomPlayers = e.GameRoomPlayers;
+           for (int i = 0; i < gameRoomPlayers.Count; i++)
+           {
+               var theGameRoomPlayer = gameRoomPlayers[i];
+               GameRoomStatus.ThePlayers.Add(theGameRoomPlayer);
 
-            var item = Instantiate(txtPlayerNameTemplate);
-            item.text = theGameRoomPlayer.GetUserName();
-            item.transform.parent = content.transform;
-            item.transform.localPosition = Vector3.zero;
-        }
+               var item = Instantiate(txtPlayerNameTemplate);
+               item.text = theGameRoomPlayer.GetUserName();
+               item.transform.parent = content.transform;
+               item.transform.localPosition = Vector3.zero;
+           }
+       }
+       ));
     }
 
     public void SetRoomID(int roomID)

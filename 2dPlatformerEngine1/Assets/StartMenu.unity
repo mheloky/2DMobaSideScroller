@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomID: 0
   RoomName: 
+  activeGameRoomsScreen: {fileID: 0}
   individualGameRoomScreen: {fileID: 0}
   IsVisible: 0
 --- !u!114 &70014567
@@ -523,6 +524,7 @@ MonoBehaviour:
   txtPlayerNameTemplate: {fileID: 1002094359}
   content: {fileID: 397593126}
   TheNetworkManager: {fileID: 2036111539}
+  TheMainThreadSyncronizer: {fileID: 1251814131}
   isVisible: 0
 --- !u!1 &191950762
 GameObject:
@@ -1724,6 +1726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomID: 0
   RoomName: 
+  activeGameRoomsScreen: {fileID: 2017108808}
   individualGameRoomScreen: {fileID: 166467343}
   IsVisible: 1
 --- !u!114 &558109258
@@ -3033,8 +3036,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isVisible: 1
-  content: {fileID: 1599917845}
-  btnGameRoomTemplate: {fileID: 558109257}
 --- !u!1 &938786832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,7 +3259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 765}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002094359
