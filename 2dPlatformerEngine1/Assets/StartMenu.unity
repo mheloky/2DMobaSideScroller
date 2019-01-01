@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomID: 0
   RoomName: 
-  individualGameRoomScreen: {fileID: 0}
+  individualGameRoomScreen: {fileID: 166467343}
   IsVisible: 1
 --- !u!114 &558109258
 MonoBehaviour:
@@ -1766,12 +1766,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: ccc57b9945517eb4ebc376226015b52e, type: 3}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 558109257}
+        m_MethodName: Click
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3032,8 +3032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bc83ce549f506499cc1b4e1c6581f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnGameRoomTemplate: {fileID: 558109257}
-  content: {fileID: 1599917845}
   isVisible: 1
 --- !u!1 &938786832
 GameObject:
