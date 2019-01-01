@@ -10,8 +10,8 @@ public class btnJoinGameRoom : MonoBehaviour {
     public bool isVisible = false;
 
 
-    public GameObject content;
-    public btnGameRoomTemplate btnGameRoomTemplate;
+    //public GameObject content;
+    //public btnGameRoomTemplate btnGameRoomTemplate;
     // Use this for initialization
     void Start () {
         theUIPresenter.Initialize(this.gameObject, isVisible);
@@ -24,8 +24,8 @@ public class btnJoinGameRoom : MonoBehaviour {
 
     public void Click(string s)
     {
-        var item = Instantiate(btnGameRoomTemplate);
-        item.transform.parent = content.transform;
-        item.transform.localPosition = Vector3.zero;
+        //var item = Instantiate(btnGameRoomTemplate);
+        //item.transform.parent = content.transform;
+        //item.transform.localPosition = Vector3.zero;
     }
 }
