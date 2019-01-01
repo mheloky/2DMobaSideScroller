@@ -1,4 +1,5 @@
-﻿using Assets.UI;
+﻿using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
+using Assets.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TCPIPGame.Messages;
@@ -33,11 +34,11 @@ public class IndividualGameRoomScreen : MonoBehaviour {
         var gameRoomPlayers = e.GameRoomPlayers;
         for (int i = 0; i < gameRoomPlayers.Count; i++)
         {
-            var theGameRoomPlayer = gameRoomPlayers[i]; 
-             var item = Instantiate(btnGameRoomTemplate);
-            item.SetRoomID(theGameRoom.GetRoomID());
-            item.SetRoomName(theGameRoom.GetRoomName());
-            item.SetText(theGameRoom.GetRoomName());
+            var theGameRoomPlayer = gameRoomPlayers[i];
+            GameRoomStatus.ThePlayers.Add(theGameRoomPlayer);
+
+            var item = Instantiate(txtPlayerNameTemplate);
+            item.text = theGameRoomPlayer.GetUserName();
             item.transform.parent = content.transform;
             item.transform.localPosition = Vector3.zero;
         }
