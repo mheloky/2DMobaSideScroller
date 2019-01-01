@@ -1,4 +1,5 @@
 ﻿using Assets.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TCPIPGame.Messages;
@@ -13,9 +14,10 @@ public class btnSetupGameRoom : MonoBehaviour {
     public IndividualGameRoomScreen IndividualGameRoomScreen;
     public InputField InputFieldGameRoomName;
     public NetworkManager TheNetworkManager;
+    public MainThreadSyncronizer TheMainThreadSyncronizer;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         theUIPresenter.Initialize(this.gameObject, IsVisible);
         TheNetworkManager.OnCreateRoomResponseReceived += TheNetworkManager_OnCreateRoomResponseReceived;
     }
@@ -28,13 +30,18 @@ public class btnSetupGameRoom : MonoBehaviour {
     public void Click(string str)
     {
         TheNetworkManager.SendMessageToServer(new MessageCreateRoomRequest(InputFieldGameRoomName.text));
-        SetupGameRoomScreen.SetActive(false);
-        IndividualGameRoomScreen.gameObject.SetActive(true);
     }
 
     private void TheNetworkManager_OnCreateRoomResponseReceived(object sender, MessageCreateRoomResponse e)
     {
-        Debug.Log(string.Format("Response Received-Created Game Room:{0}", e.RoomName));
-        IndividualGameRoomScreen.SetRoomID(e.RoomID);
+        TheMainThreadSyncronizer.AddNewAction(new Action(() =>
+        {
+
+            SetupGameRoomScreen.SetActive(false);
+            IndividualGameRoomScreen.gameObject.SetActive(true);
+            IndividualGameRoomScreen.Setup();
+            Debug.Log(string.Format("Response Received-Created Game Room:{0}", e.RoomName));
+            IndividualGameRoomScreen.SetRoomID(e.RoomID);
+        }));
     }
 }

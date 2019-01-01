@@ -14,6 +14,7 @@ public class IndividualGameRoomScreen : MonoBehaviour {
     private int _roomID;
     public Text txtPlayerNameTemplate;
     public GameObject content;
+    public inputFieldMessage TheinputFieldMessage;
     public NetworkManager TheNetworkManager;
     public MainThreadSyncronizer TheMainThreadSyncronizer;
     public bool isVisible = false;
@@ -31,6 +32,7 @@ public class IndividualGameRoomScreen : MonoBehaviour {
 
     public void Setup()
     {
+        TheinputFieldMessage.Setup();
         TheNetworkManager.OnGetGameRoomPlayersResponseReceived += TheNetworkManager_OnGetGameRoomPlayersResponseReceived;
         TheNetworkManager.SendMessageToServer(new MessageGetGameRoomPlayersRequest(_roomID));
     }

@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TCPIPGame.Messages;
 
 public class btnGameRoomTemplate : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
+    public NetworkManager TheNetworkManager;
     public int RoomID;
     public string RoomName;
     public GameObject activeGameRoomsScreen;
@@ -25,6 +27,7 @@ public class btnGameRoomTemplate : MonoBehaviour {
 
     public void Click (string str)
     {
+        TheNetworkManager.SendMessageToServer(new MessageJoinGameRoomRequest(RoomID));
         individualGameRoomScreen.SetRoomID(RoomID);
         individualGameRoomScreen.Setup();
         activeGameRoomsScreen.SetActive(false);

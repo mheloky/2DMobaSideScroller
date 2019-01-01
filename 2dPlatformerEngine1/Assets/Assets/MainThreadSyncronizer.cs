@@ -13,6 +13,14 @@ public class MainThreadSyncronizer : MonoBehaviour
         
     }
 
+    public void AddNewAction(Action action)
+    {
+        lock (Actions)
+        {
+            Actions.Add(action);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

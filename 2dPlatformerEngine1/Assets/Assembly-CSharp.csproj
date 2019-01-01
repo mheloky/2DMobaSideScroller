@@ -83,6 +83,7 @@
     <Compile Include="Assets\UI\Screens\IndividualGameRoomScreen\btnCancelGame.cs" />
     <Compile Include="Assets\UI\Screens\IndividualGameRoomScreen\btnStartGame.cs" />
     <Compile Include="Assets\UI\Screens\IndividualGameRoomScreen\IndividualGameRoomScreen.cs" />
+    <Compile Include="Assets\UI\Screens\IndividualGameRoomScreen\inputFieldMessage.cs" />
     <Compile Include="Assets\UI\Screens\StartupMenuScreen\btnExit.cs" />
     <Compile Include="Assets\UI\Screens\StartupMenuScreen\btnMultiplayer.cs" />
     <Compile Include="Assets\UI\Screens\StartupMenuScreen\StartupMenuScreen.cs" />
