@@ -3033,6 +3033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isVisible: 1
+  content: {fileID: 1599917845}
+  btnGameRoomTemplate: {fileID: 558109257}
 --- !u!1 &938786832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5759,7 +5761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheNetworkManager: {fileID: 2036111539}
-  content: {fileID: 70014565}
+  content: {fileID: 1599917845}
   btnGameRoomTemplate: {fileID: 558109257}
   TheMainThreadSyncronizer: {fileID: 1251814131}
   isVisible: 0

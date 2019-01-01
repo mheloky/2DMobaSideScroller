@@ -26,8 +26,8 @@ public class btnGameRoomTemplate : MonoBehaviour {
     {
         individualGameRoomScreen.SetRoomID(RoomID);
         individualGameRoomScreen.Setup();
-        theUIPresenter.Initialize(this, false);
-        individualGameRoomScreen.theUIPresenter.Initialize(individualGameRoomScreen, true);
+       // theUIPresenter.Initialize(this, false);
+       // individualGameRoomScreen.theUIPresenter.Initialize(individualGameRoomScreen, true);
     }
 
     public void SetRoomID(int roomID)
