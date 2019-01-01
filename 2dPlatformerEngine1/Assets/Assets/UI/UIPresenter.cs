@@ -14,6 +14,11 @@ namespace Assets.UI
             SetVisibility(gameObject, isVisible);
         }
 
+        public void Initialize(MonoBehaviour monoBehaviour, bool isVisible)
+        {
+            SetVisibility(monoBehaviour.gameObject, isVisible);
+        }
+
         public void SetVisibility(GameObject gameObject, bool isVisible)
         {
             gameObject.SetActive(isVisible);

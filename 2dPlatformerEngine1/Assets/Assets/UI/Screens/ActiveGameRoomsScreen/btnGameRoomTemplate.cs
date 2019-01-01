@@ -22,10 +22,12 @@ public class btnGameRoomTemplate : MonoBehaviour {
 		
 	}
 
-    void Click (string str)
+    public void Click (string str)
     {
         individualGameRoomScreen.SetRoomID(RoomID);
         individualGameRoomScreen.Setup();
+        theUIPresenter.Initialize(this, false);
+        individualGameRoomScreen.theUIPresenter.Initialize(individualGameRoomScreen, true);
     }
 
     public void SetRoomID(int roomID)
