@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e25eb4b6f20f24f823eeae59d879a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TheNetworkManager: {fileID: 0}
   RoomID: 0
   RoomName: 
   activeGameRoomsScreen: {fileID: 0}
@@ -523,6 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtPlayerNameTemplate: {fileID: 1002094359}
   content: {fileID: 397593126}
+  TheInputFieldMessage: {fileID: 378654807}
   TheNetworkManager: {fileID: 2036111539}
   TheMainThreadSyncronizer: {fileID: 1251814131}
   isVisible: 0
@@ -1151,6 +1153,7 @@ GameObject:
   - component: {fileID: 378654806}
   - component: {fileID: 378654805}
   - component: {fileID: 378654804}
+  - component: {fileID: 378654807}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -1280,6 +1283,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 378654802}
   m_CullTransparentMesh: 0
+--- !u!114 &378654807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378654802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06954a4255f082d40bb91833d880e9a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TheNetworkManager: {fileID: 2036111539}
+  TheMainThreadSyncronizer: {fileID: 1251814131}
+  txtMessages: {fileID: 333325354}
 --- !u!1 &388225999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,9 +1742,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e25eb4b6f20f24f823eeae59d879a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TheNetworkManager: {fileID: 2036111539}
   RoomID: 0
   RoomName: 
-  activeGameRoomsScreen: {fileID: 2017108808}
+  activeGameRoomsScreen: {fileID: 2017108806}
   individualGameRoomScreen: {fileID: 166467343}
   IsVisible: 1
 --- !u!114 &558109258
@@ -2492,6 +2511,7 @@ MonoBehaviour:
   IndividualGameRoomScreen: {fileID: 166467343}
   InputFieldGameRoomName: {fileID: 1120813519}
   TheNetworkManager: {fileID: 2036111539}
+  TheMainThreadSyncronizer: {fileID: 1251814131}
 --- !u!1 &700862884
 GameObject:
   m_ObjectHideFlags: 0

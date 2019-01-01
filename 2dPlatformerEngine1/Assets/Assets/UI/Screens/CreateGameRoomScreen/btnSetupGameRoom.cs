@@ -36,7 +36,6 @@ public class btnSetupGameRoom : MonoBehaviour {
     {
         TheMainThreadSyncronizer.AddNewAction(new Action(() =>
         {
-
             SetupGameRoomScreen.SetActive(false);
             IndividualGameRoomScreen.gameObject.SetActive(true);
             IndividualGameRoomScreen.Setup();
