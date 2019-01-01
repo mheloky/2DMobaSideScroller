@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class btnGameRoom : MonoBehaviour {
+public class btnGameRoomTemplate : MonoBehaviour {
 
     public UIPresenter theUIPresenter = new UIPresenter();
     public int RoomID;
