@@ -1681,8 +1681,8 @@ GameObject:
   - component: {fileID: 558109260}
   - component: {fileID: 558109259}
   - component: {fileID: 558109258}
-  - component: {fileID: 558109257}
   - component: {fileID: 558109261}
+  - component: {fileID: 558109257}
   m_Layer: 5
   m_Name: btnJoinGameRoomTemplate
   m_TagString: Untagged
@@ -1719,9 +1719,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 558109255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b57f5d8f8105943a5a3474739c8982, type: 3}
+  m_Script: {fileID: 11500000, guid: 77e25eb4b6f20f24f823eeae59d879a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoomID: 0
+  RoomName: 
+  individualGameRoomScreen: {fileID: 0}
+  IsVisible: 0
 --- !u!114 &558109258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5688,7 +5692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TheNetworkManager: {fileID: 2036111539}
   content: {fileID: 70014565}
-  btnGameRoomTemplate: {fileID: 0}
+  btnGameRoomTemplate: {fileID: 558109257}
   isVisible: 0
 --- !u!1 &2036111537
 GameObject:
