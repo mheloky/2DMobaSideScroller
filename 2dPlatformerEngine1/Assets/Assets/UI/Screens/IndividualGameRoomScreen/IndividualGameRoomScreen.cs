@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TCPIPGame.Messages;
+using TCPIPGame.Server.DomainObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,7 @@ public class IndividualGameRoomScreen : MonoBehaviour {
         TheInputFieldMessage.Setup();
         TheNetworkManager.OnGetGameRoomPlayersResponseReceived += TheNetworkManager_OnGetGameRoomPlayersResponseReceived;
         TheNetworkManager.SendMessageToServer(new MessageGetGameRoomPlayersRequest(_roomID));
+        TheNetworkManager.OnJoinGameRoomResponseReceived += TheNetworkManager_OnJoinGameRoomResponseReceived;
     }
 
     private void TheNetworkManager_OnGetGameRoomPlayersResponseReceived(object sender, MessageGetGameRoomPlayersResponse e)
@@ -45,15 +47,25 @@ public class IndividualGameRoomScreen : MonoBehaviour {
            for (int i = 0; i < gameRoomPlayers.Count; i++)
            {
                var theGameRoomPlayer = gameRoomPlayers[i];
-               GameRoomStatus.ThePlayers.Add(theGameRoomPlayer);
-
-               var item = Instantiate(txtPlayerNameTemplate);
-               item.text = theGameRoomPlayer.GetUserName();
-               item.transform.parent = content.transform;
-               item.transform.localPosition = Vector3.zero;
+               AddPlayer(theGameRoomPlayer);
            }
        }
        ));
+    }
+
+    private void TheNetworkManager_OnJoinGameRoomResponseReceived(object sender, MessageJoinGameRoomResponse e)
+    {
+        AddPlayer(e.ThePlayerThatJoined);
+    }
+
+    private void AddPlayer(APlayer player)
+    {
+        GameRoomStatus.AddPlayer(player);
+
+        var item = Instantiate(txtPlayerNameTemplate);
+        item.text = player.GetUserName();
+        item.transform.parent = content.transform;
+        item.transform.localPosition = Vector3.zero;
     }
 
     public void SetRoomID(int roomID)

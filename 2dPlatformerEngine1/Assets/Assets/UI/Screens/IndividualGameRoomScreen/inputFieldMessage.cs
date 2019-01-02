@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TCPIPGame.Messages;
 using UnityEngine.UI;
+using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
+using System;
 
 public class inputFieldMessage : MonoBehaviour
 {
@@ -39,7 +41,8 @@ public class inputFieldMessage : MonoBehaviour
     {
         TheMainThreadSyncronizer.Actions.Add(() =>
         {
-            txtMessages.text += e.TheMessage + "\r\n";
+            var player = GameRoomStatus.GetPlayer(e.ClientID);
+            txtMessages.text += String.Format("{0}:{1}{2}",player.GetUserName(),e.TheMessage,"\r\n");
         });
     }
 }

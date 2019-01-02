@@ -9,6 +9,24 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
 {
     public static class GameRoomStatus
     {
-        public static List<APlayer> ThePlayers = new List<APlayer>();
+        static Dictionary<int, APlayer> ThePlayers = new Dictionary<int, APlayer>();
+        static int ClientID
+        {
+            get;
+            set;
+        }
+        
+        public static void AddPlayer(APlayer thePlayer)
+        {
+            lock(ThePlayers)
+            {
+                ThePlayers.Add(thePlayer.GetClientID(), thePlayer);
+            }
+        }
+
+        public static APlayer GetPlayer(int clientID)
+        {
+            return ThePlayers[clientID];
+        }
     }
 }

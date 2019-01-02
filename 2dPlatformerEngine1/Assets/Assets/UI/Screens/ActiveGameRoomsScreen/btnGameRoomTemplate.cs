@@ -28,6 +28,12 @@ public class btnGameRoomTemplate : MonoBehaviour {
     public void Click (string str)
     {
         TheNetworkManager.SendMessageToServer(new MessageJoinGameRoomRequest(RoomID));
+        TheNetworkManager.OnJoinGameRoomResponseReceived += TheNetworkManager_OnJoinGameRoomResponseReceived;
+        
+    }
+
+    private void TheNetworkManager_OnJoinGameRoomResponseReceived(object sender, MessageJoinGameRoomResponse e)
+    {
         individualGameRoomScreen.SetRoomID(RoomID);
         individualGameRoomScreen.Setup();
         activeGameRoomsScreen.SetActive(false);
