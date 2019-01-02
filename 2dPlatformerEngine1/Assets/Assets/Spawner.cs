@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
             var networkPlayer = players[i];
             var physicalPlayer = Instantiate(new Player());
             physicalPlayer.SetPlayer(networkPlayer);
-
+            physicalPlayer.SetActive(true);
             if (networkPlayer.GetTeamID() == 0)
             {
                 physicalPlayer.transform.position = spawnerPositionTeam1.transform.position;
