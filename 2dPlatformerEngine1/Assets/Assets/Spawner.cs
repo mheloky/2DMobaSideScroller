@@ -8,11 +8,11 @@ public class Spawner : MonoBehaviour
     public Player thePlayer;
     public GameObject spawnerPositionTeam1;
     public GameObject spawnerPositionTeam2;
-
+    public Camera deadZoneCamera;
     // Start is called before the first frame update
     void Start()
     {
-       
+        deadZoneCamera.orthographicSize =    13;
     }
 
     // Update is called once per frame
@@ -32,12 +32,12 @@ public class Spawner : MonoBehaviour
             physicalPlayer.SetActive(true);
             if (networkPlayer.GetTeamID() == 0)
             {
-                physicalPlayer.transform.position = spawnerPositionTeam1.transform.position;
+                physicalPlayer.transform.position = spawnerPositionTeam1.transform.localPosition;
             }
 
             if (networkPlayer.GetTeamID() == 1)
             {
-                physicalPlayer.transform.position = spawnerPositionTeam2.transform.position;
+                physicalPlayer.transform.position = spawnerPositionTeam2.transform.localPosition;
             }
         }
     }

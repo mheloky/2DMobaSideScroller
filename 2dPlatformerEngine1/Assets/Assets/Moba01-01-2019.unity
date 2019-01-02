@@ -1856,7 +1856,7 @@ PrefabInstance:
     - target: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
         type: 3}
       propertyPath: orthographic size
-      value: 13
+      value: 3.9921875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f387d2a5577afa47b4f87e4e846f091, type: 3}
@@ -6592,6 +6592,7 @@ MonoBehaviour:
   thePlayer: {fileID: 2039235010}
   spawnerPositionTeam1: {fileID: 1432192700}
   spawnerPositionTeam2: {fileID: 142468550}
+  deadZoneCamera: {fileID: 1951593690}
 --- !u!4 &1592286329
 Transform:
   m_ObjectHideFlags: 0
@@ -8787,6 +8788,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!20 &1951593690 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20134372339604138, guid: 0f387d2a5577afa47b4f87e4e846f091,
+    type: 3}
+  m_PrefabInstance: {fileID: 462918488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962152588
 GameObject:
   m_ObjectHideFlags: 0
