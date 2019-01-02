@@ -60,12 +60,15 @@ public class IndividualGameRoomScreen : MonoBehaviour {
 
     private void AddPlayer(APlayer player)
     {
-        GameRoomStatus.AddPlayer(player);
+        TheMainThreadSyncronizer.AddNewAction(() =>
+        {
+            GameRoomStatus.AddPlayer(player);
 
-        var item = Instantiate(txtPlayerNameTemplate);
-        item.text = player.GetUserName();
-        item.transform.parent = content.transform;
-        item.transform.localPosition = Vector3.zero;
+            var item = Instantiate(txtPlayerNameTemplate);
+            item.text = player.GetUserName();
+            item.transform.parent = content.transform;
+            item.transform.localPosition = Vector3.zero;
+        });
     }
 
     public void SetRoomID(int roomID)
