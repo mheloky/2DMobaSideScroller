@@ -32,12 +32,12 @@ public class Spawner : MonoBehaviour
             physicalPlayer.SetActive(true);
             if (networkPlayer.GetTeamID() == 0)
             {
-                physicalPlayer.transform.position = spawnerPositionTeam1.transform.localPosition;
+                physicalPlayer.transform.position = new Vector3(spawnerPositionTeam1.transform.position.x, spawnerPositionTeam1.transform.position.y);
             }
 
             if (networkPlayer.GetTeamID() == 1)
             {
-                physicalPlayer.transform.position = spawnerPositionTeam2.transform.localPosition;
+                physicalPlayer.transform.position = new Vector3(spawnerPositionTeam2.transform.position.x, spawnerPositionTeam2.transform.position.y);
             }
         }
     }
