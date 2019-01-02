@@ -36,8 +36,6 @@ public class NetworkManager : MonoBehaviour
         _gameClient.OnSendUserInputResponseSuccessful += _gameClient_OnSendUserInputResponseSuccessful;
     }
 
-   
-
     // Update is called once per frame
     void Update()
     {

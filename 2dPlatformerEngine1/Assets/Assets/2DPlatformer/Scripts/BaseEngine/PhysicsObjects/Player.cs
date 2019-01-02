@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TCPIPGame;
+using TCPIPGame.Server.DomainObjects;
 
 public class Player : PhysicsObject {
 
@@ -19,11 +20,15 @@ public class Player : PhysicsObject {
         get;
         set;
     }
+    APlayer ThePlayer
+    {
+        get;
+        set;
+    }
     #endregion
 
     private void Awake()
     { 
-        
         //All Looks Good
         TheSpriteRenderer = GetComponent<SpriteRenderer>();
         TheAnimator = GetComponent<Animator>();
@@ -77,6 +82,26 @@ public class Player : PhysicsObject {
         TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x)/ maxSpeed);
         TheAnimator.SetBool("IsWalking", Input.GetAxis("Horizontal")!=0f);
         TheAnimator.SetBool("IsRunning", Input.GetAxis("Horizontal") != 0f && Math.Abs(Velocity.x)>3);
+    }
+
+    public void SetActive(bool active)
+    {
+        gameObject.SetActive(active);
+    }
+
+    public bool GetActive(bool active)
+    {
+        return gameObject.activeSelf;
+    }
+
+    public void SetPlayer(APlayer player)
+    {
+        ThePlayer = player;
+    }
+
+    public APlayer GetPlayer()
+    {
+        return ThePlayer;
     }
     #endregion
     // Update is called once per frame

@@ -19,7 +19,7 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
         public static void AddPlayer(APlayer thePlayer)
         {
             lock(ThePlayers)
-            {
+            { 
                 ThePlayers.Add(thePlayer.GetClientID(), thePlayer);
             }
         }
@@ -27,6 +27,11 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
         public static APlayer GetPlayer(int clientID)
         {
             return ThePlayers[clientID];
+        }
+
+        public static List<APlayer> GetPlayers()
+        {
+            return ThePlayers.Values.ToList();
         }
     }
 }
