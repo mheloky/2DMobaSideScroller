@@ -9,29 +9,54 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
 {
     public static class GameRoomStatus
     {
-        static Dictionary<int, APlayer> ThePlayers = new Dictionary<int, APlayer>();
+        public static NetworkManager TheNetworkManager
+        {
+            get;
+            set;
+        }
+        static Dictionary<int, APlayer> ClientIDToPlayersSouls = new Dictionary<int, APlayer>();
+        static Dictionary<int, Player> ClientIDToPlayersPhysicalBodies = new Dictionary<int, Player>();
+
         static int ClientID
         {
             get;
             set;
         }
         
-        public static void AddPlayer(APlayer thePlayer)
+        public static void AddPlayerSoul(APlayer thePlayer)
         {
-            lock(ThePlayers)
-            { 
-                ThePlayers.Add(thePlayer.GetClientID(), thePlayer);
+            lock (ClientIDToPlayersSouls)
+            {
+                ClientIDToPlayersSouls.Add(thePlayer.GetClientID(), thePlayer);
             }
         }
 
-        public static APlayer GetPlayer(int clientID)
+        public static APlayer GetPlayerSoul(int clientID)
         {
-            return ThePlayers[clientID];
+            return ClientIDToPlayersSouls[clientID];
         }
 
-        public static List<APlayer> GetPlayers()
+        public static List<APlayer> GetPlayersSouls()
         {
-            return ThePlayers.Values.ToList();
+            return ClientIDToPlayersSouls.Values.ToList();
+        }
+
+        public static void AddPhysicalPlayer(int clientID, Player thePlayer)
+        {
+            lock (ClientIDToPlayersPhysicalBodies)
+            {
+                ClientIDToPlayersPhysicalBodies.Add(clientID, thePlayer);
+            }
+        }
+
+        public static Player GetPhysicalPlayer(int clientID)
+        {
+            return ClientIDToPlayersPhysicalBodies[clientID];
+        }
+
+        public static List<Player> GetPhysicalPlayers()
+        {
+            return ClientIDToPlayersPhysicalBodies.Values.ToList();
         }
     }
 }

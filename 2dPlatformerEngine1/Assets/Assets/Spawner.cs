@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        var players = GameRoomStatus.GetPlayers();
+        var players = GameRoomStatus.GetPlayersSouls();
         for (int i = 0; i < players.Count; i++)
         {
             var networkPlayer = players[i];
@@ -39,6 +39,8 @@ public class Spawner : MonoBehaviour
             {
                 physicalPlayer.transform.position = new Vector3(spawnerPositionTeam2.transform.position.x, spawnerPositionTeam2.transform.position.y);
             }
+
+            GameRoomStatus.AddPhysicalPlayer(networkPlayer.GetClientID(), physicalPlayer);
         }
     }
 }

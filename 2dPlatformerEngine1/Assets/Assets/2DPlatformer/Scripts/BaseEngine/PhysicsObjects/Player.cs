@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TCPIPGame;
 using TCPIPGame.Server.DomainObjects;
+using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
+using TCPIPGame.Messages;
 
 public class Player : PhysicsObject {
 
@@ -32,7 +34,10 @@ public class Player : PhysicsObject {
         //All Looks Good
         TheSpriteRenderer = GetComponent<SpriteRenderer>();
         TheAnimator = GetComponent<Animator>();
+        GameRoomStatus.TheNetworkManager.OnSendUserInputResponseReceived += TheNetworkManager_OnSendUserInputResponseReceived;
     }
+
+
 
     protected override void ExecutePerFrame()
     {
@@ -61,6 +66,7 @@ public class Player : PhysicsObject {
     {
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxis("Horizontal");
+        GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(move.x)));
         if (move.x < 0f)
         {
 
@@ -73,6 +79,7 @@ public class Player : PhysicsObject {
         }
 
         targetVelocity = move * maxSpeed;
+        //Debug.Log(move);
         //Debug.Log(maxSpeed+":"+targetVelocity);
     }
 
@@ -102,6 +109,11 @@ public class Player : PhysicsObject {
     public APlayer GetPlayer()
     {
         return ThePlayer;
+    }
+
+    private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
+    {
+        throw new NotImplementedException();
     }
     #endregion
     // Update is called once per frame

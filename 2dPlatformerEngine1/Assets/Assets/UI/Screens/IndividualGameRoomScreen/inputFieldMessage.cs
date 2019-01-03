@@ -41,7 +41,7 @@ public class inputFieldMessage : MonoBehaviour
     {
         TheMainThreadSyncronizer.Actions.Add(() =>
         {
-            var player = GameRoomStatus.GetPlayer(e.ClientID);
+            var player = GameRoomStatus.GetPhysicalPlayer(e.ClientID);
             txtMessages.text += String.Format("{0}:{1}{2}",player.GetUserName(),e.TheMessage,"\r\n");
         });
     }
