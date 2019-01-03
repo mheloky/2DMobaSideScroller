@@ -97,7 +97,7 @@ public class Player : PhysicsObject {
 
     public float GetHorizontalAxis()
     {
-        return Input.GetAxis("Horizontal") == 0 ? NetworkHorizontalAxis : Input.GetAxis("Horizontal");
+        return NetworkHorizontalAxis;
     }
 
     public void SetActive(bool active)
