@@ -12,6 +12,11 @@ public class Player : PhysicsObject {
     #region Properties
     public float maxSpeed = 7;
     public float JumpSpeed = 7;
+    public float NetworkHorizontalAxis
+    {
+        get;
+        set;
+    }
     SpriteRenderer TheSpriteRenderer
     {
         get;
@@ -36,8 +41,6 @@ public class Player : PhysicsObject {
         TheAnimator = GetComponent<Animator>();
         GameRoomStatus.TheNetworkManager.OnSendUserInputResponseReceived += TheNetworkManager_OnSendUserInputResponseReceived;
     }
-
-
 
     protected override void ExecutePerFrame()
     {
@@ -65,7 +68,8 @@ public class Player : PhysicsObject {
     void ExecuteFlipSpriteLogic()
     {
         Vector2 move = Vector2.zero;
-        move.x = Input.GetAxis("Horizontal");
+        //move.x = Input.GetAxis("Horizontal");
+        move.x = GetHorizontalAxis();
         GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(move.x)));
         if (move.x < 0f)
         {
@@ -91,6 +95,11 @@ public class Player : PhysicsObject {
         TheAnimator.SetBool("IsRunning", Input.GetAxis("Horizontal") != 0f && Math.Abs(Velocity.x)>3);
     }
 
+    public float GetHorizontalAxis()
+    {
+        return Input.GetAxis("Horizontal") == 0 ? NetworkHorizontalAxis : Input.GetAxis("Horizontal");
+    }
+
     public void SetActive(bool active)
     {
         gameObject.SetActive(active);
@@ -113,7 +122,7 @@ public class Player : PhysicsObject {
 
     private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
     {
-        throw new NotImplementedException();
+        GameRoomStatus.GetPhysicalPlayer(e.ClientID).NetworkHorizontalAxis = e.TheUserInput.HorizontalAxis;
     }
     #endregion
     // Update is called once per frame

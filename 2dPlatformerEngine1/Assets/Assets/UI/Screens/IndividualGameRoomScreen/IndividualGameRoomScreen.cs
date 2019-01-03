@@ -62,7 +62,7 @@ public class IndividualGameRoomScreen : MonoBehaviour {
     {
         TheMainThreadSyncronizer.AddNewAction(() =>
         {
-            GameRoomStatus.AddPhysicalPlayer(player);
+            GameRoomStatus.AddPlayerSoul(player);
 
             var item = Instantiate(txtPlayerNameTemplate);
             item.text = player.GetUserName();
