@@ -72,7 +72,7 @@ public class Player : PhysicsObject {
         Vector2 move = Vector2.zero;
         //move.x = Input.GetAxis("Horizontal");
         move.x = GetHorizontalAxis();
-        GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(Input.GetAxis("Horizontal"))));
+        //GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(Input.GetAxis("Horizontal"))));
         if (move.x < 0f)
         {
 
