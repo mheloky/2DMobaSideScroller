@@ -111,6 +111,11 @@ public class NetworkManager : MonoBehaviour
         _gameClient.SendMessageToServer(message);
     }
 
+    public void SendLowLevelMessageToServer(byte[] messageData)
+    {
+        _gameClient.SendLowLevelMessageToServer(messageData);
+    }
+
     public AGameClientStatus GetGameClientStatus()
     {
         return _gameClient.TheGameClientStatus;

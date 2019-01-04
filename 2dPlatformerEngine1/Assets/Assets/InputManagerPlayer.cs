@@ -31,19 +31,10 @@ public class InputManagerPlayer : MonoBehaviour
         var jump = Input.GetButtonDown("Jump");
         ExecuteInput(GameRoomStatus.ClientID, horizontalAxis, jump);
 
-        var message = new MessageSendUserInputRequest(new UserInput(horizontalAxis, jump));
-        var z = ObjectToByteArray(message);
-        GameRoomStatus.TheNetworkManager.SendMessageToServer(message);
-    }
-
-    public byte[] ObjectToByteArray(object obj)
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-        using (var ms = new MemoryStream())
-        {
-            bf.Serialize(ms, obj);
-            return ms.ToArray();
-        }
+        var userInput = new UserInput(horizontalAxis, jump);
+        var data = userInput.GetLowLevelData();
+        var z= new byte[] { 10, 12 };
+        GameRoomStatus.TheNetworkManager.SendLowLevelMessageToServer(data);
     }
 
     private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
