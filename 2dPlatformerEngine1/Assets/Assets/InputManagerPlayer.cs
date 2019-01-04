@@ -27,7 +27,7 @@ public class InputManagerPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var horizontalAxis= Input.GetAxis("Horizontal");
+        var horizontalAxis = GetHorizontalAxis();
         var jump = Input.GetButtonDown("Jump");
         ExecuteInput(GameRoomStatus.ClientID, horizontalAxis, jump);
 
@@ -35,6 +35,27 @@ public class InputManagerPlayer : MonoBehaviour
         var data = userInput.GetLowLevelData();
         var z= new byte[] { 10, 12 };
         GameRoomStatus.TheNetworkManager.SendLowLevelMessageToServer(data);
+    }
+
+    float GetHorizontalAxis()
+    {
+        var HorizontalAxis = Input.GetAxis("Horizontal");
+        var horizontalAxis = 0;
+
+        if (HorizontalAxis < 0)
+        {
+            horizontalAxis = -1;
+        }
+        if (HorizontalAxis == 0)
+        {
+            horizontalAxis = 0;
+        }
+        if (HorizontalAxis > 0)
+        {
+            horizontalAxis = 1;
+        }
+
+        return horizontalAxis;
     }
 
     private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
