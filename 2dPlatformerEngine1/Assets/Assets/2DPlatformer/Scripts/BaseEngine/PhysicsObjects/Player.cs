@@ -70,7 +70,7 @@ public class Player : PhysicsObject {
         Vector2 move = Vector2.zero;
         //move.x = Input.GetAxis("Horizontal");
         move.x = GetHorizontalAxis();
-        GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(move.x)));
+        GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(Input.GetAxis("Horizontal"))));
         if (move.x < 0f)
         {
 
@@ -122,7 +122,7 @@ public class Player : PhysicsObject {
 
     private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
     {
-        GameRoomStatus.GetPhysicalPlayer(e.ClientID).NetworkHorizontalAxis = e.TheUserInput.HorizontalAxis;
+        //GameRoomStatus.GetPhysicalPlayer(e.ClientID).NetworkHorizontalAxis = e.TheUserInput.HorizontalAxis;
     }
     #endregion
     // Update is called once per frame

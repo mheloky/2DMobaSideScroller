@@ -17,7 +17,7 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
         static Dictionary<int, APlayer> ClientIDToPlayersSouls = new Dictionary<int, APlayer>();
         static Dictionary<int, Player> ClientIDToPlayersPhysicalBodies = new Dictionary<int, Player>();
 
-        static int ClientID
+        public static int ClientID
         {
             get;
             set;
