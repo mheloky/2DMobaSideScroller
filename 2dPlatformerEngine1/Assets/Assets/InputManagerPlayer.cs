@@ -16,6 +16,9 @@ public class InputManagerPlayer : MonoBehaviour
     {
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxis("Horizontal");
-        GameRoomStatus.GetPhysicalPlayer(GameRoomStatus.ClientID).NetworkHorizontalAxis= move.x;
+        var jump = Input.GetButtonDown("Jump");
+        var playerBody = GameRoomStatus.GetPhysicalPlayer(GameRoomStatus.ClientID);
+        playerBody.NetworkHorizontalAxis= move.x;
+        playerBody.NetworkJump = jump;
     }
 }

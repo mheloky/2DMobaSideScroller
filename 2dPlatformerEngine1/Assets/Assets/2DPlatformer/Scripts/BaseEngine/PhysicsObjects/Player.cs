@@ -17,6 +17,11 @@ public class Player : PhysicsObject {
         get;
         set;
     }
+    public bool NetworkJump
+    {
+        get;
+        set;
+    }
     SpriteRenderer TheSpriteRenderer
     {
         get;
@@ -52,14 +57,11 @@ public class Player : PhysicsObject {
     #region Helper Methods
     void ExecuteJumpLogic()
     {
-        Vector2 move = Vector2.zero;
-        move.x = Input.GetAxis("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && ThePhysicsObjectStatus.isGrounded)
+        if (this.NetworkJump && ThePhysicsObjectStatus.isGrounded)
         {
             Velocity.y = JumpSpeed;
         }
-        else if (Input.GetButtonUp("Jump"))
+        else if (this.NetworkJump)
         {
             Velocity.y = Velocity.y > 0 ? Velocity.y * .5f : Velocity.y;
         }
@@ -91,13 +93,13 @@ public class Player : PhysicsObject {
     {
         //TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
         TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x)/ maxSpeed);
-        TheAnimator.SetBool("IsWalking", Input.GetAxis("Horizontal")!=0f);
-        TheAnimator.SetBool("IsRunning", Input.GetAxis("Horizontal") != 0f && Math.Abs(Velocity.x)>3);
+        TheAnimator.SetBool("IsWalking", this.NetworkHorizontalAxis != 0f);
+        TheAnimator.SetBool("IsRunning", this.NetworkHorizontalAxis != 0f && Math.Abs(Velocity.x)>3);
     }
 
     public float GetHorizontalAxis()
     {
-        return NetworkHorizontalAxis;
+        return this.NetworkHorizontalAxis;
     }
 
     public void SetActive(bool active)

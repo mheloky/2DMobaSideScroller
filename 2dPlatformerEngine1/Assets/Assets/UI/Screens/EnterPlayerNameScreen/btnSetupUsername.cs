@@ -1,4 +1,5 @@
-﻿using Assets.UI;
+﻿using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
+using Assets.UI;
 using System.Collections;
 using System.Collections.Generic;
 using TCPIPGame.Messages;
@@ -35,6 +36,7 @@ public class btnSetupUsername : MonoBehaviour {
 
     private void TheGameClient_OnConnectedToServerResponseReceived(object sender, MessageConnectToServerResponse message)
     {
+        GameRoomStatus.ClientID = message.ClientID;
         Debug.Log("Connected:" + message.Username);
     }
 }
