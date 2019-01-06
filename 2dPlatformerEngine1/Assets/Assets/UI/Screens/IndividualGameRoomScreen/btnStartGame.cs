@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class btnStartGame : MonoBehaviour {
 
     public NetworkManager TheNetworkManager;
-
+    public MainThreadSyncronizer TheMainThreadSyncronizer;
     // Use this for initialization
     void Start () {
 		

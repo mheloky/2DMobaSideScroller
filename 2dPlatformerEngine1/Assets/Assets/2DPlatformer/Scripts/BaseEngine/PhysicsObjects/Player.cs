@@ -83,7 +83,7 @@ public class Player : PhysicsObject {
 
             TheSpriteRenderer.flipX = false;
         }
-
+        
         targetVelocity = move * maxSpeed;
         //Debug.Log(move);
         //Debug.Log(maxSpeed+":"+targetVelocity);

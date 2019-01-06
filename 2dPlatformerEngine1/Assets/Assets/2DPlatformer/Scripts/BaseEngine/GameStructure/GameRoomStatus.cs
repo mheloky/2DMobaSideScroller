@@ -22,7 +22,7 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
             get;
             set;
         }
-        
+
         public static void AddPlayerSoul(APlayer thePlayer)
         {
             lock (ClientIDToPlayersSouls)

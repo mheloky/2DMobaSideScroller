@@ -655,6 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheNetworkManager: {fileID: 2036111539}
+  TheMainThreadSyncronizer: {fileID: 1251814131}
 --- !u!114 &288951901
 MonoBehaviour:
   m_ObjectHideFlags: 0
