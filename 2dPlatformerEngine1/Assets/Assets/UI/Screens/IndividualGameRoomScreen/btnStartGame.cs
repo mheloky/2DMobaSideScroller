@@ -22,6 +22,6 @@ public class btnStartGame : MonoBehaviour {
     public void Click(string item)
     {
         GameRoomStatus.TheNetworkManager = TheNetworkManager;
-        SceneManager.LoadScene("Moba01-01-2019", LoadSceneMode.Single);
+        SceneManager.LoadScene("Moba01-06-2019", LoadSceneMode.Single);
     }
 }
