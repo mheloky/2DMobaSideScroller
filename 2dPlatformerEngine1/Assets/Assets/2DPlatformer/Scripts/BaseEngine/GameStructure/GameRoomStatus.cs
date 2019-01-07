@@ -58,5 +58,10 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
         {
             return ClientIDToPlayersPhysicalBodies.Values.ToList();
         }
+
+        public static Player GetThisMainPlayer()
+        {
+            return GetPhysicalPlayer(ClientID);
+        }
     }
 }

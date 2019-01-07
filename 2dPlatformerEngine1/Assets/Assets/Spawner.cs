@@ -38,10 +38,10 @@ public class Spawner : MonoBehaviour
               Camera.main.orthographicSize = TARGET_HEIGHT / 4 / PIXELS_TO_UNITS * differenceInSize;
           }*/
 
-        if (Camera.main.orthographicSize != 13)
+        /*if (Camera.main.orthographicSize != 5)
         {
-            Camera.main.orthographicSize = 13;
-        }
+            Camera.main.orthographicSize = 5;
+        }*/
 
     }
 

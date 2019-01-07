@@ -70,6 +70,7 @@
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\Player.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\DeadzoneCamera.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
+    <Compile Include="Assets\CameraFolow.cs" />
     <Compile Include="Assets\InputManagerPlayer.cs" />
     <Compile Include="Assets\MainThreadSyncronizer.cs" />
     <Compile Include="Assets\Spawner.cs" />

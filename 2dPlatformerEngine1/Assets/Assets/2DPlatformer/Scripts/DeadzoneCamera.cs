@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -18,6 +19,8 @@ public class DeadzoneCamera : MonoBehaviour
 
     public void Start()
     {
+        var player=GameRoomStatus.GetPhysicalPlayer(GameRoomStatus.ClientID);
+        target = player.GetComponent<SpriteRenderer>();
         smoothPos = target.transform.position;
         smoothPos.z = transform.position.z;
         _currentVelocity = Vector3.zero;

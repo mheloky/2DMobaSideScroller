@@ -92,9 +92,10 @@ public class Player : PhysicsObject {
     void ExecueChangeAnimationLogic()
     {
         //TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
-        TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x)/ maxSpeed);
+        TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x) / maxSpeed);
         TheAnimator.SetBool("IsWalking", this.NetworkHorizontalAxis != 0f);
-        TheAnimator.SetBool("IsRunning", this.NetworkHorizontalAxis != 0f && Math.Abs(Velocity.x)>3);
+        //TheAnimator.SetBool("IsWalking", Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.LeftArrow));
+        //TheAnimator.SetBool("IsRunning", this.NetworkHorizontalAxis != 0f && Math.Abs(Velocity.x)>3);
     }
 
     public float GetHorizontalAxis()
