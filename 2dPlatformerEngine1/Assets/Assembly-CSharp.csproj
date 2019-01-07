@@ -60,18 +60,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Cameras\CameraFolow.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Cameras\DeadzoneCamera.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\GameRoomStatus.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\ALevel.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\CollisionManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\GravityForceManagercs.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\InputManagerPlayer.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\MovementManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\PlayerControllerManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\PhysicsObject.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\PhysicsObjectStatus.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\Player.cs" />
-    <Compile Include="Assets\2DPlatformer\Scripts\DeadzoneCamera.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
-    <Compile Include="Assets\CameraFolow.cs" />
-    <Compile Include="Assets\InputManagerPlayer.cs" />
+    <Compile Include="Assets\GrassPlainsLevel.cs" />
     <Compile Include="Assets\MainThreadSyncronizer.cs" />
     <Compile Include="Assets\Spawner.cs" />
     <Compile Include="Assets\txtTime.cs" />
