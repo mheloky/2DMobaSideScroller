@@ -10,7 +10,7 @@ using TCPIPGame.Messages;
 public class Player : PhysicsObject {
 
     #region Properties
-    public float maxSpeed = 7;
+    public float maxSpeed = 4;
     public float JumpSpeed = 7;
     public float NetworkHorizontalAxis
     {
