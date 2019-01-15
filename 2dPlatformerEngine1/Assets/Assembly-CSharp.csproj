@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{17533FA3-357A-CEC6-ED1C-9FA92629C572}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -63,9 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Cameras\CameraFolow.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Cameras\DeadzoneCamera.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\ADamage.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\AInteractable.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\GameRoomStatus.cs" />
-    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\ADamage.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\ALevel.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\CollisionManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\GravityForceManagercs.cs" />

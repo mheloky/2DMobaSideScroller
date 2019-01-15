@@ -12,6 +12,9 @@ public class Player : PhysicsObject {
     #region Properties
     public float maxSpeed = 4;
     public float JumpSpeed = 7;
+
+    public AudioSource TheFootstepsAudioSource;
+    public AudioClip TheFootstepsAudioClip;
     public float NetworkHorizontalAxis
     {
         get;
@@ -40,11 +43,18 @@ public class Player : PhysicsObject {
     #endregion
 
     private void Awake()
-    { 
+    {
+        
         //All Looks Good
         TheSpriteRenderer = GetComponent<SpriteRenderer>();
         TheAnimator = GetComponent<Animator>();
         GameRoomStatus.TheNetworkManager.OnSendUserInputResponseReceived += TheNetworkManager_OnSendUserInputResponseReceived;
+    }
+
+    public void PlayFootStep()
+    {
+        TheFootstepsAudioSource.Play();
+        AudioSource.PlayClipAtPoint(TheFootstepsAudioClip, new Vector3());
     }
 
     protected override void ExecutePerFrame()
