@@ -7,7 +7,8 @@ using TCPIPGame.Server.DomainObjects;
 using Assets._2DPlatformer.Scripts.BaseEngine.GameStructure;
 using TCPIPGame.Messages;
 
-public class Player : PhysicsObject {
+public class Player : PhysicsObject, APhysicalPlayer, AMovable
+{
 
     #region Properties
     public float maxSpeed = 4;
@@ -35,7 +36,7 @@ public class Player : PhysicsObject {
         get;
         set;
     }
-    APlayer ThePlayer
+    public APlayer ThePlayer
     {
         get;
         set;
@@ -81,7 +82,7 @@ public class Player : PhysicsObject {
     {
         Vector2 move = Vector2.zero;
         //move.x = Input.GetAxis("Horizontal");
-        move.x = GetHorizontalAxis();
+        move.x = NetworkHorizontalAxis;
         //GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(new UserInput(Input.GetAxis("Horizontal"))));
         if (move.x < 0f)
         {
@@ -109,12 +110,6 @@ public class Player : PhysicsObject {
         //TheAnimator.SetBool("IsWalking", Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.LeftArrow));
         //TheAnimator.SetBool("IsRunning", this.NetworkHorizontalAxis != 0f && Math.Abs(Velocity.x)>3);
     }
-
-    public float GetHorizontalAxis()
-    {
-        return this.NetworkHorizontalAxis;
-    }
-
     public void SetActive(bool active)
     {
         gameObject.SetActive(active);
@@ -123,16 +118,6 @@ public class Player : PhysicsObject {
     public bool GetActive(bool active)
     {
         return gameObject.activeSelf;
-    }
-
-    public void SetPlayer(APlayer player)
-    {
-        ThePlayer = player;
-    }
-
-    public APlayer GetPlayer()
-    {
-        return ThePlayer;
     }
 
     private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)

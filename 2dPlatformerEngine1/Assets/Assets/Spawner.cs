@@ -52,7 +52,7 @@ public class Spawner : MonoBehaviour
         {
             var networkPlayer = players[i];
             var physicalPlayer = Instantiate(thePlayer);
-            physicalPlayer.SetPlayer(networkPlayer);
+            physicalPlayer.ThePlayer=networkPlayer;
             physicalPlayer.SetActive(true);
             if (networkPlayer.GetTeamID() == 0)
             {
