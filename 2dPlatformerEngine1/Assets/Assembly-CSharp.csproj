@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{17533FA3-357A-CEC6-ED1C-9FA92629C572}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -66,7 +65,12 @@
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\ADamage.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\AInteractable.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\GameRoomStatus.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\SwordDamage.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\ADamagable.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\Player.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\ALevel.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\GrassPlainsLevel.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\Ground.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\CollisionManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\GravityForceManagercs.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\InputManagerPlayer.cs" />
@@ -76,9 +80,7 @@
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\APhysicalPlayer.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\PhysicsObject.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\PhysicsObjectStatus.cs" />
-    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\Player.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
-    <Compile Include="Assets\GrassPlainsLevel.cs" />
     <Compile Include="Assets\MainThreadSyncronizer.cs" />
     <Compile Include="Assets\Spawner.cs" />
     <Compile Include="Assets\txtTime.cs" />
@@ -101,19 +103,19 @@
     <Compile Include="Assets\UI\UIController.cs" />
     <Compile Include="Assets\UI\UIPresenter.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -317,22 +319,22 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="TCPIPGame">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Assets/TCPIPGame.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Assets/TCPIPGame.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/Vision/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/mheloky/Documents/GitHub/2DMobaSideScroller/2dPlatformerEngine1/Assets/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

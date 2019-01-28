@@ -19,7 +19,7 @@ public class PhysicsObject : MonoBehaviour {
         get;
         set;
     }
-    CollisionManager TheCollisionManager
+    public CollisionManager TheCollisionManager
     {
         get;
         set;

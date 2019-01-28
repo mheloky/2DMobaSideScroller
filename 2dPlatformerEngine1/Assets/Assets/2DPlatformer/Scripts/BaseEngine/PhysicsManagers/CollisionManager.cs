@@ -10,6 +10,7 @@ namespace Assets
     {
         ContactFilter2D contactFilter;
         public const float ShellRadius = 0.01f;
+        public event Action<RaycastHit2D[]> CollisionDetected;
 
         public CollisionManager(int collisionLayer)
         {
@@ -28,6 +29,11 @@ namespace Assets
             for (int i = 0; i < rayCastActualElementsHit.Length; i++)
             {
                 rayCastActualElementsHit[i] = raycastElementsHit[i];
+            }
+
+            if(CollisionDetected!=null)
+            {
+                CollisionDetected(rayCastActualElementsHit);
             }
 
             return rayCastActualElementsHit;

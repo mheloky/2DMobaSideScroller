@@ -8,7 +8,15 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
 {
     public interface ADamage
     {
-        int GetPhysicalDamage();
-        int GetMagicalDamage();
+        int MagicalDamage
+        {
+            get;
+            set;
+        }
+        int PhysicalDamage
+        {
+            get;
+            set;
+        }
     }
 }
