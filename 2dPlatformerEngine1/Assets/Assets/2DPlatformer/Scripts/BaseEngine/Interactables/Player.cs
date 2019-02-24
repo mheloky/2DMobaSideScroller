@@ -150,7 +150,7 @@ public class Player : PhysicsObject, APhysicalPlayer, AMovable,AInteractable,ADa
     {
         //TheAnimator.SetBool("grounded", ThePhysicsObjectStatus.isGrounded);
         TheAnimator.SetFloat("velocityX", Mathf.Abs(Velocity.x) / maxSpeed);
-        TheAnimator.SetBool("IsWalking", this.NetworkHorizontalAxis != 0f);
+        TheAnimator.SetBool("IsRunning", this.NetworkHorizontalAxis != 0f);
         TheAnimator.SetBool("IsBasicAttacking", Input.GetKey(KeyCode.X));
         TheAnimator.SetBool("IsBasicGuarding", Input.GetKey(KeyCode.Z));
         //TheAnimator.SetBool("IsWalking", Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.LeftArrow));
