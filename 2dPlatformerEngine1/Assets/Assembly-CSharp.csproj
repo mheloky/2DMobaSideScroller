@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{17533FA3-357A-CEC6-ED1C-9FA92629C572}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -66,11 +67,18 @@
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\AInteractable.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\GameRoomStatus.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\GameStructure\SwordDamage.cs" />
-    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\ADamagable.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\AAnimationManager.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\AConstitution.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\AInteractionManager.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\AnimationManagerPlayer.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\ASpriteManager.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\DamageManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\Player.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Interactables\SpriteManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\ALevel.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\GrassPlainsLevel.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Level\Ground.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\AInputManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\CollisionManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\GravityForceManagercs.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\InputManagerPlayer.cs" />
@@ -78,8 +86,11 @@
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsManagers\PlayerControllerManager.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\AMovable.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\APhysicalPlayer.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\APhysicsObject.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\PhysicsObject.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\PhysicsObjects\PhysicsObjectStatus.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Sounds and Effects\ASoundManager.cs" />
+    <Compile Include="Assets\2DPlatformer\Scripts\BaseEngine\Sounds and Effects\SoundManagerPlayer.cs" />
     <Compile Include="Assets\2DPlatformer\Scripts\PerfectPixel.cs" />
     <Compile Include="Assets\MainThreadSyncronizer.cs" />
     <Compile Include="Assets\Spawner.cs" />

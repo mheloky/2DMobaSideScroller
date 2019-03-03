@@ -9,21 +9,20 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
 {
     public static class GameRoomStatus
     {
-        public static NetworkManager TheNetworkManager
-        {
-            get;
-            set;
-        }
-        static Dictionary<int, APlayer> ClientIDToPlayersSouls = new Dictionary<int, APlayer>();
-        static Dictionary<int, Player> ClientIDToPlayersPhysicalBodies = new Dictionary<int, Player>();
-
         public static int ClientID
         {
             get;
             set;
         }
-
-        public static void AddPlayerSoul(APlayer thePlayer)
+        public static NetworkManager TheNetworkManager
+        {
+            get;
+            set;
+        }
+        static Dictionary<int, ANetworkPlayer> ClientIDToPlayersSouls = new Dictionary<int, ANetworkPlayer>();
+        static Dictionary<int, Player> ClientIDToPlayersPhysicalBodies = new Dictionary<int, Player>();
+        
+        public static void AddPlayerSoul(ANetworkPlayer thePlayer)
         {
             lock (ClientIDToPlayersSouls)
             {
@@ -31,12 +30,12 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.GameStructure
             }
         }
 
-        public static APlayer GetPlayerSoul(int clientID)
+        public static ANetworkPlayer GetPlayerSoul(int clientID)
         {
             return ClientIDToPlayersSouls[clientID];
         }
 
-        public static List<APlayer> GetPlayersSouls()
+        public static List<ANetworkPlayer> GetPlayersSouls()
         {
             return ClientIDToPlayersSouls.Values.ToList();
         }

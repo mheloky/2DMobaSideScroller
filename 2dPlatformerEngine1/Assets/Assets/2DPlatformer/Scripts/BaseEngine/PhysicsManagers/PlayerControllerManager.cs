@@ -16,7 +16,7 @@ namespace Assets
 
         public void MoveWithCollision(PhysicsObject physicsObjects, Rigidbody2D rigidbody2D, CollisionManager collisionManager, MovementManager theMovementManager)
         {
-            physicsObjects.Velocity.x = physicsObjects.targetVelocity.x;
+            physicsObjects.Velocity.x = physicsObjects.TargetVelocity.x;
             var deltaPosition = physicsObjects.Velocity * Time.deltaTime;
             
             Vector2 moveAlongGround = new Vector2(theMovementManager.groundNormal.y, -theMovementManager.groundNormal.x);
