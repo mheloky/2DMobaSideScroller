@@ -5,11 +5,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassPlainsLevel : MonoBehaviour,ALevel
+public class GrassPlainsLevel : MonoBehaviour,ALevel,AInteractable
 {
 
     #region Properties
-    public AInteractionManager TheInteractionManager;
+    public AInteractionManager TheInteractionManager
+    {
+        get;
+        set;
+    }
     public GameObject LeftCameraBoundry;
     public GameObject RightCameraBoundry;
     #endregion
@@ -23,11 +27,6 @@ public class GrassPlainsLevel : MonoBehaviour,ALevel
     public GameObject GetRightCameraBoundry()
     {
         return RightCameraBoundry;
-    }
-
-    public void Interact(ADamage damage)
-    {
-    
     }
 
     // Start is called before the first frame update

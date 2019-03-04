@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets._2DPlatformer.Scripts.BaseEngine.PhysicsManagers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace Assets
 {
-    public class MovementManager
+    public class MovementManager: AMovementManager
     {
         #region Properties
         const float minMoveDistance = 0.001f;

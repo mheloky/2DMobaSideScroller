@@ -116,6 +116,19 @@ public class PhysicsObject : MonoBehaviour, APhysicsObject  {
         TheGravityManager.ApplyGravityWithCollision(this, TheRigidbody2D, TheCollisionManager, TheMovementManager);
     }
 
+    void ExecuteJumpLogic(bool jump)
+    {
+        if (jump && ThePhysicsObjectStatus.isGrounded)
+        {
+            Velocity = new Vector2(Velocity.x, TheJumpSpeed);
+        }
+        else if (jump)
+        {
+            var y = Velocity.y > 0 ? Velocity.y * .5f : Velocity.y;
+            Velocity = new Vector2(Velocity.x, y);
+        }
+    }
+
     #region Helper Methods
     protected virtual void ExecutePerFrame()
     {

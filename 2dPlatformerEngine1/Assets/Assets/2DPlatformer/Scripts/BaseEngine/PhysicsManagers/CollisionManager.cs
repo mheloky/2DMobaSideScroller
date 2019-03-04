@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets._2DPlatformer.Scripts.BaseEngine.PhysicsManagers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +7,30 @@ using UnityEngine;
 
 namespace Assets
 {
-    public class CollisionManager
+    public class CollisionManager:ACollisionManager
     {
+        #region Properties
         ContactFilter2D contactFilter;
         public const float ShellRadius = 0.01f;
         public event Action<RaycastHit2D[]> CollisionDetected;
+        public ContactFilter2D TheContactFilter
+        {
+            get
+            {
+                return contactFilter;
+            }
+            set
+            {
+                contactFilter = value;
+            }
+        }
+        public float TheShellRadius
+        {
+            get;
+            set;
+        }
+        #endregion
+
 
         public CollisionManager(int collisionLayer)
         {

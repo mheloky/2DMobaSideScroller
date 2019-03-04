@@ -1,10 +1,11 @@
 ﻿using Assets;
+using Assets._2DPlatformer.Scripts.BaseEngine.PhysicsManagers;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Physics
 {
-    public class GravityForceManager
+    public class GravityForceManager: AGravityForceManager
     {
         #region Properties
         float gravityModifier = 1f;

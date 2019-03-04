@@ -10,17 +10,6 @@ namespace Assets._2DPlatformer.Scripts.BaseEngine.Interactables
 {
     public interface AInteractionManager
     {
-        AConstitution TheConstitution
-        {
-            get;
-            set;
-        }
-        PhysicsObject ThePhysicsObject
-        {
-            get;
-            set;
-        }
-
         void SendInteraction(ADamage damage);
         void ReceiveInteraction(ADamage damage);
     }

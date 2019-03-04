@@ -66,5 +66,6 @@ namespace PhysicsObjects
             get;
             set;
         }
+        void ExecuteJumpLogic(bool jump);
     }
 }

@@ -36,40 +36,55 @@ public class InputManagerPlayer : MonoBehaviour, AInputManager
         GameRoomStatus.TheNetworkManager.OnSendUserInputResponseReceived += TheNetworkManager_OnSendUserInputResponseReceived;
     }
 
-    public void ExecuteInput(int clientID, float horizontalAxis, bool jump)
-    {
-        Vector2 move = Vector2.zero;
-        move.x = horizontalAxis;
-
-        var playerBody = GameRoomStatus.GetPhysicalPlayer(clientID);
-        NetworkHorizontalAxis = move.x;
-        NetworkJump = jump;
-    }
-
-    public void ExecuteInput(int clientID, float horizontalAxis, bool jump, float positionX, float positionY)
-    {
-        TheMainThreadSyncronizer.Actions.Add(() =>
-        {
-            Vector2 move = Vector2.zero;
-            move.x = horizontalAxis;
-
-            var playerBody = GameRoomStatus.GetPhysicalPlayer(clientID);
-            NetworkHorizontalAxis = move.x;
-            NetworkJump = jump;
-            playerBody.transform.position = new Vector3(positionX, positionY);
-        });
-    }
-
     // Update is called once per frame
     void Update()
     {
         var playerBody = GameRoomStatus.GetPhysicalPlayer(GameRoomStatus.ClientID);
         var horizontalAxis = GetHorizontalAxis();
         var jump = Input.GetButtonDown("Jump");
-        ExecuteInput(GameRoomStatus.ClientID, horizontalAxis, jump);
 
-        var userInput = new UserInput(playerBody.transform.position.x, playerBody.transform.position.y, horizontalAxis, jump);
-        GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(userInput));
+        var gameInputLocal = new GameInput() { ClientID = GameRoomStatus.ClientID, HorizontalAxis = horizontalAxis, Jump = jump }; //does not have position data since thats managed locally
+        var networkUserInput = new NetworkUserInput(playerBody.transform.position.x, playerBody.transform.position.y, horizontalAxis, jump); //has position data which will be sent to network
+
+        Update_FromUserInput(gameInputLocal);
+        Update_SendUserInputToNetwork(networkUserInput);
+        ThePhysicsObject.ExecuteJumpLogic(jump);
+    }
+
+    public void ExecuteInput(AGameInput gameInput)
+    {
+        TheMainThreadSyncronizer.Actions.Add(() =>
+        {
+            var playerBody = GameRoomStatus.GetPhysicalPlayer(gameInput.ClientID);
+
+            var move = Vector2.zero;
+            move.x = gameInput.HorizontalAxis ?? move.x;
+            var positionX = gameInput.PositionX ?? playerBody.transform.position.x;
+            var positionY = gameInput.PositionY ?? playerBody.transform.position.y;
+
+            NetworkHorizontalAxis = move.x;
+            NetworkJump = gameInput.Jump.Value;
+            playerBody.transform.position = new Vector3(positionX, positionY);
+        });
+    }
+
+    void Update_FromUserInput(AGameInput gameInput)
+    {
+        ExecuteInput(gameInput);
+    }
+
+    void Update_SendUserInputToNetwork(NetworkUserInput networkUserInput)
+    {
+        GameRoomStatus.TheNetworkManager.SendMessageToServer(new MessageSendUserInputRequest(networkUserInput));
+    }
+
+    private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
+    {
+        if (e.ClientID != GameRoomStatus.ClientID)
+        {
+            var gameInput = new GameInput() { ClientID = e.ClientID, HorizontalAxis = e.TheUserInput.HorizontalAxis, Jump = e.TheUserInput.Jump };
+            ExecuteInput(gameInput);
+        }
     }
 
     float GetHorizontalAxis()
@@ -91,31 +106,5 @@ public class InputManagerPlayer : MonoBehaviour, AInputManager
         }
 
         return horizontalAxis;
-    }
-
-    private void TheNetworkManager_OnSendUserInputResponseReceived(object sender, MessageSendUserInputResponse e)
-    {
-        if (e.ClientID != GameRoomStatus.ClientID)
-        {
-            ExecuteInput(e.ClientID, e.TheUserInput.HorizontalAxis, e.TheUserInput.Jump, e.TheUserInput.PositionX, e.TheUserInput.PositionY);
-        }
-    }
-
-    void ExecuteJumpLogic()
-    {
-        if (NetworkJump && ThePhysicsObject.ThePhysicsObjectStatus.isGrounded)
-        {
-            ThePhysicsObject.Velocity = new Vector2(ThePhysicsObject.Velocity.x, ThePhysicsObject.TheJumpSpeed);
-        }
-        else if (this.NetworkJump)
-        {
-            var y = ThePhysicsObject.Velocity.y > 0 ? ThePhysicsObject.Velocity.y * .5f : ThePhysicsObject.Velocity.y;
-            ThePhysicsObject.Velocity = new Vector2(ThePhysicsObject.Velocity.x, y);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        ExecuteJumpLogic();
     }
 }
